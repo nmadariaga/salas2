@@ -1,26 +1,184 @@
-@extends('encargado.plantillaEncargado')
-@section('contenido')
-<ul class="nav nav-tabs">
-  <li class="active"><a aria-expanded="true" href="/encargado/menu" data-toggle="tab">Principal</a></li>
-  <li class=""><a aria-expanded="false" href="/asignaturas" data-toggle="tab">Asignaturas</a></li>
-  <li class=""><a aria-expanded="false" href="/cursos" data-toggle="tab">Cursos</a></li>
-  <li class=""><a aria-expanded="false" href="/horarios" data-toggle="tab">Horario</a></li>
-  <li class=""><a aria-expanded="false" href="/salas" data-toggle="tab">Salas</a></li>
-  <li class=""><a aria-expanded="false" href="/tiposdesalas" data-toggle="tab">Tipos de Salas</a></li>
-  <li class=""><a aria-expanded="false" href="/periodos" data-toggle="tab">Periodos</a></li>
-  <li class="dropdown">
-    <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#">Opciones <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
-      <li class="divider"></li>
-      <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
-    </ul>
-  </li>
-</ul>
-<h2>Bienvenido al crud del tali</h2>
-<p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-<p><small>This line of text is meant to be treated as fine print.</small></p>
-<p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-<p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-@endsection
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Sistema</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/zabuto_calendar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/js/gritter/css/jquery.gritter.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">    
+    
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      body {overflow-x:hidden;}
+    </style>
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+             
+            <!--logo start-->
+            <a href="index.html" class="logo">{!!HTML::image('utem.png')!!}</a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    
+                    <!-- settings end -->
+                    <!-- inbox dropdown start-->
+                    
+                    <!-- inbox dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Logout</a></li>
+              </ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              <br><br>
+                  
+                  <h5 class="centered">Menú Encargado</h5>
+                    
+                  <li class="mt">
+                      <a class="active" href="menu">
+                          <span>INICIO</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="/asignaturas" >
+                          <span>ASIGNATURAS</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="/cursos" >
+                          <span>CURSOS</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="/horarios" >
+                          <span>HORARIOS</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="/salas" >
+                          <span>SALAS</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="/tiposdesalas" >
+                          <span>TIPOS DE SALAS</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="/periodos" >
+                          <span>PERIODOS</span>
+                      </a>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper">
+              <div class="row">
+                  
+                        <div class="row mtbox">
+                        <center><h1>Bienvenido Encargado</h1></center>
+                        </div><!-- /row mt -->  
+                  
+                      
+                        <div class="row mt">
+                        <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>
+
+                        <center><p>An abbreviation of the word attribute is attr.</p></center>
+                        </div><!-- /row -->
+                    
+                            
+                        <div class="row">
+                          <center><p>This line of text is meant to be treated as fine print.</p></center>
+
+                          <center><p>The following snippet of  text is rendered as bold text.</p></center>
+                        </div><!-- /row -->
+          
+                        <div class="row mt">
+                          <center><p>The following snippet of text is rendered as italicized text.</p></center>
+                        </div><!-- /row --> 
+          
+              </div>
+        </section>
+      </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('/js/jquery.js') }}"></script>
+    <script src="{{ asset('/js/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script class="include" type="text/javascript" src="{{ asset('/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{ asset('/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery.sparkline.js') }}"></script>
+
+
+    <!--common script for all pages-->
+    <script src="{{ asset('/js/common-scripts.js"></script>
+    
+
+
+
+    <!--script for this page-->  
+ 
+  
+  
+
+  </body>
+</html>

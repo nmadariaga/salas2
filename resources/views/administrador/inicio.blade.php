@@ -96,35 +96,35 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="/departamentos" >
                           <span>DEPARTAMENTOS</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="/escuelas" >
                           <span>ESCUELAS</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="/carreras" >
                           <span>CARRERAS</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="/funcionarios" >
                           <span>FUNCIONARIOS</span>
                       </a>
                   </li>
                    <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="/docentes" >
                           <span>DOCENTES</span>
                       </a>
                   </li>
                    <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="/estudiantes" >
                           <span>ESTUDIANTES</span>
                       </a>
                   </li>
