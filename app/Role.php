@@ -14,5 +14,10 @@ public function rolusuario()
         return $this->belongsTo('App\Rolusuario');
     }
 
+public function usuarios()
+    {
+        return $this->belongsToMany('App\Usuario', 'roles_usuarios', 'rol_id', 'user_rut');
+    }
+
 
 }

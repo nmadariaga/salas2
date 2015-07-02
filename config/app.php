@@ -137,6 +137,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
+		'UTEM\Dirdoc\Auth\DirdocAuthServiceProvider',
 
 		/*
 		 * Application Service Providers...

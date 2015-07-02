@@ -12,6 +12,12 @@ class MenuController extends Controller {
 	 *
 	 * @return Response
 	 */
+    public function __construct()
+    {
+    	$this->middleware('auth');
+    }
+
+
 	public function menuAdministrador()
 	{
 		return view('administrador.menu');
@@ -24,6 +30,7 @@ class MenuController extends Controller {
 
 	public function inicioAdministrador()
 	{
+
 		return view('administrador.inicio');
 	}
 

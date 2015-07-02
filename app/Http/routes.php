@@ -15,10 +15,17 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
+/*Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
+]);*/
+
+Route::controller('auth', 'Auth\AuthController', [
+    'getLogin'  => 'auth.login',
+    'postLogin' => 'auth.doLogin',
+    'getLogout' => 'auth.logout'
 ]);
+
 
 Route::resource('campus','CampusController');
 
@@ -56,10 +63,10 @@ Route::resource('roles','RolesController');
 Route::resource('rolesusuarios','RolesusuariosController');
 
 
-Route::get('login','LoginController@index');
+//Route::get('login','LoginController@index');
 
 
 Route::get('/admin/menu','MenuController@menuAdministrador');
-Route::get('/admin/inicio','MenuController@inicioAdministrador');
+Route::get('/admin/inicio', ['middleware' => 'auth','as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
 Route::get('/encargado/menu','MenuController@menuEncargado');
 
