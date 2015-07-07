@@ -1,61 +1,77 @@
-@extends('app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-@section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>Sistema</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Rut</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="rut" value="{{ old('rut') }}">
-							</div>
-						</div>
+    <!-- CSS
+  ================================================== -->
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<center><img src="{{ asset('/img/logo_utem.jpg') }}"></center>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
+    <div class="container">
+        <div class="flat-form">
+            <ul class="tabs">
+                <li>
+                    
+                </li>
+                <li>
+                    
+                </li>
+                <li>
+                    
+                </li>
+            </ul>
+            <div id="login" class="form-action show">
+            @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                <h1>Bienvenido</h1>
+                <h2>
+                    Por favor inice sesión
+                </h2>
+                <br>
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="RUT" name="rut" value="{{ old('rut') }}" />
+                        </li>
+                        <li>
+                            <input type="password" placeholder="Contraseña" name="password" />
+                        </li>
+                        <li>
+                            <input type="submit" value="Login" class="button" />
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <!--/#login.form-action-->
+            
+        </div>
+    </div>
+    <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+</body>
+</html>
