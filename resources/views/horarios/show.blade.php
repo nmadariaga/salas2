@@ -147,7 +147,7 @@
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Período: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$periodo->bloque }}&nbsp&nbsp&nbsp&nbsp{{$periodo->inicio }}&nbsp:&nbsp{{$periodo->fin }}" disabled>
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$periodo->bloque }}" disabled>
                               </div>
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Curso: </label>

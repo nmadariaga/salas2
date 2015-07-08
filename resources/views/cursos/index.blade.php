@@ -149,11 +149,11 @@
                               <tbody>
                               @foreach($cursos as $curso)
                               <tr>
-                                  <td>{{ $curso->asignatura_id }}</td>
+                                  <td>{{ $curso->asignatura->nombre}}</td>
                                   <td>{{ $curso->semestre }}</td>
                                   <td>{{ $curso->anio }}</td>
                                   <td>{{ $curso->seccion }}</td>
-                                  <td>{{ $curso->docente_id }}</td>
+                                  <td>{{ $curso->docente->nombres }}</td>
                                   <td>{!! Html::link(route('cursos.show', $curso->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
                                   <td>{!! Html::link(route('cursos.edit', $curso->id), 'Editar', array('class' => 'label label-success')) !!}</td>
                                   <td>
