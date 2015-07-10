@@ -31,7 +31,7 @@
   <h4>Actualizar Asignacion "{{$rolesusuario->rut}}"</h4>
 	<table class="table table-striped table-hover ">
   	<tbody>
-    	{!! Form::model($rolesusuario, ['route' => ['rolesusuarios.update', $role->id], 'method' => 'patch']) !!}
+    	{!! Form::model($rolesusuario, ['route' => ['rolesusuarios.update', $rolesusuario->id], 'method' => 'patch']) !!}
 			<div class="form-group">
 				{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'Rut']) !!}
 			</div>

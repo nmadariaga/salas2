@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidarFormulario;
+use App\Http\Requests\StoreCampusRequest;
 use Illuminate\Http\Request;
 
 class CampusController extends Controller {
@@ -32,16 +32,16 @@ class CampusController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreCampusRequest $request)
 	{
 		$campus = new \App\Campus;
 
-		$campus->nombre = \Request::input('nombre');
-		$campus->direccion = \Request::input('direccion');
-		$campus->latitud = \Request::input('latitud');
-		$campus->longitud = \Request::input('longitud');
-		$campus->descripcion = \Request::input('descripcion');
-		$campus->rut_encargado = \Request::input('rut');
+		$campus->nombre = $request->input('nombre');
+		$campus->direccion = $request->input('direccion');
+		$campus->latitud = $request->input('latitud');
+		$campus->longitud = $request->input('longitud');
+		$campus->descripcion = $request->input('descripcion');
+		$campus->rut_encargado = $request->input('rut');
 
 		$campus->save();
 
