@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreHorarioRequest;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class HorariosController extends Controller {
@@ -35,14 +34,14 @@ class HorariosController extends Controller {
 			 *
 			 * @return Response
 			 */
-			public function store()
+			public function store(StoreHorarioRequest $request)
 			{
 				$horario = new \App\Horario;
 
-				$horario->fecha = \Request::input('fecha');
-				$horario->sala_id = \Request::input('salas_id');
-				$horario->periodo_id = \Request::input('periodo_id');
-				$horario->curso_id = \Request::input('curso_id');
+				$horario->fecha = $request->input('fecha');
+				$horario->sala_id = $request->input('salas_id');
+				$horario->periodo_id = $request->input('periodo_id');
+				$horario->curso_id = $request->input('curso_id');
 
 
 				$horario->save();

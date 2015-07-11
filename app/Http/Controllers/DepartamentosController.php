@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreDepartamentoRequest;
 use App\Http\Controllers\Controller;
 use App\Facultad;
 use Illuminate\Http\Request;
@@ -33,13 +33,13 @@ class DepartamentosController extends Controller {
 			 *
 			 * @return Response
 			 */
-			public function store()
+			public function store(StoreDepartamentoRequest $request)
 			{
 				$departamento = new \App\Departamento;
 
-				$departamento->nombre = \Request::input('nombre');
-				$departamento->facultad_id = \Request::input('facultad_id');
-				$departamento->descripcion = \Request::input('descripcion');
+				$departamento->nombre = $request->input('nombre');
+				$departamento->facultad_id = $request->input('facultad_id');
+				$departamento->descripcion = $request->input('descripcion');
 
 				$departamento->save();
 

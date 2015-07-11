@@ -141,6 +141,15 @@
             <div class="row mt">
               <div class="col-lg-12">
                   <div class="form-panel">
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                      </div>
+                      @endif
                       <h4 class="mb">Ingrese la información del Campus</h4>
                       {!! Form::open(['route' => 'campus.store']) !!}
                       <form class="form-horizontal style-form" method="get">
@@ -171,15 +180,6 @@
 	    						@if(Session::has('message'))
           						<div class="btn btn-success disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
         						@endif
-                    @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                      <ul>
-                        @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                        @endforeach
-                      </ul>
-                      </div>
-                      @endif
       						</p>
                   </div>
               </div><!-- col-lg-12-->

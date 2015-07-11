@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreRolesUsuariosRequest;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class RolesusuariosController extends Controller {
@@ -31,12 +30,12 @@ class RolesusuariosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreRolesUsuariosRequest $request)
 	{
 		$rolesusuarios = new \App\Rolusuario;
 
-		$rolesusuarios->rut = \Request::input('rut');
-		$rolesusuarios->rol_id = \Request::input('rol_id');
+		$rolesusuarios->rut = $request->input('rut');
+		$rolesusuarios->rol_id = $request->input('rol_id');
 
 		$rolesusuarios->save();
 

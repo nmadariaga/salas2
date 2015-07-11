@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreEstudianteRequest;
 use App\Http\Controllers\Controller;
 use App\Carrera;
 use Illuminate\Http\Request;
@@ -33,15 +33,15 @@ class EstudiantesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreEstudianteRequest $request)
 	{
 		$estudiante = new \App\Estudiante;
 
-		$estudiante->carrera_id = \Request::input('carrera_id');
-		$estudiante->rut = \Request::input('rut');
-		$estudiante->nombres = \Request::input('nombres');
-		$estudiante->apellidos = \Request::input('apellidos');
-		$estudiante->email = \Request::input('email');
+		$estudiante->carrera_id = $request->input('carrera_id');
+		$estudiante->rut = $request->input('rut');
+		$estudiante->nombres = $request->input('nombres');
+		$estudiante->apellidos = $request->input('apellidos');
+		$estudiante->email = $request->input('email');
 
 		$estudiante->save();
 

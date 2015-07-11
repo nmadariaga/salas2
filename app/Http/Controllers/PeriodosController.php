@@ -1,10 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StorePeriodoRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-//use Illuminate\Http\Request;
-use Request;
 
 class PeriodosController extends Controller {
 
@@ -33,13 +32,13 @@ class PeriodosController extends Controller {
 					 *
 					 * @return Response
 					 */
-					public function store()
+					public function store(StorePeriodoRequest $request)
 					{
 						$periodo = new \App\Periodo;
 
-						$periodo->bloque = \Request::input('bloque');
-						$periodo->inicio = \Request::input('inicio');
-						$periodo->fin = \Request::input('fin');
+						$periodo->bloque = $request->input('bloque');
+						$periodo->inicio = $request->input('inicio');
+						$periodo->fin = $request->input('fin');
 
 						$periodo->save();
 

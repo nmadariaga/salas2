@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreRolRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidarFormulario;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller {
@@ -32,12 +31,12 @@ class RolesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreRolRequest $request)
 	{
 		$roles = new \App\Role;
 
-		$roles->nombre = \Request::input('nombre');
-		$roles->descripcion = \Request::input('descripcion');
+		$roles->nombre = $request->input('nombre');
+		$roles->descripcion = $request->input('descripcion');
 
 		$roles->save();
 
