@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class StoreCampusRequest extends Request {
+class StoreFacultadRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,12 +22,10 @@ class StoreCampusRequest extends Request {
 	public function rules()
 	{
 		return [
-				"nombre" => "required|min:5|max:20",
-				"direccion" => "required|min:5|max:100",
-				"latitud" => "required|numeric|",
-				"longitud" => "required|numeric",
-				"descripcion" => "min:5|max:30",
-				"rut" => "required|min:3|max:8"
+			"nombre" => "required|min:5|max:10",
+			"campus_id" => "required",
+			"descripcion" => "required||min:5|max:30"
+
 		];
 
 	}

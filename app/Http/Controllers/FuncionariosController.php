@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreFuncionarioRequest;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use Illuminate\Http\Request;
-use Depattamento;
+
 
 class FuncionariosController extends Controller {
 
@@ -34,14 +34,14 @@ class FuncionariosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreFuncionarioRequest $request)
 	{
 		$funcionarios = new \App\Funcionario;
 
-		$funcionarios->departamento_id = \Request::input('departamento_id');
-		$funcionarios->rut = \Request::input('rut');
-		$funcionarios->nombres = \Request::input('nombres');
-		$funcionarios->apellidos = \Request::input('apellidos');
+		$funcionarios->departamento_id = $request->input('departamento_id');
+		$funcionarios->rut = $request->input('rut');
+		$funcionarios->nombres = $request->input('nombres');
+		$funcionarios->apellidos = $request->input('apellidos');
 
 		$funcionarios->save();
 

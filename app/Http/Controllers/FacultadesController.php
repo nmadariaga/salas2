@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFacultadRequest;
 use Illuminate\Http\Request;
 use App\Campus;
 
@@ -34,13 +34,13 @@ class FacultadesController extends Controller {
 		 *
 		 * @return Response
 		 */
-		public function store()
+		public function store(StoreFacultadRequest $request)
 		{
 			$facultad = new \App\Facultad;
 
-			$facultad->nombre = \Request::input('nombre');
-			$facultad->campus_id = \Request::input('campus_id');
-			$facultad->descripcion = \Request::input('descripcion');
+			$facultad->nombre = $request->input('nombre');
+			$facultad->campus_id = $request->input('campus_id');
+			$facultad->descripcion = $request->input('descripcion');
 
 			$facultad->save();
 

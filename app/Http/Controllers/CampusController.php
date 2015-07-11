@@ -14,7 +14,7 @@ class CampusController extends Controller {
 	 */
 	public function index()
 	{
-		return view("campus.index")->with('campus', \App\Campus::paginate(5)->setPath('campu'));
+		return view("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'));
 	}
 
 	/**

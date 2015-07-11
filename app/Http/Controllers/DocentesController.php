@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreDocenteRequest;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use Illuminate\Http\Request;
@@ -34,14 +34,14 @@ class DocentesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreDocenteRequest $request)
 	{
 		$docentes = new \App\Docente;
 
-		$docentes->departamento_id = \Request::input('departamento_id');
-		$docentes->rut = \Request::input('rut');
-		$docentes->nombres = \Request::input('nombres');
-		$docentes->apellidos = \Request::input('apellidos');
+		$docentes->departamento_id = $request->input('departamento_id');
+		$docentes->rut = $request->input('rut');
+		$docentes->nombres = $request->input('nombres');
+		$docentes->apellidos = $request->input('apellidos');
 
 		$docentes->save();
 

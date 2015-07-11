@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreTipoDeSalaRequest;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class TiposdesalasController extends Controller {
@@ -32,11 +31,12 @@ class TiposdesalasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreTipoDeSalaRequest $request)
 	{
 		$tiposdesalas = new \App\Tipodesala;
-		$tiposdesalas->nombre = \Request::input('nombre');
-		$tiposdesalas->descripcion = \Request::input('descripcion');
+
+		$tiposdesalas->nombre = $request->input('nombre');
+		$tiposdesalas->descripcion = $request->input('descripcion');
 		$tiposdesalas->save();
 
 		return redirect()->route('tiposdesalas.index')->with('message', 'Tipo de Sala Agregada');

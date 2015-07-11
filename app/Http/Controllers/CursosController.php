@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreCursoRequest;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use Doncente;
 
@@ -35,15 +34,15 @@ class CursosController extends Controller {
 		 *
 		 * @return Response
 		 */
-		public function store()
+		public function store(StoreCursoRequest $request)
 		{
 			$curso = new \App\Curso;
 
-			$curso->semestre = \Request::input('semestre');
-			$curso->seccion = \Request::input('seccion');
-			$curso->anio = \Request::input('anio');
-			$curso->asignatura_id = \Request::input('asignatura_id');
-			$curso->docente_id = \Request::input('docente_id');
+			$curso->semestre = -$request>input('semestre');
+			$curso->seccion = -$request>input('seccion');
+			$curso->anio = -$request>input('anio');
+			$curso->asignatura_id = -$request>input('asignatura_id');
+			$curso->docente_id = -$request>input('docente_id');
 
 			$curso->save();
 

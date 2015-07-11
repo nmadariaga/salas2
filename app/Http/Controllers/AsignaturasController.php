@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreAsignaturaRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidarFormulario;
 use Illuminate\Http\Request;
 use App\Departamento;
 class AsignaturasController extends Controller {
@@ -33,14 +32,14 @@ class AsignaturasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreAsignaturaRequest $request)
 	{
 		$asignaturas = new \App\Asignatura;
 
-		$asignaturas->nombre = \Request::input('nombre');
-		$asignaturas->codigo = \Request::input('codigo');
-		$asignaturas->descripcion = \Request::input('descripcion');
-		$asignaturas->departamento_id = \Request::input('departamento_id');
+		$asignaturas->nombre = $request->input('nombre');
+		$asignaturas->codigo = $request->input('codigo');
+		$asignaturas->descripcion = $request->input('descripcion');
+		$asignaturas->departamento_id = $request->input('departamento_id');
 
 		$asignaturas->save();
 
