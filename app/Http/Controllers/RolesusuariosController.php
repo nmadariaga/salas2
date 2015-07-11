@@ -35,7 +35,7 @@ class RolesusuariosController extends Controller {
 	{
 		$rolesusuarios = new \App\Rolusuario;
 
-		$rolesusuarios->rut = \Request::input('rut');
+		$rolesusuarios->user_rut = \Request::input('user_rut');
 		$rolesusuarios->rol_id = \Request::input('rol_id');
 
 		$rolesusuarios->save();
