@@ -33,7 +33,7 @@
   	<tbody>
 			{!! Form::open(['route' => 'rolesusuarios.store']) !!}
 				<div class="form-group">
-					{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'Rut']) !!}
+					{!! Form::text('user_rut', null, ['class' => 'form-control', 'placeholder'=>'Rut']) !!}
 				</div>
 				<div class="form-group">
 					{!! Form::text('rol_id', null,['class'=>'form-control', 'placeholder'=>'Rol'])!!}
