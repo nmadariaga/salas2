@@ -25,7 +25,7 @@ class StoreSalaRequest extends Request {
 			"campus_id" => "required",
 			"tipo_sala_id" => "required",
 			"nombre" => "required|min:3|max:15",
-			"descripcion" => "required|min:5|max:100"
+			"descripcion" => "min:3|max:100"
 		];
 	}
 

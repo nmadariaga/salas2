@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDepartamentoRequest;
+use App\Http\Requests\UpdateDepartamentoRequest;
 use App\Http\Controllers\Controller;
 use App\Facultad;
 use Illuminate\Http\Request;
@@ -81,13 +82,13 @@ class DepartamentosController extends Controller {
 			 * @param  int  $id
 			 * @return Response
 			 */
-			public function update($id)
+			public function update(UpdateDepartamentoRequest $request, $id)
 			{
 				$departamento = \App\Departamento::find($id);
 
-				$departamento->nombre = \Request::input('nombre');
-				$departamento->facultad_id = \Request::input('facultad_id');
-				$departamento->descripcion = \Request::input('descripcion');
+				$departamento->nombre = $request->input('nombre');
+				$departamento->facultad_id = $request->input('facultad_id');
+				$departamento->descripcion = $request->input('descripcion');
 
 				$departamento->save();
 				return redirect()->route('departamentos.index', ['departamento' => $id])->with('message', 'Cambios guardados');

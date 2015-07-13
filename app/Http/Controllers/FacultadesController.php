@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFacultadRequest;
+use App\Http\Requests\UpdateFacultadRequest;
 use Illuminate\Http\Request;
 use App\Campus;
 
@@ -78,13 +79,13 @@ class FacultadesController extends Controller {
 		 * @param  int  $id
 		 * @return Response
 		 */
-		public function update($id)
+		public function update(UpdateFacultadRequest $request, $id)
 		{
 			$facultad = \App\Facultad::find($id);
 
-			$facultad->nombre = \Request::input('nombre');
-			$facultad->campus_id = \Request::input('campus_id');
-			$facultad->descripcion = \Request::input('descripcion');
+			$facultad->nombre = $request->input('nombre');
+			$facultad->campus_id = $request->input('campus_id');
+			$facultad->descripcion = $request->input('descripcion');
 
 			$facultad->save();
 			return redirect()->route('facultades.index', ['facultad' => $id])->with('message', 'Cambios guardados');

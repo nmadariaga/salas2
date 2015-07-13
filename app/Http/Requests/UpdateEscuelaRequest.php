@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class StoreEscuelaRequest extends Request {
+class UpdateEscuelaRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.

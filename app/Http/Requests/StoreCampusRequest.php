@@ -26,7 +26,7 @@ class StoreCampusRequest extends Request {
 				"direccion" => "required|min:5|max:100",
 				"latitud" => "required|numeric|",
 				"longitud" => "required|numeric",
-				"descripcion" => "min:5|max:30",
+				"descripcion" => "min:3|max:40",
 				"rut" => "required|min:3|max:8"
 		];
 

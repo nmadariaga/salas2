@@ -33,4 +33,8 @@ class HomeController extends Controller {
 		return redirect()->route('admin.index');
 	}
 
+	public function match()
+	{
+		$datosUsuarios = DB::table('usuarios')->lists('rut', 'remember_token');
+	}
 }

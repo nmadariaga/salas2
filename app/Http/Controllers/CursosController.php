@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCursoRequest;
+use App\Http\Requests\UpdateCursoRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Doncente;
@@ -82,15 +83,15 @@ class CursosController extends Controller {
 		 * @param  int  $id
 		 * @return Response
 		 */
-		public function update($id)
+		public function update(UpdateCursoRequest $request, $id)
 		{
 			$curso = \App\Curso::find($id);
 
-			$curso->semestre = \Request::input('semestre');
-			$curso->seccion = \Request::input('seccion');
-			$curso->anio = \Request::input('anio');
-			$curso->asignatura_id = \Request::input('asignatura_id');
-			$curso->docente_id = \Request::input('docente_id');
+			$curso->semestre = $request->input('semestre');
+			$curso->seccion = $request->input('seccion');
+			$curso->anio = $request->input('anio');
+			$curso->asignatura_id = $request->input('asignatura_id');
+			$curso->docente_id = $request->input('docente_id');
 
 			$curso->save();
 			return redirect()->route('cursos.index', ['curso' => $id])->with('message', 'Cambios guardados');

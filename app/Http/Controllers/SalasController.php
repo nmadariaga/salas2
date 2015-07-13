@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSalaRequest;
+use App\Http\Requests\UpdateSalaRequest;
 use App\Http\Controllers\Controller;
 use App\Tipodesala;
 use Illuminate\Http\Request;
@@ -82,14 +83,14 @@ class SalasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateSalaRequest $request, $id)
 	{
 		$salas = \App\Sala::find($id);
 
-		$salas->campus_id = \Request::input('campus_id');
-		$salas->tipo_sala_id = \Request::input('tipo_sala_id');
-		$salas->nombre = \Request::input('nombre');
-		$salas->descripcion = \Request::input('descripcion');
+		$salas->campus_id = $request->input('campus_id');
+		$salas->tipo_sala_id = $request->input('tipo_sala_id');
+		$salas->nombre = $request->input('nombre');
+		$salas->descripcion = $request->input('descripcion');
 
 		$salas->save();
 		return redirect()->route('salas.index', ['sala' => $id])->with('message', 'Cambios guardados');

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFuncionarioRequest;
+use App\Http\Requests\UpdateFuncionarioRequest;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use Illuminate\Http\Request;
@@ -79,14 +80,14 @@ class FuncionariosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateFuncionarioRequest $request, $id)
 	{
 		$funcionarios = \App\Funcionario::find($id);
 
-		$funcionarios->departamento_id = \Request::input('departamento_id');
-		$funcionarios->rut = \Request::input('rut');
-		$funcionarios->nombres = \Request::input('nombres');
-		$funcionarios->apellidos = \Request::input('apellidos');
+		$funcionarios->departamento_id = $request->input('departamento_id');
+		$funcionarios->rut = $request->input('rut');
+		$funcionarios->nombres = $request->input('nombres');
+		$funcionarios->apellidos = $request->input('apellidos');
 
 		$funcionarios->save();
 		return redirect()->route('funcionarios.index', ['funcionario' => $id])->with('message', 'Cambios guardados');

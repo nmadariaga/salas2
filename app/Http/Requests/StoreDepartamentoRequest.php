@@ -24,7 +24,7 @@ class StoreDepartamentoRequest extends Request {
 		return [
 			"nombre" => "required|min:5|max:20",
 			"facultad_id" => "required",
-			"descripcion" => "required|min:5|max:30"
+			"descripcion" => "min:3|max:40"
 		];
 	}
 

@@ -25,7 +25,7 @@ class StoreAsignaturaRequest extends Request {
 			"departamento_id" => "required",
 			"codigo" => "required|min:4|max:8",
 			"nombre" => "required|min:3|max:20",
-			"descripcion" => "required"
+			"descripcion" => "min:3|max:40"
 		];
 	}
 

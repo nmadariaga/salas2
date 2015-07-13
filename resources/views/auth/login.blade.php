@@ -28,13 +28,13 @@
         <div class="flat-form">
             <ul class="tabs">
                 <li>
-                    
+
                 </li>
                 <li>
-                    
+
                 </li>
                 <li>
-                    
+
                 </li>
             </ul>
             <div id="login" class="form-action show">
@@ -63,13 +63,13 @@
                             <input type="password" placeholder="Contraseña" name="password" />
                         </li>
                         <li>
-                            <input type="submit" value="Login" class="button" />
+                            <input type="submit" value="Entrar" class="button" />
                         </li>
                     </ul>
                 </form>
             </div>
             <!--/#login.form-action-->
-            
+
         </div>
     </div>
     <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>

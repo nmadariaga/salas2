@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCampusRequest;
+use App\Http\Requests\UpdateCampusRequest;
 use Illuminate\Http\Request;
 
 class CampusController extends Controller {
@@ -78,16 +79,16 @@ class CampusController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateCampusRequest $request, $id)
 	{
 		$campus = \App\Campus::find($id);
 
-		$campus->nombre = \Request::input('nombre');
-		$campus->direccion = \Request::input('direccion');
-		$campus->latitud = \Request::input('latitud');
-		$campus->longitud = \Request::input('longitud');
-		$campus->descripcion = \Request::input('descripcion');
-		$campus->rut_encargado = \Request::input('rut_encargado');
+		$campus->nombre = $request->input('nombre');
+		$campus->direccion = $request->input('direccion');
+		$campus->latitud = $request->input('latitud');
+		$campus->longitud = $request->input('longitud');
+		$campus->descripcion = $request->input('descripcion');
+		$campus->rut_encargado = $request->input('rut_encargado');
 
 		$campus->save();
 		return redirect()->route('campus.index', ['campu' => $id])->with('message', 'Cambios guardados');

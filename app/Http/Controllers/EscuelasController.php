@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEscuelaRequest;
+use App\Http\Requests\UpdateEscuelaRequest;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use Illuminate\Http\Request;
@@ -77,13 +78,13 @@ class EscuelasController extends Controller {
 				 * @param  int  $id
 				 * @return Response
 				 */
-				public function update($id)
+				public function update(UpdateEscuelaRequest $request, $id)
 				{
 					$escuela = \App\Escuela::find($id);
 
-					$escuela->nombre = \Request::input('nombre');
-					$escuela->departamento_id = \Request::input('departamento_id');
-					$escuela->descripcion = \Request::input('descripcion');
+					$escuela->nombre = $request->:input('nombre');
+					$escuela->departamento_id = $request->input('departamento_id');
+					$escuela->descripcion = $request->input('descripcion');
 
 					$escuela->save();
 					return redirect()->route('escuelas.index', ['escuela' => $id])->with('message', 'Cambios guardados');

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAsignaturaRequest;
+use App\Http\Requests\UpdateAsignaturaRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Departamento;
@@ -77,14 +78,14 @@ class AsignaturasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateAsignaturaRequest $request, $id)
 	{
 		$asignaturas = \App\Asignatura::find($id);
 
-		$asignaturas->nombre = \Request::input('nombre');
-		$asignaturas->codigo = \Request::input('codigo');
-		$asignaturas->descripcion = \Request::input('descripcion');
-		$asignaturas->departamento_id = \Request::input('departamento_id');
+		$asignaturas->nombre = $request->input('nombre');
+		$asignaturas->codigo = $request->input('codigo');
+		$asignaturas->descripcion = $request->input('descripcion');
+		$asignaturas->departamento_id = $request->input('departamento_id');
 
 		$asignaturas->save();
 		return redirect()->route('asignaturas.index')->with('message', 'Cambios guardados');

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTipoDeSalaRequest;
+use App\Http\Requests\UpdateTipoDeSalaRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -71,11 +72,11 @@ class TiposdesalasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateTipoDeSalaRequest $request, $id)
 	{
 		$tiposdesalas = \App\Tipodesala::find($id);
-		$tiposdesalas->nombre = \Request::input('nombre');
-		$tiposdesalas->descripcion = \Request::input('descripcion');
+		$tiposdesalas->nombre = $request->input('nombre');
+		$tiposdesalas->descripcion = $request->input('descripcion');
 		$tiposdesalas->save();
 		return redirect()->route('tiposdesalas.index', ['tiposdesala' => $id])->with('message', 'Cambios guardados');
 	}

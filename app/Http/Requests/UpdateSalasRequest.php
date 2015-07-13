@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class StoreEscuelaRequest extends Request {
+class UpdateSalasRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -15,16 +15,17 @@ class StoreEscuelaRequest extends Request {
 	}
 
 	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
+	* Get the validation rules that apply to the request.
+	*
+	* @return array
+	*/
 	public function rules()
 	{
 		return [
-			"nombre" => "required|min:5|max:20",
-			"departamento_id" => "required",
-			"descripcion" => "min:3|max:40"
+			"campus_id" => "required",
+			"tipo_sala_id" => "required",
+			"nombre" => "required|min:3|max:15",
+			"descripcion" => "min:3|max:100"
 		];
 	}
 

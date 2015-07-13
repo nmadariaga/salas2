@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRolesUsuariosRequest;
+use App\Http\Requests\UpdateRolesUsuariosRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -73,12 +74,12 @@ class RolesusuariosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateRolesUsuariosRequest $request, $id)
 	{
 		$rolesusuarios = \App\Rolusuario::find($id);
 
-		$rolesusuarios->rut = \Request::input('rut');
-		$rolesusuarios->rol_id = \Request::input('rol_id');
+		$rolesusuarios->rut = $request->input('rut');
+		$rolesusuarios->rol_id = $request->input('rol_id');
 
 		$rolesusuarios->save();
 		return redirect()->route('rolesusuarios.index')->with('message', 'Cambios guardados');

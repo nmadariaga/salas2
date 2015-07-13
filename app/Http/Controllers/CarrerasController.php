@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCarreraRequest;
+use App\Http\Requests\UpdateCarreraRequest;
 use App\Http\Controllers\Controller;
 use App\Escuela;
 use Illuminate\Http\Request;
@@ -78,14 +79,14 @@ class CarrerasController extends Controller {
 					 * @param  int  $id
 					 * @return Response
 					 */
-					public function update($id)
+					public function update(UpdateCarreraRequest $request, $id)
 					{
 						$carrera = \App\Carrera::find($id);
 
-						$carrera->codigo = \Request::input('codigo');
-						$carrera->nombre = \Request::input('nombre');
-						$carrera->escuela_id = \Request::input('escuela_id');
-						$carrera->descripcion = \Request::input('descripcion');
+						$carrera->codigo = $request->input('codigo');
+						$carrera->nombre = $request->input('nombre');
+						$carrera->escuela_id = $request->input('escuela_id');
+						$carrera->descripcion = $request->input('descripcion');
 
 						$carrera->save();
 						return redirect()->route('carreras.index', ['carrera' => $id])->with('message', 'Cambios guardados');

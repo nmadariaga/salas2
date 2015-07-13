@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreHorarioRequest;
+use App\Http\Requests\UpdateHorarioRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -83,14 +84,14 @@ class HorariosController extends Controller {
 			 * @param  int  $id
 			 * @return Response
 			 */
-			public function update($id)
+			public function update(UpdateHorarioRequest $request, $id)
 			{
 				$horario = \App\Horario::find($id);
 
-				$horario->fecha = \Request::input('fecha');
-				$horario->sala_id = \Request::input('sala_id');
-				$horario->periodo_id = \Request::input('periodo_id');
-				$horario->curso_id = \Request::input('curso_id');
+				$horario->fecha = $request->input('fecha');
+				$horario->sala_id = $request->input('sala_id');
+				$horario->periodo_id = $request->input('periodo_id');
+				$horario->curso_id = $request->input('curso_id');
 
 				$horario->save();
 				return redirect()->route('horarios.index', ['horario' => $id])->with('message', 'Cambios guardados');

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePeriodoRequest;
+use App\Http\Requests\UpdatePeriodoRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -75,13 +76,13 @@ class PeriodosController extends Controller {
 					 * @param  int  $id
 					 * @return Response
 					 */
-					public function update($id)
+					public function update(UpdatePeriodoRequest $request, $id)
 					{
 						$periodo = \App\Periodo::find($id);
 
-						$periodo->bloque = \Request::input('bloque');
-						$periodo->inicio = \Request::input('inicio');
-						$periodo->fin = \Request::input('fin');
+						$periodo->bloque = $request->input('bloque');
+						$periodo->inicio = $request->input('inicio');
+						$periodo->fin = $request->input('fin');
 
 						$periodo->save();
 						return redirect()->route('periodos.index', ['periodo' => $id])->with('message', 'Cambios guardados');

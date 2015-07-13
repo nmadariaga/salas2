@@ -13,7 +13,7 @@
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
     <!--external css-->
     <link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet" />
-        
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
@@ -39,7 +39,7 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-             
+
             <!--logo start-->
             <a href="index.html" class="logo">{!!HTML::image('utem.png')!!}</a>
             <!--logo end-->
@@ -47,10 +47,10 @@
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
-                    
+
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
-                    
+
                     <!-- inbox dropdown end -->
                 </ul>
                 <!--  notification end -->
@@ -62,7 +62,7 @@
             </div>
         </header>
       <!--header end-->
-      
+
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -72,9 +72,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               <br><br>
-                  
+
                   <h5 class="centered">Menú Administrador</h5>
-                    
+
                   <li class="mt">
                       <a href="/admin/inicio">
                           <span>INICIO</span>
@@ -135,11 +135,20 @@
           <section class="wrapper">
           <br>
             <h3> Detalle del Campus</h3>
-            
+
             <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
               <div class="col-lg-12">
                   <div class="form-panel">
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                      </div>
+                      @endif
                       <h4 class="mb">Edite la información del campus "{{$campu->nombre}}" </h4>
                       {!! Form::model($campu, ['route' => ['campus.update', $campu->id], 'method' => 'patch']) !!}
                       <form class="form-horizontal style-form" method="get">
@@ -183,8 +192,8 @@
           <div class="btn btn-success disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
           @endif
                   </div>
-              </div><!-- col-lg-12-->       
-            </div><!-- /row -->  
+              </div><!-- col-lg-12-->
+            </div><!-- /row -->
             <script>
   $(document).ready(function(){
    var url =GMaps.staticMapURL({
