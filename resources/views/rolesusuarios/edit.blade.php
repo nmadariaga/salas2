@@ -36,7 +36,7 @@
 				{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'Rut']) !!}
 			</div>
 			<div class="form-group">
-				{!! Form::text('rol_id', null,['class'=>'form-control', 'placeholder'=>'Rol'])!!}
+				{!! Form::select('rol_id', $rol, ['class' => 'form-control']) !!}<p>
 			</div>
 			<div class="form-group">
 				{!! Form::submit('Send', ["class" => "btn btn-success btn-block"]) !!}

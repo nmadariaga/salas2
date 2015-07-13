@@ -14,10 +14,10 @@ class RolAdminMiddleware {
 	public function handle($request, Closure $next)
 	{
 		$user = \Auth::user();
-		$rol_adm = \App\Role::whereNombre('administrador')->first();
-    
+		$rol_adm = \App\Role::whereNombre('Administrador')->first();
+
 		if(!$rol_adm->usuarios()->find($user->rut))
-		{    
+		{
 			return redirect('auth/login');
 		}
 

@@ -14,10 +14,10 @@ class RolEncargadoMiddleware {
 	public function handle($request, Closure $next)
 	{
 		$user = \Auth::user();
-		$rol_encargado = \App\Role::whereNombre('encargado')->first();
-    
+		$rol_encargado = \App\Role::whereNombre('Encargado')->first();
+
 		if(!$rol_encargado->usuarios()->find($user->rut))
-		{    
+		{
 			return redirect('auth/login');
 		}
 

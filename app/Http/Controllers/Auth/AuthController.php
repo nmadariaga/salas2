@@ -38,7 +38,7 @@ class AuthController extends Controller
 
         if ($this->auth->attempt($credenciales, $request->has('remember')))
         { // Login exitoso
-            return redirect()->route('encargado.index');
+            return redirect()->route('bienvenida.index');
         }
 
         return redirect()->route('auth.login')

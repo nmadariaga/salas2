@@ -17,6 +17,10 @@ class MenuController extends Controller {
     	//$this->middleware('auth');
     }
 
+  public function Seleccion()
+  {
+    return view('entrada.bienvenido');
+  }
 
 	public function menuAdministrador()
 	{
