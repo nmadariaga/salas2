@@ -36,7 +36,6 @@
 					{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'Rut']) !!}
 				</div>
 				<div class="form-group">
-					
 					{!! Form::select('rol_id', $rol, ['class' => 'form-control']) !!}<p>
 				</div>
 				<div class="form-group">
