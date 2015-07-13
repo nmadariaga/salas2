@@ -82,7 +82,7 @@ class EscuelasController extends Controller {
 				{
 					$escuela = \App\Escuela::find($id);
 
-					$escuela->nombre = $request->:input('nombre');
+					$escuela->nombre = $request->input('nombre');
 					$escuela->departamento_id = $request->input('departamento_id');
 					$escuela->descripcion = $request->input('descripcion');
 
