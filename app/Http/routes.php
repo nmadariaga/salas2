@@ -72,5 +72,5 @@ Route::resource('rolesusuarios','RolesusuariosController');
 
 
 Route::get('/admin/menu','MenuController@menuAdministrador');
-Route::get('/admin/inicio', ['middleware' => 'auth','as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
+Route::get('/admin/inicio', ['middleware' => ['auth', 'roladmin'],'as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
 Route::get('/encargado/menu','MenuController@menuEncargado');
