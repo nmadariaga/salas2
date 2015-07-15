@@ -38,16 +38,6 @@
                 </li>
             </ul>
             <div id="login" class="form-action show">
-            @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                 <h1>Bienvenido</h1>
                 <h2>
                     Por favor inice sesión
@@ -69,7 +59,16 @@
                 </form>
             </div>
             <!--/#login.form-action-->
-
+            @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                        <br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
         </div>
     </div>
     <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>

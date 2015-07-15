@@ -18,6 +18,11 @@ Route::get('/', function()
     return redirect('auth/login');
 });
 
+/*Route::get('bienvenido', function()
+{
+    return view();
+});*/
+
 Route::get('home', 'HomeController@index');
 
 /*Route::controllers([
@@ -62,7 +67,7 @@ Route::resource('rolesusuarios','RolesusuariosController');
 
 //Route::get('login','LoginController@index');
 
-Route::get('/bienvenido',['middleware' => 'auth','as'=>'bienvenida.index','uses'=> 'MenuController@Seleccion']);
+Route::get('/bienvenido',['middleware' => ['auth', 'direccionador_rol_middleware'],'as'=>'bienvenida.index','uses'=> 'MenuController@Seleccion']);
 Route::get('/admin/menu','MenuController@menuAdministrador');
-Route::get('/admin/inicio', ['middleware' => ['auth', 'roladmin'],'as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
+Route::get('/admin/inicio', ['middleware' => ['auth'],'as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
 Route::get('/encargado/menu' ,['middleware' => ['auth', 'rolencargado'],'as'=>'encargado.index','uses'=> 'MenuController@menuEncargado']);
