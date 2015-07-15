@@ -54,7 +54,7 @@ class RolesusuariosController extends Controller {
 	public function show($id)
 	{
 		$rolesusuarios = \App\Rolusuario::find($id);
-		$rol = \App\Role::lists('nombre', 'id');
+		$rol = \App\Role::find($rolesusuarios->rol_id);
 		return view('rolesusuarios.show')->with('rolesusuario',$rolesusuarios)->with('rol',$rol);
 	}
 

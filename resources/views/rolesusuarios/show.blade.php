@@ -39,9 +39,9 @@
               <td>{{$rolesusuario->rut}}</td>
             <tr>
               <td width=250><h5><b>Rol:</b></h5></td>
-              <td>{{$rolesusuario->rol_id }}</td>
+              <td>{{$rol->nombre }}</td>
             </tr>
-            
+
           @else
           <p>
             No existe información de este rol.
