@@ -36,7 +36,7 @@ Route::controller('auth', 'Auth\AuthController', [
     'getLogout' => 'auth.logout'
 ]);
 
-Route::group(['middleware' => ['auth', 'roladmin']], function ()
+Route::group(['middleware' => 'roladmin'], function ()
 {
   Route::resource('campus','CampusController');
   Route::resource('facultades','FacultadesController');
@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth', 'roladmin']], function ()
 
 });
 
-Route::group(['middleware' => ['auth', 'rolencargado']], function ()
+Route::group(['middleware' => 'rolencargado'], function ()
 {
   Route::resource('salas','SalasController');
   Route::resource('tiposdesalas','TiposdesalasController');
