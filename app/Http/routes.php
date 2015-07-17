@@ -23,6 +23,8 @@ Route::get('/', function()
     return view();
 });*/
 
+Route::resource('alumno','AlumnosController');
+
 Route::get('home', 'HomeController@index');
 
 /*Route::controllers([
