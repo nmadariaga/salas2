@@ -30,6 +30,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$name = User::find($user->id)->nombres;
 		return redirect()->route('admin.index');
 	}
 

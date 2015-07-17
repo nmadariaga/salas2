@@ -37,6 +37,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\Role', 'roles_usuarios', 'user_rut', 'rol_id');
     }
 
-
-
+    public function name()
+    {
+	    if ($this->name_display) {
+            return $this->name_display;
+        } else {
+            return $this->nombres . ' ' . $this->apellidos;
+        }
+    }
 }

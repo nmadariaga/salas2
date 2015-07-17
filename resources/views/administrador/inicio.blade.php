@@ -144,7 +144,9 @@
               <div class="row">
 
                         <div class="row mtbox">
-                        <center><h1>Bienvenido Administrador</h1></center>
+                          @if ( !Auth::guest() )
+                        <center><h1>Bienvenido Administrador {{Auth::user("")->rut}}</h1></center>
+                        @endif
                         </div><!-- /row mt -->
 
 
