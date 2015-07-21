@@ -20,7 +20,7 @@ class AlumnosController extends Controller {
 
 	public function buscar()
 	{
-		return view("alumno.buscar")->with('asignaturas', \App\Asignatura::paginate(5)->setPath('asignatura'));
+		return view('alumno.buscar');
 	}
 	/**
 	 * Show the form for creating a new resource.

@@ -85,7 +85,7 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="buscar" >
+                      <a href="/alumno/buscar" >
                           <span>BUSCAR</span>
                       </a>
                   </li>
