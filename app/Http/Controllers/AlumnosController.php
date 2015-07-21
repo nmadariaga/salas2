@@ -15,9 +15,13 @@ class AlumnosController extends Controller {
 	public function index()
 	{
 		$periodos = new \App\Periodo;
-		return view("alumno.index")->with('alumno', \App\Alumno::paginate(5)->setPath('alumno'));
+		return view("alumno.index")->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'));
 	}
 
+	public function buscar()
+	{
+		return view("alumno.buscar")->with('asignaturas', \App\Asignatura::paginate(5)->setPath('asignatura'));
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

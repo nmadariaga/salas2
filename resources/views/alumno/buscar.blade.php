@@ -79,13 +79,13 @@
                   <h5 class="centered">Menú Alumno</h5>
 
                   <li class="mt">
-                      <a class="active" href="inicio">
+                      <a href="inicio">
                           <span>INICIO</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="buscar" >
+                      <a class="active" href="alumno/buscar" >
                           <span>BUSCAR</span>
                       </a>
                   </li>
@@ -97,7 +97,7 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="#" >
+                      <a href="*" >
                           <span>ASIGNATURAS</span>
                       </a>
                   </li>
@@ -116,56 +116,7 @@
       <!--main content start-->
       <section id="main-content">
         <section class="wrapper">
-              <div class="row">
-
-                        <div class="row mtbox">
-                          @if ( !Auth::guest() )
-                        <center><h1>Bienvenido Alumno {{Auth::user("")->rut}}</h1></center>
-                        @endif
-                        </div><!-- /row mt -->
-
-                        <div class="row mt">
-                        <center><h3>Tu horario para este semestre es el siguiente.</h3></center>
-
-                        </div><!-- /row -->
-                          <table class="calendar table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>&nbsp;</th>
-                                <th width="20%">Lunes</th>
-                                <th width="20%">Martes</th>
-                                <th width="20%">Miércoles</th>
-                                <th width="20%">Jueves</th>
-                                <th width="20%">Viernes</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($periodos as $periodo)
-                              <tr>
-                                <td>{{ $periodo->inicio }} - {{ $periodo->fin }}</td>
-                                 <td class=" has-events" rowspan="1">
-                                  <div style="width: 99%; height: 100%;">
-                                    Asignatura 1 <br> Sala M3-101
-                                  </div>
-                                </td>
-                                <td class=" no-events" rowspan="1"></td>
-                                <td class=" no-events" rowspan="1"></td>
-                                <td class=" no-events" rowspan="1"></td>
-                                <td class=" no-events" rowspan="1"></td>
-                              </tr>
-                              @endforeach
-                            </tbody>
-                          </table>
-
-                        <div class="row">
-                         
-                        </div><!-- /row -->
-
-                        <div class="row mt">
-                  
-                        </div><!-- /row -->
-
-              </div>
+             
         </section>
       </section>
 

@@ -25,6 +25,11 @@ Route::get('/', function()
 
 Route::resource('alumno','AlumnosController');
 
+Route::get('buscar', function()
+{
+    return redirect('alumno/buscar');
+});
+
 Route::get('home', 'HomeController@index');
 
 /*Route::controllers([
