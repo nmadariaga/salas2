@@ -131,36 +131,36 @@
               <!-- sidebar menu end-->
           </div>
       </aside>
-        <section id="main-content">
+      <section id="main-content">
           <section class="wrapper">
           <br>
-            <h3> Detalle del Campus</h3>
+            <h3> Detalle del Curso</h3>
 
             <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
               <div class="col-lg-12">
                   <div class="form-panel">
-                      <h4 class="mb">Información del campus "{{$campu->nombre}}" </h4>
+                      <h4 class="mb">Información del Curso "{{$asignaturas->nombre}} ({{$curso->seccion }})" </h4>
                       <form class="form-horizontal style-form" method="get">
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Nombre: </label>
+                              <label class="col-sm-2 col-sm-2 control-label">Asignatura: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->nombre}}" disabled>
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$asignaturas->nombre}}" disabled>
                               </div>
                               <br><br><br>
-                              <label class="col-sm-2 col-sm-2 control-label">Dirección: </label>
+                              <label class="col-sm-2 col-sm-2 control-label">Semestre: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->direccion}}" disabled>
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$curso->semestre}}" disabled>
                               </div>
                               <br><br><br>
-                              <label class="col-sm-2 col-sm-2 control-label">Descripción: </label>
+                              <label class="col-sm-2 col-sm-2 control-label">Sección: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->descripcion}}" disabled>
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$curso->seccion}}" disabled>
                               </div>
                               <br><br><br>
-                              <label class="col-sm-2 col-sm-2 control-label">Encargado: </label>
+                              <label class="col-sm-2 col-sm-2 control-label">Docente: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->rut_encargado}}" disabled>
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$docente->nombres}} {{$docente->apellidos}}" disabled>
                               </div>
                           </div>
 
@@ -168,24 +168,12 @@
                   </div>
               </div><!-- col-lg-12-->
             </div><!-- /row -->
-            <script>
-  $(document).ready(function(){
-   var url =GMaps.staticMapURL({
-     size: [610, 350],
-     lat:{{$campu->latitud}},
-     lng:{{$campu->longitud}},
-     markers: [
-      {lat:{{$campu->latitud}}, lng:{{$campu->longitud}}, color:'blue'}
-     ]
-   });
-  $('<img/>').attr('src', url).appendTo('#map');
-  });
-  </script>
-<center><div id="map"></div>
+
+<center>
 <br>
 <table>
-              <td><a href="/campus" class="btn btn-default btn-sm">Volver</a>
-                {!! Html::link(route('campus.edit', $campu->id), 'Editar', array('class' => 'btn btn-warning btn-sm')) !!}</td>
+              <td><a href="/cursos" class="btn btn-default btn-sm">Volver</a>
+                {!! Html::link(route('cursos.edit', $curso->id), 'Editar', array('class' => 'btn btn-warning btn-sm')) !!}</td>
 </table>
 </center>
     </section>

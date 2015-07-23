@@ -140,7 +140,7 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
                           <div class="head-table">
-                            <h4>Listado de Estudiantes {!! Html::link(route('estudiantes.asignaturascursadas.create', $estudiante->id), 'Agregar asignatura', array('class' => 'btn btn-warning btn-sm')) !!}</a>
+                            <h4>Listado de asignaturas del estudiante {{$estudiante->nombres}} {{$estudiante->apellidos}}{!! Html::link(route('estudiantes.asignaturascursadas.create', $estudiante->id), 'Agregar asignatura', array('class' => 'btn btn-warning btn-sm')) !!}</a>
                             </h4>
                           </div>
                             <hr>
@@ -149,8 +149,8 @@
                                   <th> Nombre</th>
                                   <th> Seccion</th>
                                   <th> Profesor</th>
+                                  <th> Semestre</th>
                                   <th></th>
-
                               </tr>
                               </thead>
                               <tbody>
@@ -159,9 +159,9 @@
                                   <td>{{ $curso->asignatura->nombre }}</td>
                                   <td>{{ $curso->seccion}}</td>
                                   <td>{{ $curso->docente->nombres }}</td>
-                                  <td>{!! Html::link(route('estudiantes.asignaturascursadas.show', $estudiante->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
-                                  <td>{!! Html::link(route('estudiantes.asignaturascursadas.edit', $estudiante->id), 'Editar', array('class' => 'label label-success')) !!}</td>
-                                        {!! Form::open(array('route' => array('estudiantes.asignaturascursadas.destroy', $estudiante->id), 'method' => 'DELETE')) !!}
+                                  <td>{{ $curso->semestre }}</td>
+                                  <td>
+                                        {!! Form::open(array('route' => array('estudiantes.asignaturascursadas.destroy', $estudiante->id, $curso->id), 'method' => 'DELETE')) !!}
                                         <button class="label label-danger">Eliminar</button>
                                         {!! Form::close() !!}
                                   </td>
@@ -173,11 +173,11 @@
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->
               <p>
-  @if(Session::has('message'))
-    <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
-  @endif
-</p>
-              </section>
-              </section>
+      @if(Session::has('message'))
+        <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
+      @endif
+      </p>
+        </section>
+        </section>
   </body>
 </html>l

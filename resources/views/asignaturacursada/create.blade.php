@@ -156,10 +156,11 @@
                         <div class="col-sm-10">
                             {!! Form::select('curso_id', $cursos) !!}
                         </div>
-							<div class="form-group">
-								{!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}
-							</div>
-					</form>
+                        {!! Form::hidden('estudiante_id', $estudiante->id) !!}
+							          <div class="form-group">
+								        {!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}
+						          	</div>
+					            </form>
 							{!! Form::close() !!}
       						<p>
 	    						@if(Session::has('message'))
