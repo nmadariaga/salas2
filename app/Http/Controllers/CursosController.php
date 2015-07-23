@@ -15,7 +15,7 @@ class CursosController extends Controller {
 		 */
 		public function index()
 		{
-			return view("cursos.index")->with('cursos', \App\Curso::paginate(5)->setPath('curso'));
+			return view("cursos.index")->with('cursos', \App\Curso::paginate(20)->setPath('curso'));
 		}
 
 		/**

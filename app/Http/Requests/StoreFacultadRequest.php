@@ -22,9 +22,9 @@ class StoreFacultadRequest extends Request {
 	public function rules()
 	{
 		return [
-			"nombre" => "required|min:5|max:30",
+			"nombre" => "required|min:5|max:40",
 			"campus_id" => "required",
-			"descripcion" => "min:3|max:40"
+			"descripcion" => "min:3|max:100"
 
 		];
 

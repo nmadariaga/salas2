@@ -23,7 +23,7 @@ class StoreTipoDeSalaRequest extends Request {
 	{
 		return [
 			"nombre" => "required",
-			"descripcion" => "required|min:3|max:30"
+			"descripcion" => "required|min:3|max:100"
 		];
 	}
 

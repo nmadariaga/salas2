@@ -25,7 +25,7 @@ class UpdateCarreraRequest extends Request {
 			"nombre" => "required|min:5|max:40",
 			"escuela_id" => "required",
 			"codigo" => "required|min:4|max:5",
-			"descripcion" => "min:3|max:40"
+			"descripcion" => "min:3|max:100"
 
 		];
 	}

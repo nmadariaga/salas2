@@ -24,8 +24,8 @@ class StoreEstudianteRequest extends Request {
 		return [
 			"carrera_id" => "required",
 			"rut" => "required|min:7|max:8",
-			"nombres" => "required|min:7|max:30",
-			"apellidos" => "required|min:7|max:30",
+			"nombres" => "required|min:7|max:40",
+			"apellidos" => "required|min:7|max:40",
 			"email" => "required|email"
 		];
 	}

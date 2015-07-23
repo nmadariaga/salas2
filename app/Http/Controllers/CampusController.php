@@ -37,11 +37,11 @@ class CampusController extends Controller {
 	{
 		$campus = new \App\Campus;
 
-		$campus->nombre = $request->input('nombre');
-		$campus->direccion = $request->input('direccion');
+		$campus->nombre = ucwords($request->input('nombre'));
+		$campus->direccion = ucwords($request->input('direccion'));
 		$campus->latitud = $request->input('latitud');
 		$campus->longitud = $request->input('longitud');
-		$campus->descripcion = $request->input('descripcion');
+		$campus->descripcion = ucfirst($request->input('descripcion'));
 		$campus->rut_encargado = $request->input('rut');
 
 		$campus->save();
@@ -83,11 +83,11 @@ class CampusController extends Controller {
 	{
 		$campus = \App\Campus::find($id);
 
-		$campus->nombre = $request->input('nombre');
-		$campus->direccion = $request->input('direccion');
+		$campus->nombre = ucwords($request->input('nombre'));
+		$campus->direccion = ucwords($request->input('direccion'));
 		$campus->latitud = $request->input('latitud');
 		$campus->longitud = $request->input('longitud');
-		$campus->descripcion = $request->input('descripcion');
+		$campus->descripcion = ucfirst($request->input('descripcion'));
 		$campus->rut_encargado = $request->input('rut_encargado');
 
 		$campus->save();

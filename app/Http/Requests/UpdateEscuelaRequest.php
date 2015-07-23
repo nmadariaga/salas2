@@ -22,9 +22,9 @@ class UpdateEscuelaRequest extends Request {
 	public function rules()
 	{
 		return [
-			"nombre" => "required|min:5|max:20",
+			"nombre" => "required|min:5|max:40",
 			"departamento_id" => "required",
-			"descripcion" => "min:3|max:40"
+			"descripcion" => "min:3|max:100"
 		];
 	}
 

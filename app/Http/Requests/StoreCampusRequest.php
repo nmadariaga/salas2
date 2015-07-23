@@ -22,11 +22,11 @@ class StoreCampusRequest extends Request {
 	public function rules()
 	{
 		return [
-				"nombre" => "required|min:5|max:20",
+				"nombre" => "required|min:5|max:50",
 				"direccion" => "required|min:5|max:100",
 				"latitud" => "required|numeric|",
 				"longitud" => "required|numeric",
-				"descripcion" => "min:3|max:40",
+				"descripcion" => "min:3|max:100",
 				"rut" => "required|min:3|max:8"
 		];
 

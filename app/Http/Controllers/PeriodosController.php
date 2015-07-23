@@ -37,7 +37,7 @@ class PeriodosController extends Controller {
 					{
 						$periodo = new \App\Periodo;
 
-						$periodo->bloque = $request->input('bloque');
+						$periodo->bloque = ucwords($request->input('bloque'));
 						$periodo->inicio = $request->input('inicio');
 						$periodo->fin = $request->input('fin');
 
@@ -80,7 +80,7 @@ class PeriodosController extends Controller {
 					{
 						$periodo = \App\Periodo::find($id);
 
-						$periodo->bloque = $request->input('bloque');
+						$periodo->bloque = ucwords($request->input('bloque'));
 						$periodo->inicio = $request->input('inicio');
 						$periodo->fin = $request->input('fin');
 

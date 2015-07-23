@@ -24,7 +24,7 @@ class UpdateSalasRequest extends Request {
 		return [
 			"campus_id" => "required",
 			"tipo_sala_id" => "required",
-			"nombre" => "required|min:3|max:15",
+			"nombre" => "required|min:3|max:30",
 			"descripcion" => "min:3|max:100"
 		];
 	}

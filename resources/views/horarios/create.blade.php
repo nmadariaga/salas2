@@ -154,7 +154,7 @@
 								{!! Form::select('periodo_id', $periodo) !!}</p>
 							</div>
 							<div class="form-group"><p>Curso:
-								{!! Form::select('asignatura_id', $curso) !!}</p>
+								{!! Form::select('asignatura->nombre', $curso) !!}</p>
 							</div>
 							<div class="form-group">
 								{!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}

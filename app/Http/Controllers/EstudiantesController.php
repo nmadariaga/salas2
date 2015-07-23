@@ -51,8 +51,8 @@ class EstudiantesController extends Controller {
 
 		$estudiante->carrera_id = $request->input('carrera_id');
 		$estudiante->rut = $request->input('rut');
-		$estudiante->nombres = $request->input('nombres');
-		$estudiante->apellidos = $request->input('apellidos');
+		$estudiante->nombres = ucwords($request->input('nombres'));
+		$estudiante->apellidos = ucwords($request->input('apellidos'));
 		$estudiante->email = $request->input('email');
 
 		$estudiante->save();
@@ -97,8 +97,8 @@ class EstudiantesController extends Controller {
 
 		$estudiante->carrera_id = $request->input('carrera_id');
 		$estudiante->rut = $request->input('rut');
-		$estudiante->nombres = $request->input('nombres');
-		$estudiante->apellidos = $request->input('apellidos');
+		$estudiante->nombres = ucwords($request->input('nombres'));
+		$estudiante->apellidos = ucwords($request->input('apellidos'));
 		$estudiante->email = $request->input('email');
 
 		$estudiante->save();

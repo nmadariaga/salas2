@@ -39,9 +39,9 @@ class CarrerasController extends Controller {
 						$carrera = new \App\Carrera;
 
 						$carrera->codigo = $request->input('codigo');
-						$carrera->nombre = $request->input('nombre');
+						$carrera->nombre = ucwords($request->input('nombre'));
 						$carrera->escuela_id = $request->input('escuela_id');
-						$carrera->descripcion = $request->input('descripcion');
+						$carrera->descripcion = ucfirst($request->input('descripcion'));
 
 						$carrera->save();
 
@@ -84,9 +84,9 @@ class CarrerasController extends Controller {
 						$carrera = \App\Carrera::find($id);
 
 						$carrera->codigo = $request->input('codigo');
-						$carrera->nombre = $request->input('nombre');
+						$carrera->nombre = ucwords($request->input('nombre'));
 						$carrera->escuela_id = $request->input('escuela_id');
-						$carrera->descripcion = $request->input('descripcion');
+						$carrera->descripcion = ucfirst($request->input('descripcion'));
 
 						$carrera->save();
 						return redirect()->route('carreras.index', ['carrera' => $id])->with('message', 'Cambios guardados');

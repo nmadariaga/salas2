@@ -39,9 +39,9 @@ class FacultadesController extends Controller {
 		{
 			$facultad = new \App\Facultad;
 
-			$facultad->nombre = $request->input('nombre');
+			$facultad->nombre = ucwords($request->input('nombre'));
 			$facultad->campus_id = $request->input('campus_id');
-			$facultad->descripcion = $request->input('descripcion');
+			$facultad->descripcion = ucfirst($request->input('descripcion'));
 
 			$facultad->save();
 
@@ -83,9 +83,9 @@ class FacultadesController extends Controller {
 		{
 			$facultad = \App\Facultad::find($id);
 
-			$facultad->nombre = $request->input('nombre');
+			$facultad->nombre = ucwords($request->input('nombre'));
 			$facultad->campus_id = $request->input('campus_id');
-			$facultad->descripcion = $request->input('descripcion');
+			$facultad->descripcion = ucfirst($request->input('descripcion'));
 
 			$facultad->save();
 			return redirect()->route('facultades.index', ['facultad' => $id])->with('message', 'Cambios guardados');

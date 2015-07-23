@@ -14,7 +14,7 @@ class AsignaturasController extends Controller {
 	 */
 	public function index()
 	{
-		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(5)->setPath('asignatura'));
+		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(20)->setPath('asignatura'));
 	}
 
 	/**
@@ -37,9 +37,9 @@ class AsignaturasController extends Controller {
 	{
 		$asignaturas = new \App\Asignatura;
 
-		$asignaturas->nombre = $request->input('nombre');
+		$asignaturas->nombre = ucwords($request->input('nombre'));
 		$asignaturas->codigo = $request->input('codigo');
-		$asignaturas->descripcion = $request->input('descripcion');
+		$asignaturas->descripcion = ucfirst($request->input('descripcion'));
 		$asignaturas->departamento_id = $request->input('departamento_id');
 
 		$asignaturas->save();
@@ -82,9 +82,9 @@ class AsignaturasController extends Controller {
 	{
 		$asignaturas = \App\Asignatura::find($id);
 
-		$asignaturas->nombre = $request->input('nombre');
+		$asignaturas->nombre = ucwords($request->input('nombre'));
 		$asignaturas->codigo = $request->input('codigo');
-		$asignaturas->descripcion = $request->input('descripcion');
+		$asignaturas->descripcion = ucfirst($request->input('descripcion'));
 		$asignaturas->departamento_id = $request->input('departamento_id');
 
 		$asignaturas->save();

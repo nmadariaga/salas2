@@ -41,8 +41,8 @@ class DocentesController extends Controller {
 
 		$docentes->departamento_id = $request->input('departamento_id');
 		$docentes->rut = $request->input('rut');
-		$docentes->nombres = $request->input('nombres');
-		$docentes->apellidos = $request->input('apellidos');
+		$docentes->nombres = ucwords($request->input('nombres'));
+		$docentes->apellidos = ucwords($request->input('apellidos'));
 
 		$docentes->save();
 
@@ -86,8 +86,8 @@ class DocentesController extends Controller {
 
 		$docentes->departamento_id = $request->input('departamento_id');
 		$docentes->rut = $request->input('rut');
-		$docentes->nombres = $request->input('nombres');
-		$docentes->apellidos = $request->input('apellidos');
+		$docentes->nombres = ucwords($request->input('nombres'));
+		$docentes->apellidos = ucwords($request->input('apellidos'));
 
 		$docentes->save();
 		return redirect()->route('docentes.index', ['docente' => $id])->with('message', 'Cambios guardados');

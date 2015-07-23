@@ -37,7 +37,7 @@ class RolesController extends Controller {
 		$roles = new \App\Role;
 
 		$roles->nombre = ucwords($request->input('nombre'));
-		$roles->descripcion = $request->input('descripcion');
+		$roles->descripcion = ucfirst($request->input('descripcion'));
 
 		$roles->save();
 
@@ -78,8 +78,8 @@ class RolesController extends Controller {
 	{
 		$roles = \App\Role::find($id);
 
-		$roles->nombre = $request->input('nombre');
-		$roles->descripcion = $request->input('descripcion');
+		$roles->nombre = ucwords($request->input('nombre'));
+		$roles->descripcion = ucfirst($request->input('descripcion'));
 
 		$roles->save();
 		return redirect()->route('roles.index')->with('message', 'Cambios guardados');

@@ -38,9 +38,9 @@ class EscuelasController extends Controller {
 				{
 					$escuela = new \App\Escuela;
 
-					$escuela->nombre = $request->input('nombre');
+					$escuela->nombre = ucwords($request->input('nombre'));
 					$escuela->departamento_id = $request->input('departamento_id');
-					$escuela->descripcion = $request->input('descripcion');
+					$escuela->descripcion = ucfirst($request->input('descripcion'));
 
 					$escuela->save();
 
@@ -82,9 +82,9 @@ class EscuelasController extends Controller {
 				{
 					$escuela = \App\Escuela::find($id);
 
-					$escuela->nombre = $request->input('nombre');
+					$escuela->nombre = ucwords($request->input('nombre'));
 					$escuela->departamento_id = $request->input('departamento_id');
-					$escuela->descripcion = $request->input('descripcion');
+					$escuela->descripcion = ucfirst($request->input('descripcion'));
 
 					$escuela->save();
 					return redirect()->route('escuelas.index', ['escuela' => $id])->with('message', 'Cambios guardados');

@@ -38,9 +38,9 @@ class DepartamentosController extends Controller {
 			{
 				$departamento = new \App\Departamento;
 
-				$departamento->nombre = $request->input('nombre');
+				$departamento->nombre = ucwords($request->input('nombre'));
 				$departamento->facultad_id = $request->input('facultad_id');
-				$departamento->descripcion = $request->input('descripcion');
+				$departamento->descripcion = ucfirst($request->input('descripcion'));
 
 				$departamento->save();
 
@@ -86,9 +86,9 @@ class DepartamentosController extends Controller {
 			{
 				$departamento = \App\Departamento::find($id);
 
-				$departamento->nombre = $request->input('nombre');
+				$departamento->nombre = ucwords($request->input('nombre'));
 				$departamento->facultad_id = $request->input('facultad_id');
-				$departamento->descripcion = $request->input('descripcion');
+				$departamento->descripcion = ucfirst($request->input('descripcion'));
 
 				$departamento->save();
 				return redirect()->route('departamentos.index', ['departamento' => $id])->with('message', 'Cambios guardados');

@@ -42,8 +42,8 @@ class SalasController extends Controller {
 
 		$salas->campus_id = $request->input('campus_id');
 		$salas->tipo_sala_id = $request->input('tipo_sala_id');
-		$salas->nombre = $request->input('nombre');
-		$salas->descripcion = $request->input('descripcion');
+		$salas->nombre = ucwords($request->input('nombre'));
+		$salas->descripcion = ucfirst($request->input('descripcion'));
 
 		$salas->save();
 
@@ -89,8 +89,8 @@ class SalasController extends Controller {
 
 		$salas->campus_id = $request->input('campus_id');
 		$salas->tipo_sala_id = $request->input('tipo_sala_id');
-		$salas->nombre = $request->input('nombre');
-		$salas->descripcion = $request->input('descripcion');
+		$salas->nombre = ucwords($request->input('nombre'));
+		$salas->descripcion = ucfirst($request->input('descripcion'));
 
 		$salas->save();
 		return redirect()->route('salas.index', ['sala' => $id])->with('message', 'Cambios guardados');

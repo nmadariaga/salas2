@@ -41,8 +41,8 @@ class FuncionariosController extends Controller {
 
 		$funcionarios->departamento_id = $request->input('departamento_id');
 		$funcionarios->rut = $request->input('rut');
-		$funcionarios->nombres = $request->input('nombres');
-		$funcionarios->apellidos = $request->input('apellidos');
+		$funcionarios->nombres = ucwords($request->input('nombres'));
+		$funcionarios->apellidos = ucwords($request->input('apellidos'));
 
 		$funcionarios->save();
 
@@ -86,8 +86,8 @@ class FuncionariosController extends Controller {
 
 		$funcionarios->departamento_id = $request->input('departamento_id');
 		$funcionarios->rut = $request->input('rut');
-		$funcionarios->nombres = $request->input('nombres');
-		$funcionarios->apellidos = $request->input('apellidos');
+		$funcionarios->nombres = ucwords($request->input('nombres'));
+		$funcionarios->apellidos = ucwords($request->input('apellidos'));
 
 		$funcionarios->save();
 		return redirect()->route('funcionarios.index', ['funcionario' => $id])->with('message', 'Cambios guardados');

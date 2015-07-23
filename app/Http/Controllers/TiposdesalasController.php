@@ -36,8 +36,8 @@ class TiposdesalasController extends Controller {
 	{
 		$tiposdesalas = new \App\Tipodesala;
 
-		$tiposdesalas->nombre = $request->input('nombre');
-		$tiposdesalas->descripcion = $request->input('descripcion');
+		$tiposdesalas->nombre = ucwords($request->input('nombre'));
+		$tiposdesalas->descripcion = ucfirst($request->input('descripcion'));
 		$tiposdesalas->save();
 
 		return redirect()->route('tiposdesalas.index')->with('message', 'Tipo de Sala Agregada');
@@ -75,8 +75,8 @@ class TiposdesalasController extends Controller {
 	public function update(UpdateTipoDeSalaRequest $request, $id)
 	{
 		$tiposdesalas = \App\Tipodesala::find($id);
-		$tiposdesalas->nombre = $request->input('nombre');
-		$tiposdesalas->descripcion = $request->input('descripcion');
+		$tiposdesalas->nombre = ucwords($request->input('nombre'));
+		$tiposdesalas->descripcion = ucfirst($request->input('descripcion'));
 		$tiposdesalas->save();
 		return redirect()->route('tiposdesalas.index', ['tiposdesala' => $id])->with('message', 'Cambios guardados');
 	}
