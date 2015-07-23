@@ -36,7 +36,7 @@ class RolesController extends Controller {
 	{
 		$roles = new \App\Role;
 
-		$roles->nombre = $request->input('nombre');
+		$roles->nombre = ucwords($request->input('nombre'));
 		$roles->descripcion = $request->input('descripcion');
 
 		$roles->save();

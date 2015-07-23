@@ -15,7 +15,8 @@ class EstudiantesController extends Controller {
 	 */
 	public function index()
 	{
-		return view("estudiantes.index")->with('estudiantes', \App\Estudiante::paginate(5)->setPath('estudiante'));
+		$acursada = new \App\Asignaturacursada;
+		return view("estudiantes.index")->with('estudiantes', \App\Estudiante::paginate(5)->setPath('estudiante'))->with('acursada',$acursada);
 	}
 
 	/**
@@ -23,6 +24,16 @@ class EstudiantesController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	public function VerAsignaturas($id)
+	{
+		//$estudiante = \App\Estudiante::find($id);
+		//acursada = \App\Asignaturacursada::find($estudiante_id);
+		//return view("asignaturacursada.index")->with('asignaturascursadas', \App\Asignaturacursada::paginate(10)->setPath('acursada'));
+		return "asds";
+	}
+
+
 	public function create()
 	{
 		$carrera = Carrera::lists('nombre','id');

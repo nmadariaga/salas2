@@ -124,7 +124,7 @@
                       </a>
                   </li>
                    <li class="sub-menu">
-                      <a href="/estudiantes" >
+                      <a class="active" href="/estudiantes" >
                           <span>ESTUDIANTES</span>
                       </a>
                   </li>
@@ -140,25 +140,28 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
                           <div class="head-table">
-                            <h4>Listado de Usuarios<a href="/rolesusuarios/create" style="position: absolute; right: 30px" class="btn btn-warning btn-sm">Agregar Rol</a>
+                            <h4>Listado de Estudiantes {!! Html::link(route('estudiantes.asignaturascursadas.create', $estudiante->id), 'Agregar asignatura', array('class' => 'btn btn-warning btn-sm')) !!}</a>
                             </h4>
                           </div>
                             <hr>
                               <thead>
                               <tr>
-                                  <th> RUT</th>
+                                  <th> Nombre</th>
+                                  <th> Seccion</th>
+                                  <th> Profesor</th>
                                   <th></th>
-                                  <th></th>
+
                               </tr>
                               </thead>
                               <tbody>
-                              @foreach($rolesusuarios as $rolesusuario)
+                              @foreach($estudiante->cursos as $curso)
                               <tr>
-                                  <td>{{ $rolesusuario->rut }}</td>
-                                  <td>{!! Html::link(route('rolesusuarios.show', $rolesusuario->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
-                                  <td>{!! Html::link(route('rolesusuarios.edit', $rolesusuario->id), 'Editar', array('class' => 'label label-success')) !!}</td>
-                                  <td>
-                                        {!! Form::open(array('route' => array('rolesusuarios.destroy', $rolesusuario->id), 'method' => 'DELETE')) !!}
+                                  <td>{{ $curso->asignatura->nombre }}</td>
+                                  <td>{{ $curso->seccion}}</td>
+                                  <td>{{ $curso->docente->nombres }}</td>
+                                  <td>{!! Html::link(route('estudiantes.asignaturascursadas.show', $estudiante->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
+                                  <td>{!! Html::link(route('estudiantes.asignaturascursadas.edit', $estudiante->id), 'Editar', array('class' => 'label label-success')) !!}</td>
+                                        {!! Form::open(array('route' => array('estudiantes.asignaturascursadas.destroy', $estudiante->id), 'method' => 'DELETE')) !!}
                                         <button class="label label-danger">Eliminar</button>
                                         {!! Form::close() !!}
                                   </td>

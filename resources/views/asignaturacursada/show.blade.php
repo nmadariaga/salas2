@@ -13,24 +13,22 @@
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
     <!--external css-->
     <link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/zabuto_calendar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/js/gritter/css/jquery.gritter.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+  <script type="text/javascript" src="{{ asset('/js/gmaps.js') }}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-      body {overflow-x:hidden;}
-    </style>
   </head>
 
   <body>
@@ -95,7 +93,7 @@
                       </a>
                   </li>
 
-                   <li class="sub-menu">
+                  <li class="sub-menu">
                       <a href="/departamentos" >
                           <span>DEPARTAMENTOS</span>
                       </a>
@@ -124,7 +122,7 @@
                       </a>
                   </li>
                    <li class="sub-menu">
-                      <a href="/estudiantes" >
+                      <a class="active" href="/estudiantes" >
                           <span>ESTUDIANTES</span>
                       </a>
                   </li>
@@ -133,48 +131,66 @@
               <!-- sidebar menu end-->
           </div>
       </aside>
-  <section id="main-content">
+        <section id="main-content">
           <section class="wrapper">
-              <div class="row mt">
-                  <div class="col-md-12">
-                      <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover">
-                          <div class="head-table">
-                            <h4>Listado de Usuarios<a href="/rolesusuarios/create" style="position: absolute; right: 30px" class="btn btn-warning btn-sm">Agregar Rol</a>
-                            </h4>
+          <br>
+            <h3> Detalle del Campus</h3>
+
+            <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+              <div class="col-lg-12">
+                  <div class="form-panel">
+                      <h4 class="mb">Información del campus "{{$campu->nombre}}" </h4>
+                      <form class="form-horizontal style-form" method="get">
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Nombre: </label>
+                              <div class="col-sm-10">
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->nombre}}" disabled>
+                              </div>
+                              <br><br><br>
+                              <label class="col-sm-2 col-sm-2 control-label">Dirección: </label>
+                              <div class="col-sm-10">
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->direccion}}" disabled>
+                              </div>
+                              <br><br><br>
+                              <label class="col-sm-2 col-sm-2 control-label">Descripción: </label>
+                              <div class="col-sm-10">
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->descripcion}}" disabled>
+                              </div>
+                              <br><br><br>
+                              <label class="col-sm-2 col-sm-2 control-label">Encargado: </label>
+                              <div class="col-sm-10">
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$campu->rut_encargado}}" disabled>
+                              </div>
                           </div>
-                            <hr>
-                              <thead>
-                              <tr>
-                                  <th> RUT</th>
-                                  <th></th>
-                                  <th></th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              @foreach($rolesusuarios as $rolesusuario)
-                              <tr>
-                                  <td>{{ $rolesusuario->rut }}</td>
-                                  <td>{!! Html::link(route('rolesusuarios.show', $rolesusuario->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
-                                  <td>{!! Html::link(route('rolesusuarios.edit', $rolesusuario->id), 'Editar', array('class' => 'label label-success')) !!}</td>
-                                  <td>
-                                        {!! Form::open(array('route' => array('rolesusuarios.destroy', $rolesusuario->id), 'method' => 'DELETE')) !!}
-                                        <button class="label label-danger">Eliminar</button>
-                                        {!! Form::close() !!}
-                                  </td>
-                              </tr>
-                              @endforeach
-                              </tbody>
-                          </table>
-                      </div><!-- /content-panel -->
-                  </div><!-- /col-md-12 -->
-              </div><!-- /row -->
-              <p>
-  @if(Session::has('message'))
-    <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
-  @endif
-</p>
-              </section>
-              </section>
-  </body>
-</html>l
+
+                      </form>
+                  </div>
+              </div><!-- col-lg-12-->
+            </div><!-- /row -->
+            <script>
+  $(document).ready(function(){
+   var url =GMaps.staticMapURL({
+     size: [610, 350],
+     lat:{{$campu->latitud}},
+     lng:{{$campu->longitud}},
+     markers: [
+      {lat:{{$campu->latitud}}, lng:{{$campu->longitud}}, color:'blue'}
+     ]
+   });
+  $('<img/>').attr('src', url).appendTo('#map');
+  });
+  </script>
+<center><div id="map"></div>
+<br>
+<table>
+              <td><a href="/campus" class="btn btn-default btn-sm">Volver</a>
+                {!! Html::link(route('campus.edit', $campu->id), 'Editar', array('class' => 'btn btn-warning btn-sm')) !!}</td>
+</table>
+</center>
+    </section>
+      </section>
+
+</body>
+
+</html>

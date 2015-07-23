@@ -4,7 +4,7 @@ use App\Http\Requests\StoreCursoRequest;
 use App\Http\Requests\UpdateCursoRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Doncente;
+use Docente;
 
 class CursosController extends Controller {
 
@@ -39,11 +39,11 @@ class CursosController extends Controller {
 		{
 			$curso = new \App\Curso;
 
-			$curso->semestre = -$request>input('semestre');
-			$curso->seccion = -$request>input('seccion');
-			$curso->anio = -$request>input('anio');
-			$curso->asignatura_id = -$request>input('asignatura_id');
-			$curso->docente_id = -$request>input('docente_id');
+			$curso->semestre = $request->input('semestre');
+			$curso->seccion = $request->input('seccion');
+			$curso->anio = $request->input('anio');
+			$curso->asignatura_id = $request->input('asignatura_id');
+			$curso->docente_id = $request->input('docente_id');
 
 			$curso->save();
 

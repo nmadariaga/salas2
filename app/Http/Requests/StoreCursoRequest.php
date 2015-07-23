@@ -22,11 +22,12 @@ class StoreCursoRequest extends Request {
 	public function rules()
 	{
 		return [
-			"asignatura_id" => "required",
-			"docente_id" => "required",
 			"semestre" => "required|integer",
+			"seccion" => "required|integer",
 			"anio" => "required|integer",
-			"seccion" => "required|integer|max:4"
+			"asignatura_id" => "required",
+			"docente_id" => "required"
+
 		];
 	}
 

@@ -40,7 +40,7 @@
             <div id="login" class="form-action show">
                 <h1>Bienvenido</h1>
                 <h2>
-                    Por favor inice sesión
+                    Por favor inicie sesión
                 </h2>
                 <br>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">

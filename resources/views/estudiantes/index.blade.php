@@ -15,14 +15,14 @@
     <link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/zabuto_calendar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/js/gritter/css/jquery.gritter.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">    
-    
+    <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
 
     <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
-    
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -41,7 +41,7 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-             
+
             <!--logo start-->
             <a href="index.html" class="logo">{!!HTML::image('utem.png')!!}</a>
             <!--logo end-->
@@ -49,10 +49,10 @@
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
-                    
+
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
-                    
+
                     <!-- inbox dropdown end -->
                 </ul>
                 <!--  notification end -->
@@ -64,7 +64,7 @@
             </div>
         </header>
       <!--header end-->
-      
+
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -74,9 +74,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               <br><br>
-                  
+
                   <h5 class="centered">Menú Administrador</h5>
-                    
+
                   <li class="mt">
                       <a href="/admin/inicio">
                           <span>INICIO</span>
@@ -165,6 +165,7 @@
                                   <td>{{ $estudiante->email }}</td>
                                   <td>{!! Html::link(route('estudiantes.show', $estudiante->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
                                   <td>{!! Html::link(route('estudiantes.edit', $estudiante->id), 'Editar', array('class' => 'label label-success')) !!}</td>
+                                  <td>{!! Html::link(route('estudiantes.asignaturascursadas.index', $estudiante->id), 'Asignaturas', array('class' => 'label label-success')) !!}</td>
                                   <td>
                                         {!! Form::open(array('route' => array('estudiantes.destroy', $estudiante->id), 'method' => 'DELETE')) !!}
                                         <button class="label label-danger">Eliminar</button>
