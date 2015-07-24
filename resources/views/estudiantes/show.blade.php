@@ -59,7 +59,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
               </ul>
             </div>
         </header>
@@ -147,7 +147,7 @@
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Carrera: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$estudiante->carrera_id}}" disabled>
+                                  <input class="form-control" id="disabledInput" type="text" placeholder="{{$estudiante->carrera->nombre}}" disabled>
                               </div>
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">RUT: </label>

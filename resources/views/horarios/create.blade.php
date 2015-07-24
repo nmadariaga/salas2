@@ -59,7 +59,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
               </ul>
             </div>
         </header>
@@ -154,7 +154,7 @@
 								{!! Form::select('periodo_id', $periodo) !!}</p>
 							</div>
 							<div class="form-group"><p>Curso:
-								{!! Form::select('asignatura->nombre', $curso) !!}</p>
+								{!! Form::select('curso->asignatura->nombre', $asignatura) !!}</p>
 							</div>
 							<div class="form-group">
 								{!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}

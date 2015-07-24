@@ -75,7 +75,13 @@ class HorariosController extends Controller {
 			public function edit($id)
 			{
 				$periodos = \App\Periodo::lists('bloque','id');
-				return view('horarios.edit')->with('horario', \App\Horario::find($id))->with('periodos',$periodos);
+				$salas = \App\Sala::lists('nombre','id');
+				$asignaturas = \App\Asignatura::lists('nombre','id');
+				return view('horarios.edit')->with('horario', \App\Horario::find($id))
+				                            ->with('periodos',$periodos)
+				                            ->with('salas', $salas)
+			                                ->with('asignaturas', $asignaturas);
+
 			}
 
 			/**

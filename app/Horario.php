@@ -11,7 +11,7 @@ class Horario extends Model {
 
     public function salas()
     {
-        return $this->hasMany('App\Sala');
+        return $this->belongsTo('App\Sala');
     }
 
     public function periodos()

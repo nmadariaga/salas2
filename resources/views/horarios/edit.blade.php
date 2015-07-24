@@ -59,7 +59,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
               </ul>
             </div>
         </header>
@@ -152,7 +152,7 @@
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Sala: </label>
                               <div class="col-sm-10">
-                                  {!! Form::text('sala_id', null,['class'=>'form-control', 'placeholder'=>'Sala'])!!}
+                                  {!! Form::select('sala_id', $salas) !!}
                               </div>
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Período: </label>
@@ -162,7 +162,7 @@
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Curso: </label>
                               <div class="col-sm-10">
-                                  {!! Form::text('curso_id', null,['class'=>'form-control', 'placeholder'=>'Curso'])!!}
+                                 {!! Form::select('asignatura_id', $asignaturas) !!}
                               </div>
                               <br><br><br>
                                 {!! Form::submit('Actualizar', ["class" => "btn btn-success btn-block"]) !!}
