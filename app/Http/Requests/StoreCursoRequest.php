@@ -23,7 +23,7 @@ class StoreCursoRequest extends Request {
 	{
 		return [
 			"semestre" => "required|integer",
-			"seccion" => "required|integer",
+			"seccion" => "required|integer|max:99999",
 			"anio" => "required|integer",
 			"asignatura_id" => "required",
 			"docente_id" => "required"

@@ -154,7 +154,7 @@
                       {!! Form::open(['route' => 'estudiantes.asignaturascursadas.store']) !!}
                       <form class="form-horizontal style-form" method="get">
                         <div class="col-sm-10">
-                            {!! Form::select('curso->asignatura->nombre', $asignatura) !!}
+                            {!! Form::select('curso_id', $cursos) !!}
                         </div>
                         {!! Form::hidden('estudiante_id', $estudiante->id) !!}
 							          <div class="form-group">

@@ -42,7 +42,7 @@ class CampusController extends Controller {
 		$campus->latitud = $request->input('latitud');
 		$campus->longitud = $request->input('longitud');
 		$campus->descripcion = ucfirst($request->input('descripcion'));
-		$campus->rut_encargado = $request->input('rut');
+		$campus->rut_encargado = $request->input('rut_encargado');
 
 		$campus->save();
 

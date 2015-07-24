@@ -22,7 +22,7 @@ class StoreDepartamentoRequest extends Request {
 	public function rules()
 	{
 		return [
-			"nombre" => "required|min:5|max:40",
+			"nombre" => "required|min:5|max:70",
 			"facultad_id" => "required",
 			"descripcion" => "min:3|max:100"
 		];

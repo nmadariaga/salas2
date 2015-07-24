@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCursoRequest;
-use App\Http\Requests\UpdateCursoRequest;
+use App\Http\Requests\UpdateCursosRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Docente;
@@ -27,6 +27,7 @@ class CursosController extends Controller {
 		{
 			$asignatura = \App\Asignatura::lists('nombre','id');
 			$docente = \App\Docente::lists('nombres','id');
+			//dd($docente);
 			return view('cursos.create')->with('asignatura',$asignatura)->with('docente',$docente);
 		}
 
@@ -83,7 +84,7 @@ class CursosController extends Controller {
 		 * @param  int  $id
 		 * @return Response
 		 */
-		public function update(UpdateCursoRequest $request, $id)
+		public function update(UpdateCursosRequest $request, $id)
 		{
 			$curso = \App\Curso::find($id);
 

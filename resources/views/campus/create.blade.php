@@ -169,7 +169,7 @@
 								{!! Form::text('descripcion', null,['class'=>'form-control', 'placeholder'=>'Descripción'])!!}
 							</div>
 							<div class="form-group">
-								{!! Form::text('rut', null,['class'=>'form-control', 'placeholder'=>'Rut Encargado'])!!}
+								{!! Form::text('rut_encargado', null,['class'=>'form-control', 'placeholder'=>'Rut Encargado'])!!}
 							</div>
 							<div class="form-group">
 								{!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}

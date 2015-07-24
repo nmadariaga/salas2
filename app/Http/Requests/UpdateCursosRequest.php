@@ -26,7 +26,7 @@ class UpdateCursosRequest extends Request {
 			"docente_id" => "required",
 			"semestre" => "required|integer",
 			"anio" => "required|integer",
-			"seccion" => "required|integer|max:4"
+			"seccion" => "required|integer|max:99999"
 		];
 	}
 

@@ -34,7 +34,7 @@ class EscuelasController extends Controller {
 				 *
 				 * @return Response
 				 */
-				public function store(StoreEscuelaRequest $requets)
+				public function store(StoreEscuelaRequest $request)
 				{
 					$escuela = new \App\Escuela;
 

@@ -153,7 +153,8 @@
                                   <td>{{ $curso->semestre }}</td>
                                   <td>{{ $curso->anio }}</td>
                                   <td>{{ $curso->seccion }}</td>
-                                  <td>{{ $curso->docente->nombres }}</td>
+                                  <td>{{ $curso->docente->nombres }}&nbsp{{ $curso->docente->apellidos }}</td>
+
                                   <td>{!! Html::link(route('cursos.show', $curso->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
                                   <td>{!! Html::link(route('cursos.edit', $curso->id), 'Editar', array('class' => 'label label-success')) !!}</td>
                                   <td>

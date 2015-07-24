@@ -26,7 +26,7 @@ class UpdateCampusRequest extends Request {
 				"direccion" => "required|min:5|max:100",
 				"latitud" => "required|numeric",
 				"longitud" => "required|numeric",
-				"descripcion" => "min:3|max:100"
+				"descripcion" => "min:3|max:100",
 				"rut_encargado" => "required|min:3|max:8"
 		];
 

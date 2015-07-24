@@ -22,9 +22,9 @@ class StoreCarreraRequest extends Request {
 	public function rules()
 	{
 		return [
-			"nombre" => "required|min:5|max:50",
+			"nombre" => "required|min:5|max:70",
 			"escuela_id" => "required",
-			"codigo" => "required|min:4|max:6",
+			"codigo" => "required|min:4|max:8",
 			"descripcion" => "min:3|max:100"
 
 		];

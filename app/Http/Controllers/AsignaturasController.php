@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAsignaturaRequest;
-use App\Http\Requests\UpdateAsignaturaRequest;
+use App\Http\Requests\UpdateAsignaturasRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Departamento;
@@ -78,7 +78,7 @@ class AsignaturasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(UpdateAsignaturaRequest $request, $id)
+	public function update(UpdateAsignaturasRequest $request, $id)
 	{
 		$asignaturas = \App\Asignatura::find($id);
 
