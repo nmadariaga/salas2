@@ -33,7 +33,8 @@ class AsignaturascursadasController extends Controller {
 		$estudiante = \App\Estudiante::find($id);
 		$asignatura = \App\Asignatura::lists('nombre','id');
 		$curso = \App\Curso::lists('seccion','id');
-		return view('asignaturacursada.create')->with('cursos',$curso)->with('estudiante',$estudiante);
+		return view('asignaturacursada.create')->with('cursos',$curso)->with('estudiante',$estudiante)
+		                                        ->with('asignatura',$asignatura);
 
    }
 

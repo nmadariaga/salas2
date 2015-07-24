@@ -133,6 +133,7 @@
               <!-- sidebar menu end-->
           </div>
       </aside>
+
   <section id="main-content">
           <section class="wrapper">
               <div class="row mt">
@@ -142,8 +143,17 @@
                           <div class="head-table">
                             <h4>Listado de Facultades<a href="/facultades/create" style="position: absolute; right: 30px" class="btn btn-warning btn-sm">Agregar Facultad</a>
                             </h4>
+
                           </div>
                             <hr>
+
+                            <form class="navbar-form navbar-left pull-right" role="search">
+                          <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Buscar">
+                          </div>
+                          <button type="submit" class="btn btn-default">Buscar</button>
+                        </form>
+                        
                               <thead>
                               <tr>
                                   <th> Nombre</th>

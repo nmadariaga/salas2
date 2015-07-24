@@ -123,7 +123,7 @@
                         <center><h1>Bienvenido Alumno {{Auth::user("")->rut}}</h1></center>
                         @endif
                         </div><!-- /row mt -->
-
+                        
                         <div class="row mt">
                         <center><h3>Tu horario para este semestre es el siguiente.</h3></center>
 
