@@ -158,11 +158,6 @@
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Departamento: </label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! Form::select('nombre', $departamento) !!}
-                              <br><br>
-                              <label class="col-sm-2 col-sm-2 control-label">Departamento: </label>
-                              <div class="col-sm-10">
-                               {!! Form::text('departamento_id', null, ['class' => 'form-control', 'placeholder'=>'Departamento']) !!}
-                              </div>
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">RUT: </label>
                               <div class="col-sm-10">
