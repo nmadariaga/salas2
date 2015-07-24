@@ -148,7 +148,7 @@
                               @foreach($horarios as $horario)
                               <tr>
                                   <td>{{ $horario->fecha }}</td>
-                                  <td>{{ $horario->sala_id }}</td>
+                                  <td>{{ $horario->sala->nombre}}</td>
                                   <td>{{ $horario->periodo_id }}</td>
                                   <td>{!! Html::link(route('horarios.show', $horario->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
                                   <td>{!! Html::link(route('horarios.edit', $horario->id), 'Editar', array('class' => 'label label-success')) !!}</td>

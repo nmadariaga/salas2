@@ -9,9 +9,9 @@ class Horario extends Model {
 	protected $guarded = ['id'];
 
 
-    public function salas()
+    public function sala()
     {
-        return $this->hasMany('App\Sala');
+        return $this->belongsTo('App\Sala');
     }
 
     public function periodos()
