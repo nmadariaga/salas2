@@ -44,7 +44,7 @@ class HorariosController extends Controller {
 				$horario->fecha = $request->input('fecha');
 				$horario->sala_id = $request->input('salas_id');
 				$horario->periodo_id = $request->input('periodo_id');
-				$horario->curso->asignatura_id = $request->input('curso->asignatura->nombre');
+				$horario->curso_id= $request->input('curso_id');
 
 
 				$horario->save();

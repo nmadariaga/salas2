@@ -25,7 +25,7 @@ class StoreHorarioRequest extends Request {
 			"fecha" => "required|date",
 			"salas_id" => "required",
 			"periodo_id" => "required",
-			"curso->asignatura->nombre" => "required"
+			"curso_id" => "required"
 		];
 	}
 

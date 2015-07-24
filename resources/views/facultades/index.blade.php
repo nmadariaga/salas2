@@ -146,14 +146,14 @@
 
                           </div>
                             <hr>
-
-                            <form class="navbar-form navbar-left pull-right" role="search">
+                            {!! Form::open(['route' => 'facultades.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
                           <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar">
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Funcionario']) !!}
+                            
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>
-                        </form>
-                        
+                          {!! Form::close() !!}
+
                               <thead>
                               <tr>
                                   <th> Nombre</th>
