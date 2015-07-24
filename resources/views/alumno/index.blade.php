@@ -79,30 +79,16 @@
                   <h5 class="centered">Menú Alumno</h5>
 
                   <li class="mt">
-                      <a class="active" href="inicio">
+                      <a class="active" href="alumno">
                           <span>INICIO</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="/alumno/buscar" >
+                      <a href="buscar" >
                           <span>BUSCAR</span>
                       </a>
                   </li>
-
-                  <li class="sub-menu">
-                      <a href="#" >
-                          <span>VER HORARIOS</span>
-                      </a>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="#" >
-                          <span>ASIGNATURAS</span>
-                      </a>
-                  </li>
-
-                  
 
               </ul>
               <!-- sidebar menu end-->
