@@ -16,7 +16,7 @@ public function campus()
 
 public function horario()
     {
-        return $this->hasMany('App\Horario');
+        return $this->belongsTo('App\Horario');
     }
 
 
