@@ -24,8 +24,8 @@ class UpdateDocenteRequest extends Request {
 		return [
 			"departamento_id" => "required",
 			"rut" => "required|min:7|max:8",
-			"nombres" => "required|min:7|max:40",
-			"apellidos" => "required|min:7|max:40",
+			"nombres" => "required|min:3|max:40",
+			"apellidos" => "required|min:3|max:40",
 
 		];
 	}

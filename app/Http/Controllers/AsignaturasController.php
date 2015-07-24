@@ -38,7 +38,7 @@ class AsignaturasController extends Controller {
 		$asignaturas = new \App\Asignatura;
 
 		$asignaturas->nombre = ucwords($request->input('nombre'));
-		$asignaturas->codigo = $request->input('codigo');
+		$asignaturas->codigo = strtoupper($request->input('codigo'));
 		$asignaturas->descripcion = ucfirst($request->input('descripcion'));
 		$asignaturas->departamento_id = $request->input('departamento_id');
 
@@ -83,7 +83,7 @@ class AsignaturasController extends Controller {
 		$asignaturas = \App\Asignatura::find($id);
 
 		$asignaturas->nombre = ucwords($request->input('nombre'));
-		$asignaturas->codigo = $request->input('codigo');
+		$asignaturas->codigo = strtoupper($request->input('codigo'));
 		$asignaturas->descripcion = ucfirst($request->input('descripcion'));
 		$asignaturas->departamento_id = $request->input('departamento_id');
 
