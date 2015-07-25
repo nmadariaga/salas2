@@ -17,6 +17,12 @@ public function campus()
         return $this->belongsTo('App\Campus');
     }
 
+public function scopeName($query, $name)
+    {
+    	
+    	$query->where('nombre', $name);
+    }
+
 }
 
 
