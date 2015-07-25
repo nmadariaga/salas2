@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSalaRequest;
-use App\Http\Requests\UpdateSalaRequest;
+use App\Http\Requests\StoreSalasRequest;
+use App\Http\Requests\UpdateSalasRequest;
 use App\Http\Controllers\Controller;
 use App\Tipodesala;
 use Illuminate\Http\Request;
@@ -36,7 +36,7 @@ class SalasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(StoreSalaRequest $request)
+	public function store(StoreSalasRequest $request)
 	{
 		$salas = new \App\Sala;
 
@@ -83,7 +83,7 @@ class SalasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(UpdateSalaRequest $request, $id)
+	public function update(UpdateSalasRequest $request, $id)
 	{
 		$salas = \App\Sala::find($id);
 

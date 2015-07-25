@@ -15,7 +15,7 @@ class DocentesController extends Controller {
 	 */
 	public function index()
 	{
-		return view("docentes.index")->with('docentes', \App\Docente::paginate(5)->setPath('docente'));
+		return view("docentes.index")->with('docentes', \App\Docente::paginate(5)->setPath('docentes'));
 	}
 
 	/**
