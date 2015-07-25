@@ -135,7 +135,7 @@
       <section id="main-content">
           <section class="wrapper">
           <br>
-            <h3> Agregar asignatura al estudiante: {{$estudiante->nombres}}</h3>
+            <h3> Agregar curso a estudiante: {{$estudiante->nombres}}&nbsp{{$estudiante->apellidos}}</h3>
 
             <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">

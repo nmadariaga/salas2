@@ -140,7 +140,7 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
                           <div class="head-table">
-                            <h4>Listado de asignaturas del estudiante {{$estudiante->nombres}} {{$estudiante->apellidos}}{!! Html::link(route('estudiantes.asignaturascursadas.create', $estudiante->id), 'Agregar asignatura', array('class' => 'btn btn-warning btn-sm')) !!}</a>
+                            <h4>Listado de cursos estudiante <b>{{$estudiante->nombres}} {{$estudiante->apellidos}}</b></a>&nbsp&nbsp&nbsp&nbsp&nbsp{!! Html::link(route('estudiantes.asignaturascursadas.create', $estudiante->id), 'Agregar asignatura', array('class' => 'btn btn-warning btn-sm')) !!}
                             </h4>
                           </div>
                             <hr>
