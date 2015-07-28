@@ -49,6 +49,30 @@ class CampusController extends Controller {
 		return redirect()->route('campus.index')->with('message', 'Campus Agregado');
 	}
 
+	public function leerFichero()
+	{
+
+		\Excel::load('public/prueba.csv', function($archivo)
+		{
+			$resultado = $archivo->get();
+			foreach($resultado as $key => $dato)
+			{
+					//echo $dato->nombre.'---'.$dato->direccion.'<br>';
+					$campus = new \App\Campus;
+
+					$campus->nombre = ucwords($dato->nombre);
+					$campus->direccion = ucwords($dato->direccion);
+					$campus->latitud = $dato->latitud;
+					$campus->longitud = $dato->longitud;
+					$campus->descripcion = ucfirst($dato->descripcion);
+					$campus->rut_encargado = $dato->rut_encargado;
+
+					$campus->save();
+
+			}
+		})->get();
+		return view ("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'));
+	}
 	/**
 	 * Display the specified resource.
 	 *

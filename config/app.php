@@ -138,6 +138,7 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
 		'UTEM\Dirdoc\Auth\DirdocAuthServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -199,6 +200,7 @@ return [
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'Form' 			=> 'Collective\Html\FormFacade',
     'HTML' => 'Collective\Html\HtmlFacade',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
 	],
 
