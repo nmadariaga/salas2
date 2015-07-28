@@ -23,6 +23,4 @@ class Horario extends Model {
     {
         return $this->hasMany('App\Curso');
     }
-
-
 }
