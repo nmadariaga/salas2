@@ -141,34 +141,38 @@
 	                      </ul>
                       </div>
                     @endif
-                      <h4 class="mb">Ingrese la información de la asignatura</h4>
+                      <h4 class="mb">Ingrese la información del horario</h4>
                       {!! Form::open(['route' => 'horarios.store']) !!}
                       <form class="form-horizontal style-form" method="get">
-                      		<div class="form-group">
-								{!! Form::text('fecha', null, ['class' => 'form-control', 'placeholder'=>'Fecha del Horario']) !!}
-							</div>
-							<div class="form-group"><p>Sala:
-								{!! Form::select('salas_id', $salas) !!}</p>
-							</div>
-							<div class="form-group"><p>Período:
-								{!! Form::select('periodo_id', $periodo) !!}</p>
-							</div>
-							<div class="form-group"><p>Curso:
-								{!! Form::select('curso->asignatura->nombre', $asignatura) !!}</p>
-							</div>
-							<div class="form-group">
-								{!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}
-							</div>
-					</form>
-							{!! Form::close() !!}
-      						<p>
-	    						@if(Session::has('message'))
-          						<div class="btn btn-success disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
-        						@endif
+                      		<div class="form-group">Fecha inicial del semestre
+								            {!! Form::text('fechaInicial', null, ['class' => 'form-control', 'placeholder'=>'Dia de Inicio']) !!}
+							            </div>
+							            <div class="form-group"><p>Sala:
+								            {!! Form::select('salas_id', $salas) !!}</p>
+							            </div>
+							            <div class="form-group"><p>Período:
+							            	{!! Form::select('periodo_id', $periodo) !!}</p>
+							            </div>
+							            <div class="form-group"><p>Curso:
+								            {!! Form::select('curso_id', $curso) !!}</p>
+							            </div>
+                          <div class="form-group">Fecha final del semestre
+								            {!! Form::text('fechaFinal', null, ['class' => 'form-control', 'placeholder'=>'Dia de termino']) !!}
+							            </div>
+							            <div class="form-group">
+								            {!! Form::submit('Registrar', ["class" => "btn btn-success btn-block"]) !!}
+							            </div>
+
+					          </form>
+							      {!! Form::close() !!}
+      						  <p>
+	    						    @if(Session::has('message'))
+          						  <div class="btn btn-success disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
+        						  @endif
       						</p>
                   </div>
-              </div><!-- col-lg-12-->
-            </div><!-- /row -->
+              </div>
+            </div>
 
 <center>
 <br>

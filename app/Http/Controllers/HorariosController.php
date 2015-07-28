@@ -15,7 +15,7 @@ class HorariosController extends Controller {
 			 */
 			public function index()
 			{
-				return view("horarios.index")->with('horarios', \App\Horario::paginate(5)->setPath('horario'));
+				return view("horarios.index")->with('horarios', \App\Horario::paginate(20)->setPath('horario'));
 			}
 
 			/**
@@ -27,7 +27,7 @@ class HorariosController extends Controller {
 			{
 				$periodo = \App\Periodo::lists('bloque','id');
 				$sala = \App\Sala::lists('nombre','id');
-				$curso = \App\Curso::lists('asignatura_id','seccion','id');
+				$curso = \App\Curso::lists('seccion','id');
 				$asignatura = \App\Asignatura::lists('nombre','id');
 				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$curso)->with('asignatura',$asignatura);
 			}
@@ -39,15 +39,25 @@ class HorariosController extends Controller {
 			 */
 			public function store(StoreHorarioRequest $request)
 			{
-				$horario = new \App\Horario;
 
-				$horario->fecha = $request->input('fecha');
-				$horario->sala_id = $request->input('salas_id');
-				$horario->periodo_id = $request->input('periodo_id');
-				$horario->curso_id= $request->input('curso_id');
+					$inicio = $request->input('fechaInicial');
+					//$fin = $request->input('fechaFinal');
+					$fechaInicial = date_create($request->input('fechaInicial'));
+					$fechaFinal = date_create($request->input('fechaFinal'));
+					(int)$diferenciaEnSemanas = $fechaInicial->diff($fechaFinal)
+																									 ->format('%R%a días')/7;
 
-
-				$horario->save();
+					for($i=1; $i<$diferenciaEnSemanas; $i++)
+					{
+						$inicio = strtotime ( '+7 day' , strtotime ( $inicio ) ) ;
+						$inicio = date ( 'Y-m-j' , $inicio );
+						$horario = new \App\Horario;
+						$horario->fecha = $inicio;
+						$horario->sala_id = $request->input('salas_id');
+						$horario->periodo_id = $request->input('periodo_id');
+						$horario->curso_id= $request->input('curso_id');
+						$horario->save();
+					}
 
 				return redirect()->route('horarios.index')->with('message', 'horario Agregado');
 			}
@@ -61,7 +71,7 @@ class HorariosController extends Controller {
 			public function show($id)
 			{
 				$horario = \App\Horario::find($id);
-        		$periodo = \App\Periodo::find($horario->periodo_id);
+      	$periodo = \App\Periodo::find($horario->periodo_id);
 				$sala = \App\Sala::find($horario->sala_id);
 				$curso = \App\Curso::find($horario->sala_id);
 				return view('horarios.show')->with('horario',$horario)->with('periodo',$periodo)->with('sala',$sala)->with('curso',$curso);
