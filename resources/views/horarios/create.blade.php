@@ -20,17 +20,41 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap-datepicker.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script>
+    $(function() {
+   //Array para dar formato en español
+    $.datepicker.regional['es'] =
+    {
+    closeText: 'Cerrar',
+    prevText: 'Previo',
+    nextText: 'Próximo',
+
+    monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+    'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+    monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+    'Jul','Ago','Sep','Oct','Nov','Dic'],
+    monthStatus: 'Ver otro mes', yearStatus: 'Ver otro año',
+    dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+    dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'],
+    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+    dateFormat: 'yy-mm-dd', firstDay: 0,
+    initStatus: 'Selecciona la fecha', isRTL: false};
+   $.datepicker.setDefaults($.datepicker.regional['es']);
+
+      
+    });
+    </script>
+
     <style>
       body {overflow-x:hidden;}
     </style>
+
   </head>
 
   <body>
@@ -145,7 +169,12 @@
                       {!! Form::open(['route' => 'horarios.store']) !!}
                       <form class="form-horizontal style-form" method="get">
                       		<div class="form-group">
-								{!! Form::text('fecha', null, ['class' => 'form-control', 'placeholder'=>'Fecha del Horario']) !!}
+								{!! Form::text('fecha', '', ['id' => 'datepicker', 'class' => 'form-control', 'placeholder'=>'Fecha del Horario']) !!}
+                <script>
+                  $(function() {
+                    $("#datepicker").datepicker();
+                  });
+                </script>
 							</div>
 							<div class="form-group"><p>Sala:
 								{!! Form::select('salas_id', $salas) !!}</p>
