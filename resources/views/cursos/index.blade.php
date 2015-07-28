@@ -78,7 +78,7 @@
                   <h5 class="centered">Menú Encargado</h5>
 
                   <li class="mt">
-                      <a href="encargado/menu">
+                      <a href="/encargado/menu">
                           <span>INICIO</span>
                       </a>
                   </li>
