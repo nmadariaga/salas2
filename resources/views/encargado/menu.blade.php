@@ -133,8 +133,9 @@
         <section class="wrapper">
               <div class="row">
                   
-                        <div class="row mtbox">
-                        <center><h1>Bienvenido Encargado</h1></center>
+                        <div class="row mtbox"> @if ( !Auth::guest() )
+                        <center><h1>Bienvenido {{Auth::user()->nombres}}</h1></center>
+                        @endif
                         </div><!-- /row mt -->  
                   
                       
