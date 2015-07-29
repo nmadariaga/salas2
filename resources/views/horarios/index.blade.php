@@ -148,7 +148,7 @@
                               <tbody>
                               @foreach($horarios as $horario)
                               <tr>
-                                  <td>{{ $horario->curso_id }}</td>
+                                  <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
                                   <td>{{ $horario->fecha }}</td>
                                   <td>{{ $horario->sala->nombre}}</td>
                                   <td>{{ $horario->periodo_id}}</td>

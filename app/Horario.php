@@ -19,8 +19,8 @@ class Horario extends Model {
         return $this->hasMany('App\Periodo');
     }
 
-    public function cursos()
+    public function curso()
     {
-        return $this->hasMany('App\Curso');
+        return $this->belongsTo('App\Curso');
     }
 }

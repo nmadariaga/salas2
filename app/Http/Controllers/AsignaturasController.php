@@ -14,6 +14,7 @@ class AsignaturasController extends Controller {
 	 */
 	public function index()
 	{
+		
 		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(20)->setPath('asignatura'));
 	}
 

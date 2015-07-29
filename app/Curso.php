@@ -20,6 +20,11 @@ class Curso extends Model {
 
     public function horario()
     {
-        return $this->belongsTo('App\Horario');
+        return $this->hasMany('App\Horario');
+    }
+
+    public function estudiante()
+    {
+        return $this->belongsToMany('App\Estudiante');
     }
 }

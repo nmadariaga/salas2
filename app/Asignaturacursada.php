@@ -13,4 +13,9 @@ class Asignaturacursada extends Model {
 	{
 		return $this->belongsToMany('App\Estudiante');
 	}
+
+	public function cursos()
+	{
+		return $this->belongsToMany('App\Curso');
+	}
 }

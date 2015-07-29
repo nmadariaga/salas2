@@ -106,7 +106,7 @@
 
                         <div class="row mtbox">
                           @if ( !Auth::guest() )
-                        <center><h1>Bienvenido Alumno {{Auth::user("")->rut}}</h1></center>
+                        <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
                         @endif
                         </div><!-- /row mt -->
                         

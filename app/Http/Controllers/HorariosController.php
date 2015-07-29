@@ -15,7 +15,13 @@ class HorariosController extends Controller {
 			 */
 			public function index()
 			{
-				return view("horarios.index")->with('horarios', \App\Horario::paginate(20)->setPath('horario'));
+				$cursos = \App\Curso::all();
+				$cursos_list = array();
+				foreach ($cursos as $curso) {
+					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
+						$curso->seccion); 
+				}
+				return view("horarios.index")->with('curso',$cursos_list)->with('horarios', \App\Horario::paginate(20)->setPath('horario'));
 			}
 
 			/**

@@ -14,8 +14,13 @@ class Estudiante extends Model {
         return $this->belongsTo('App\Carrera');
     }
 
-		public function cursos()
-		{
-			return $this->belongsToMany('App\Curso');
-		}
+	public function cursos()
+	{
+		return $this->belongsToMany('App\Curso', 'curso_estudiante');
+	}
+
+	public function usuario()
+	{
+		return $this->belongsTo('App\Usuario', 'rut');
+	}
 }
