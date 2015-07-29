@@ -181,10 +181,10 @@
           						<div class="btn btn-success disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
         						@endif
       						</p>
-                  {!! Form::open(['route' => 'hola.leerFichero']) !!}
+                  
                   <form class="form-horizontal style-form" method="get">
                   <input type="file" id="archivo" name="archivo" />
-
+                 
                   </div>
               </div><!-- col-lg-12-->
             </div><!-- /row -->
