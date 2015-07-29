@@ -27,9 +27,14 @@ class HorariosController extends Controller {
 			{
 				$periodo = \App\Periodo::lists('bloque','id');
 				$sala = \App\Sala::lists('nombre','id');
-				$curso = \App\Curso::lists('seccion','id');
+				$cursos = \App\Curso::all();
+				$cursos_list = array();
+				foreach ($cursos as $curso) {
+					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
+						$curso->seccion); 
+				}
 				$asignatura = \App\Asignatura::lists('nombre','id');
-				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$curso)->with('asignatura',$asignatura);
+				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$cursos_list)->with('asignatura',$asignatura);
 			}
 
 			/**
