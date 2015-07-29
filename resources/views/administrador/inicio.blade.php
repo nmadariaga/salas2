@@ -148,7 +148,7 @@
                         <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
                         @endif
                         </div><!-- /row mt -->
-
+                        <1v>$v</1v>
 
                         <div class="row mt">
                         <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>

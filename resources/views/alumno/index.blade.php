@@ -105,11 +105,11 @@
               <div class="row">
 
                         <div class="row mtbox">
-                          @if ( !Auth::guest() )
+                        <!--  @if ( !Auth::guest() )
                         <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
-                        @endif
+                        @endif-->
+                        <center><h1>Bienvenido {{$nombreCompleto}}</h1></center>
                         </div><!-- /row mt -->
-                        
                         <div class="row mt">
                         <center><h3>Tu horario para este semestre es el siguiente.</h3></center>
 
@@ -144,11 +144,11 @@
                           </table>
 
                         <div class="row">
-                         
+
                         </div><!-- /row -->
 
                         <div class="row mt">
-                  
+
                         </div><!-- /row -->
 
               </div>

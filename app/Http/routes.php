@@ -23,7 +23,7 @@ Route::get('/', function()
     return view();
 });*/
 
-Route::resource('alumno','AlumnosController');
+//Route::resource('alumno','AlumnosController');
 
 Route::get('buscar','AlumnosController@buscar');
 
@@ -40,6 +40,8 @@ Route::controller('auth', 'Auth\AuthController', [
     'getLogout' => 'auth.logout'
 ]);
 Route::post('hola','CampusController@leerFichero');
+
+
 
 Route::group(['middleware' => 'roladmin'], function ()
 {
@@ -72,3 +74,4 @@ Route::resource('rolesusuarios','RolesusuariosController');
 Route::get('/bienvenido',['middleware' => ['auth', 'direccionador_rol_middleware'],'as'=>'bienvenida.index','uses'=> 'MenuController@Seleccion']);
 Route::get('/admin/inicio', ['middleware' => ['auth','roladmin'],'as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
 Route::get('/encargado/menu' ,['middleware' => ['auth', 'rolencargado'],'as'=>'encargado.index','uses'=> 'MenuController@menuEncargado']);
+Route::get('/alumno' ,['middleware' => ['auth', 'rolalumno'],'as'=>'alumno.index','uses'=> 'AlumnosController@index']);

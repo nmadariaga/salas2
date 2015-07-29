@@ -28,8 +28,9 @@ class Kernel extends HttpKernel {
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
 		'roladmin' => 'App\Http\Middleware\RolAdminMiddleware',
-	    'rolencargado' => 'App\Http\Middleware\RolEncargadoMiddleware',
-	    'direccionador_rol_middleware' => 'App\Http\Middleware\direccionador_rol_middleware',
-	];  
+	  'rolencargado' => 'App\Http\Middleware\RolEncargadoMiddleware',
+	  'direccionador_rol_middleware' => 'App\Http\Middleware\direccionador_rol_middleware',
+		'rolalumno' => 'App\Http\Middleware\RolEstudianteMiddleware',
+	];
 
 }
