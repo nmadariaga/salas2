@@ -49,10 +49,12 @@ class CampusController extends Controller {
 		return redirect()->route('campus.index')->with('message', 'Campus Agregado');
 	}
 
-	public function leerFichero()
+	public function leerFichero(Request $request)
 	{
 
-		\Excel::load('public/prueba.csv', function($archivo)
+		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'campus.csv');
+ 
+		\Excel::load(storage_path('archivos/campus.csv'), function($archivo)
 		{
 			$resultado = $archivo->get();
 			foreach($resultado as $key => $dato)

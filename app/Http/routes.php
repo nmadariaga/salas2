@@ -39,7 +39,8 @@ Route::controller('auth', 'Auth\AuthController', [
     'postLogin' => 'auth.doLogin',
     'getLogout' => 'auth.logout'
 ]);
-Route::get('hola','CampusController@leerFichero');
+Route::post('hola','CampusController@leerFichero');
+
 Route::group(['middleware' => 'roladmin'], function ()
 {
   Route::resource('campus','CampusController');

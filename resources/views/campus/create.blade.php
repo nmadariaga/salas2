@@ -182,8 +182,13 @@
         						@endif
       						</p>
                   
-                  <form class="form-horizontal style-form" method="get">
-                  <input type="file" id="archivo" name="archivo" />
+                  <form class="form-horizontal style-form" method="post" action="/hola" enctype="multipart/form-data">
+                  <input type="file" id="archivo" name="archivo" accept=".csv" />
+                  <br>
+                  <input type="submit" value="Cargar Archivo">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                  </form>
+
                  
                   </div>
               </div><!-- col-lg-12-->
