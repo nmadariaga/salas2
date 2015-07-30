@@ -158,17 +158,17 @@
                             @endif
                             @if($rol->nombre == 'Encargado')
                             <a href="/encargado/menu" >
-                                <span>Encargado</span>
+                                -<span>Encargado</span>-
                             </a>
                             @endif
                             @if($rol->nombre == 'Docente')
                             <a href="#" >
-                                <span>Docente</span>
+                                -<span>Docente</span>-
                             </a>
                             @endif
                             @if($rol->nombre == 'Estudiante')
                             <a href="/alumno" >
-                                <span>Alumno</span>
+                                -<span>Alumno</span>-
                             </a>
                             @endif
                           @endforeach</h3></center>

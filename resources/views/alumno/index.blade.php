@@ -113,17 +113,17 @@
                           @foreach($usuario->roles as $rol)
                             @if($rol->nombre == 'Administrador')
                             <a href="/admin/inicio" >
-                                <span>Administrador</span>
+                                -<span>Administrador</span>-
                             </a>
                             @endif
                             @if($rol->nombre == 'Encargado')
                             <a href="/encargado/menu" >
-                                <span>Encargado</span>
+                                -<span>Encargado</span>-
                             </a>
                             @endif
                             @if($rol->nombre == 'Docente')
                             <a href="#" >
-                                <span>Docente</span>
+                                -<span>Docente</span>-
                             </a>
                             @endif
                             @if($rol->nombre == 'Estudiante')

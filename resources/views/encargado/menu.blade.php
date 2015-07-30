@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -143,7 +143,7 @@
                           @foreach($usuario->roles as $rol)
                             @if($rol->nombre == 'Administrador')
                             <a href="/admin/inicio" >
-                                <span>Administrador</span>
+                                -<span>Administrador</span>-
                             </a>
                             @endif
                             @if($rol->nombre == 'Encargado')
@@ -153,12 +153,12 @@
                             @endif
                             @if($rol->nombre == 'Docente')
                             <a href="#" >
-                                <span>Docente</span>
+                                -<span>Docente</span>
                             </a>
                             @endif
                             @if($rol->nombre == 'Estudiante')
                             <a href="/alumno" >
-                                <span>Alumno</span>
+                              -<span>Alumno</span>-
                             </a>
                             @endif
                           @endforeach</h3></center>

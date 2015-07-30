@@ -19,11 +19,11 @@ public function campus()
 
 public function scopeName($query, $name)
     {
-    	
-    	$query->where('nombre', $name);
+			//dd('scope: '.$name);
+			if($name != "")
+			{
+    		$query->where('nombre', ucwords($name));
+			}
     }
 
 }
-
-
-
