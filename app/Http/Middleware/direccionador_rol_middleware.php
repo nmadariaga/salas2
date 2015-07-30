@@ -26,11 +26,6 @@ class direccionador_rol_middleware {
 			return redirect('admin/inicio');
 		}
 
-		/*if(!$rol_est->usuarios()->find($user->rut))
-		{
-			return redirect('admin/inicio');
-		}*/
-
 		if($rol_func->usuarios()->find($user->rut))
 		{
 			return redirect('encargado/menu');
@@ -40,7 +35,10 @@ class direccionador_rol_middleware {
 		{
 			return redirect('admin/inicio');
 		}*/
-
+		if($rol_est->usuarios()->find($user->rut))
+		{
+			return redirect('/alumno');
+		}
 		return $next($request);
 	}
 

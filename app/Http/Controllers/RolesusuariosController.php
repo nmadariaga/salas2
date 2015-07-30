@@ -4,7 +4,7 @@ use App\Http\Requests\StoreRolesUsuariosRequest;
 use App\Http\Requests\UpdateRolesUsuariosRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Role;
 class RolesusuariosController extends Controller {
 
 	/**

@@ -37,7 +37,7 @@
         </td>
       </tr>
     </table>
-    <a href="#" class="btn btn-primary btn-lg">Estudiante</a>
+    <a href="/alumno" class="btn btn-primary btn-lg">Estudiante</a>
     <a href="#" class="btn btn-primary btn-lg">Académico</a>
     <a href="/encargado/menu" class="btn btn-primary btn-lg">Funcionario</a>
     <a href="/admin/inicio" class="btn btn-primary btn-lg">Administrador</a>

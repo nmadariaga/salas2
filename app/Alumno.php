@@ -17,5 +17,4 @@ class Alumno extends Model {
     {
         return $this->belongsTo('App\Periodo');
     }
-
 }

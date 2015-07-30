@@ -6,7 +6,7 @@ class Usuario extends \UTEM\Dirdoc\Auth\Models\DirdocWSUser {
 
 	public function roles()
     {
-        return $this->belongsToMany('App\Role', 'roles_usuarios', 'user_rut', 'rol_id');
+        return $this->belongsToMany('App\Role', 'roles_usuarios', 'rut', 'rol_id');
     }
 
     public function estudiante()

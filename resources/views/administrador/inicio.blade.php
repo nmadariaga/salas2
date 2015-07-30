@@ -144,11 +144,34 @@
               <div class="row">
 
                         <div class="row mtbox">
-                          @if ( !Auth::guest() )
+                        <!--  @if ( !Auth::guest() )
                         <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
                         @endif
-                        </div><!-- /row mt -->
-                        <1v>$v</1v>
+                      </div>--><!-- /row mt -->
+                        <center><h1>Bienvenido {{$nombreCompleto}}</h1></center>
+                        <center><h4>Contectado como:
+                          @foreach($usuario->roles as $rol)
+                            @if($rol->nombre == 'Administrador')
+                            <a href="/admin/inicio" >
+                              >><u><b><span>Administrador</span></b></u><<
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Encargado')
+                            <a href="/encargado/menu" >
+                                <span>Encargado</span>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Docente')
+                            <a href="#" >
+                                <span>Docente</span>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Estudiante')
+                            <a href="/alumno" >
+                                <span>Alumno</span>
+                            </a>
+                            @endif
+                          @endforeach</h3></center>
 
                         <div class="row mt">
                         <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>

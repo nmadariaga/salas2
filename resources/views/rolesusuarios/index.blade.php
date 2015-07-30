@@ -147,7 +147,7 @@
                               <thead>
                               <tr>
                                   <th> RUT</th>
-                                  <th></th>
+                                  <th>Rol</th>
                                   <th></th>
                               </tr>
                               </thead>
@@ -155,6 +155,7 @@
                               @foreach($rolesusuarios as $rolesusuario)
                               <tr>
                                   <td>{{ $rolesusuario->rut }}</td>
+                                  <td>{{ $rolesusuario->rol->nombre }}</td>
                                   <td>{!! Html::link(route('rolesusuarios.show', $rolesusuario->id), 'Detalles', array('class' => 'label label-info')) !!}</td>
                                   <td>{!! Html::link(route('rolesusuarios.edit', $rolesusuario->id), 'Editar', array('class' => 'label label-success')) !!}</td>
                                   <td>

@@ -2,8 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use Auth;
 
 class MenuController extends Controller {
 
@@ -29,14 +29,32 @@ class MenuController extends Controller {
 
 	public function menuEncargado()
 	{
-		return view('encargado.menu');
+    $usuario = Auth::user();
+		$nombres = $usuario->estudiante->nombres;
+		$apellidos = $usuario->estudiante->apellidos;
+		$nombreCompleto = $nombres.' '.$apellidos;
+		return view('encargado.menu')->with('usuario',$usuario)->with('nombreCompleto',$nombreCompleto);
 	}
 
 	public function inicioAdministrador()
 	{
+    $usuario = Auth::user();
+		$nombres = $usuario->estudiante->nombres;
+		$apellidos = $usuario->estudiante->apellidos;
+		$nombreCompleto = $nombres.' '.$apellidos;
 
-		return view('administrador.inicio');
+		return view('administrador.inicio')->with('usuario',$usuario)->with('nombreCompleto',$nombreCompleto);
 	}
+
+  public function inicioAlumno()
+  {
+    $usuario = Auth::user();
+		$nombres = $usuario->estudiante->nombres;
+		$apellidos = $usuario->estudiante->apellidos;
+		$nombreCompleto = $nombres.' '.$apellidos;
+		$periodos = new \App\Periodo;
+		return view("alumno.index")->with('nombreCompleto',$nombreCompleto)->with('usuario',$usuario)->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'));
+  }
 
 	/**
 	 * Show the form for creating a new resource.

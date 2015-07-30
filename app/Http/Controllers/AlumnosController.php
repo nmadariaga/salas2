@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Alumno;
 use App\Periodo;
 use Auth;
+use App\Rolusuario;
+
 class AlumnosController extends Controller {
 
 	/**
@@ -14,11 +16,7 @@ class AlumnosController extends Controller {
 	 */
 	public function index()
 	{
-		$nombres = Auth::user()->estudiante->nombres;
-		$apellidos = Auth::user()->estudiante->apellidos;
-		$nombreCompleto = $nombres." ".$apellidos;
-		$periodos = new \App\Periodo;
-		return view("alumno.index")->with('nombreCompleto',$nombreCompleto)->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'));
+		
 	}
 
 	public function buscar()

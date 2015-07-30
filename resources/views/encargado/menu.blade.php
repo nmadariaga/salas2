@@ -15,14 +15,14 @@
     <link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/zabuto_calendar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/js/gritter/css/jquery.gritter.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">    
-    
+    <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
 
     <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
-    
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -41,7 +41,7 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-             
+
             <!--logo start-->
             <a href="index.html" class="logo">{!!HTML::image('utem.png')!!}</a>
             <!--logo end-->
@@ -49,10 +49,10 @@
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
-                    
+
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
-                    
+
                     <!-- inbox dropdown end -->
                 </ul>
                 <!--  notification end -->
@@ -64,7 +64,7 @@
             </div>
         </header>
       <!--header end-->
-      
+
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -74,9 +74,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               <br><br>
-                  
+
                   <h5 class="centered">Menú Encargado</h5>
-                    
+
                   <li class="mt">
                       <a class="active" href="menu">
                           <span>INICIO</span>
@@ -124,7 +124,7 @@
           </div>
       </aside>
       <!--sidebar end-->
-      
+
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
@@ -132,30 +132,53 @@
       <section id="main-content">
         <section class="wrapper">
               <div class="row">
-                  
-                        <div class="row mtbox"> @if ( !Auth::guest() )
+
+                        <div class="row mtbox">
+                        <!--@if ( !Auth::guest() )
                         <center><h1>Bienvenido {{Auth::user()->nombres}}</h1></center>
                         @endif
-                        </div><!-- /row mt -->  
-                  
-                      
+                      </div>--><!-- /row mt -->
+                        <center><h1>Bienvenido {{$nombreCompleto}}</h1></center>
+                        <center><h4>Contectado como:
+                          @foreach($usuario->roles as $rol)
+                            @if($rol->nombre == 'Administrador')
+                            <a href="/admin/inicio" >
+                                <span>Administrador</span>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Encargado')
+                            <a href="/encargado/menu" >
+                              >><u><b> <span>Encargado</span></b></u><<
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Docente')
+                            <a href="#" >
+                                <span>Docente</span>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Estudiante')
+                            <a href="/alumno" >
+                                <span>Alumno</span>
+                            </a>
+                            @endif
+                          @endforeach</h3></center>
                         <div class="row mt">
                         <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>
 
                         <center><p>An abbreviation of the word attribute is attr.</p></center>
                         </div><!-- /row -->
-                    
-                            
+
+
                         <div class="row">
                           <center><p>This line of text is meant to be treated as fine print.</p></center>
 
                           <center><p>The following snippet of  text is rendered as bold text.</p></center>
                         </div><!-- /row -->
-          
+
                         <div class="row mt">
                           <center><p>The following snippet of text is rendered as italicized text.</p></center>
-                        </div><!-- /row --> 
-          
+                        </div><!-- /row -->
+
               </div>
         </section>
       </section>
@@ -172,14 +195,14 @@
 
     <!--common script for all pages-->
     <script src="{{ asset('/js/common-scripts.js"></script>
-    
 
 
 
-    <!--script for this page-->  
- 
-  
-  
+
+    <!--script for this page-->
+
+
+
 
   </body>
 </html>
