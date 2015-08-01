@@ -38,8 +38,9 @@ class EstudiantesController extends Controller {
 
 	public function create()
 	{
+		$usuario = Auth::user();
 		$carrera = Carrera::lists('nombre','id');
-		return view('estudiantes.create')->with('carrera',$carrera);
+		return view('estudiantes.create')->with('carrera',$carrera)->with('usuario',$usuario);
 	}
 
 	/**
@@ -49,6 +50,7 @@ class EstudiantesController extends Controller {
 	 */
 	public function store(StoreEstudianteRequest $request)
 	{
+		$usuario = Auth::user();
 		$estudiante = new \App\Estudiante;
 
 		$estudiante->carrera_id = $request->input('carrera_id');
@@ -59,7 +61,7 @@ class EstudiantesController extends Controller {
 
 		$estudiante->save();
 
-		return redirect()->route('estudiantes.index')->with('message', 'Estudiante Agregado');
+		return redirect()->route('estudiantes.index')->with('message', 'Estudiante Agregado')->with('usuario',$usuario);
 	}
 
 	/**
@@ -70,9 +72,10 @@ class EstudiantesController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$estudiante = \App\Estudiante::find($id);
 		$carrera = Carrera::find($estudiante->carrera_id);
-		return view('estudiantes.show')->with('estudiante',$estudiante)->with('carrera',$carrera);
+		return view('estudiantes.show')->with('estudiante',$estudiante)->with('carrera',$carrera)->with('usuario',$usuario);
 	}
 
 	/**
@@ -83,8 +86,9 @@ class EstudiantesController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$usuario = Auth::user();
 		$carrera = Carrera::lists('nombre','id');
-		return view('estudiantes.edit')->with('estudiante', \App\Estudiante::find($id))->with('carrera',$carrera);
+		return view('estudiantes.edit')->with('estudiante', \App\Estudiante::find($id))->with('carrera',$carrera)->with('usuario',$usuario);
 	}
 
 	/**
@@ -95,6 +99,7 @@ class EstudiantesController extends Controller {
 	 */
 	public function update(UpdateEstudianteRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$estudiante = \App\Estudiante::find($id);
 
 		$estudiante->carrera_id = $request->input('carrera_id');
@@ -104,7 +109,7 @@ class EstudiantesController extends Controller {
 		$estudiante->email = $request->input('email');
 
 		$estudiante->save();
-		return redirect()->route('estudiantes.index', ['carrera' => $id])->with('message', 'Cambios guardados');
+		return redirect()->route('estudiantes.index', ['carrera' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -115,11 +120,12 @@ class EstudiantesController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$estudiante = \App\Estudiante::find($id);
 
 		$estudiante->delete();
 
-		return redirect()->route('estudiantes.index')->with('message', 'Estudiante Eliminado con éxito');
+		return redirect()->route('estudiantes.index')->with('message', 'Estudiante Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 }
