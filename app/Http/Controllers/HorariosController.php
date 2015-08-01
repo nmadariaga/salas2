@@ -5,7 +5,6 @@ use App\Http\Requests\UpdateHorarioRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
 class HorariosController extends Controller {
 
 			/**
@@ -19,7 +18,7 @@ class HorariosController extends Controller {
 				$cursos_list = array();
 				foreach ($cursos as $curso) {
 					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
-						$curso->seccion); 
+						$curso->seccion);
 				}
 				return view("horarios.index")->with('curso',$cursos_list)->with('horarios', \App\Horario::paginate(20)->setPath('horario'));
 			}
@@ -37,7 +36,7 @@ class HorariosController extends Controller {
 				$cursos_list = array();
 				foreach ($cursos as $curso) {
 					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
-						$curso->seccion); 
+						$curso->seccion);
 				}
 				$asignatura = \App\Asignatura::lists('nombre','id');
 				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$cursos_list)->with('asignatura',$asignatura);

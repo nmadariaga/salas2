@@ -152,15 +152,22 @@
                             @foreach($periodos as $periodo)
                               <tr>
                                 <td>{{ $periodo->inicio }} - {{ $periodo->fin }}</td>
-                                 <td class=" has-events" rowspan="1">
-                                  <div style="width: 99%; height: 100%;">
-                                    Asignatura 1 <br> Sala M3-101
-                                  </div>
-                                </td>
-                                <td class=" no-events" rowspan="1"></td>
-                                <td class=" no-events" rowspan="1"></td>
-                                <td class=" no-events" rowspan="1"></td>
-                                <td class=" no-events" rowspan="1"></td>
+                                    @foreach($cursos as $curso)
+                                        <td class=" has-events" rowspan="1"><!-- lunes-->
+                                        <div style="width: 99%; height: 100%;">
+                                            @foreach($curso->horarios as $horario)
+                                              @if($horario->fecha == $semana[0])
+                                                {{$curso->asignatura->nombre}}
+                                                {{$horario->fecha}}
+                                              @endif
+                                            @endforeach
+                                        </div>
+                                      </td>
+                                      <td class=" no-events" rowspan="1"></td><!-- martes-->
+                                      <td class=" no-events" rowspan="1"></td><!-- miercoles-->
+                                      <td class=" no-events" rowspan="1"></td><!-- jueves-->
+                                      <td class=" no-events" rowspan="1"></td><!-- viernes-->
+                                    @endforeach
                               </tr>
                               @endforeach
                             </tbody>

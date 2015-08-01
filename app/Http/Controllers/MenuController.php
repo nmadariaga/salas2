@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use Datetime;
 
 class MenuController extends Controller {
 
@@ -26,8 +27,8 @@ class MenuController extends Controller {
 	public function menuEncargado()
 	{
     $usuario = Auth::user();
-		$nombres = $usuario->estudiante->nombres;
-		$apellidos = $usuario->estudiante->apellidos;
+		$nombres = $usuario->nombres;
+		$apellidos = $usuario->apellidos;
 		$nombreCompleto = $nombres.' '.$apellidos;
 		return view('encargado.menu')->with('usuario',$usuario)->with('nombreCompleto',$nombreCompleto);
 	}
@@ -35,8 +36,8 @@ class MenuController extends Controller {
 	public function inicioAdministrador()
 	{
     $usuario = Auth::user();
-		$nombres = $usuario->estudiante->nombres;
-		$apellidos = $usuario->estudiante->apellidos;
+		$nombres = $usuario->nombres;
+		$apellidos = $usuario->apellidos;
 		$nombreCompleto = $nombres.' '.$apellidos;
 
 		return view('administrador.inicio')->with('usuario',$usuario)->with('nombreCompleto',$nombreCompleto);
@@ -62,11 +63,11 @@ class MenuController extends Controller {
         $diaSemana = 7;
 
     # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
-    $lunes = date("d-m-Y",mktime(0,0,0,$month,$day-$diaSemana+1,$year));
-    $martes = date("d-m-Y",mktime(0,0,0,$month,$day-$diaSemana+2,$year));
-    $miercoles = date("d-m-Y",mktime(0,0,0,$month,$day-$diaSemana+3,$year));
-    $jueves = date("d-m-Y",mktime(0,0,0,$month,$day-$diaSemana+4,$year));
-    $viernes = date("d-m-Y",mktime(0,0,0,$month,$day-$diaSemana+5,$year));
+    $lunes = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+1,$year));
+    $martes = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+2,$year));
+    $miercoles = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+3,$year));
+    $jueves = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+4,$year));
+    $viernes = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+5,$year));
     $semana = [$lunes, $martes, $miercoles, $jueves, $viernes];
 
     $usuario = Auth::user();
@@ -74,8 +75,9 @@ class MenuController extends Controller {
 		$apellidos = $usuario->estudiante->apellidos;
 		$nombreCompleto = $nombres.' '.$apellidos;
 		$periodos = new \App\Periodo;
-
-		return view("alumno.index")->with("semana",$semana)
+    $cursos = $usuario->estudiante->cursos;
+		return view("alumno.index")->with('cursos',$cursos)
+                              ->with('semana',$semana)
                                ->with('nombreCompleto',$nombreCompleto)
                                ->with('usuario',$usuario)
                                ->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'));

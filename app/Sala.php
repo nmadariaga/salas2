@@ -25,5 +25,3 @@ public function tiposala()
         return $this->hasOne('App\Tipodesala');
     }
 }
-
-
