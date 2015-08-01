@@ -6,6 +6,7 @@ use App\Http\Requests\StoreFacultadRequest;
 use App\Http\Requests\UpdateFacultadRequest;
 use Illuminate\Http\Request;
 use App\Campus;
+use Auth;
 
 class FacultadesController extends Controller {
 
@@ -16,8 +17,9 @@ class FacultadesController extends Controller {
 		 */
 		public function index(Request $request)
 		{
+			$usuario = Auth::user();
 			$facultades = \App\Facultad::name($request->get("name"))->orderBy('id','DESC')->paginate();
-			return view('facultades.index',compact('facultades'));
+			return view('facultades.index',compact('facultades'))->with('usuario',$usuario);
 		}
 
 		/**
@@ -27,8 +29,9 @@ class FacultadesController extends Controller {
 		 */
 		public function create()
 		{
+			$usuario = Auth::user();
 			$campus = Campus::lists('nombre','id');
-			return view('facultades.create')->with('campus',$campus);
+			return view('facultades.create')->with('campus',$campus)->with('usuario',$usuario);
 		}
 
 		/**
@@ -38,6 +41,7 @@ class FacultadesController extends Controller {
 		 */
 		public function store(StoreFacultadRequest $request)
 		{
+			$usuario = Auth::user();
 			$facultad = new \App\Facultad;
 
 			$facultad->nombre = ucwords($request->input('nombre'));
@@ -46,7 +50,7 @@ class FacultadesController extends Controller {
 
 			$facultad->save();
 
-			return redirect()->route('facultades.index')->with('message', 'Facultad Agregada');
+			return redirect()->route('facultades.index')->with('message', 'Facultad Agregada')->with('usuario',$usuario);
 		}
 
 		/**
@@ -57,9 +61,10 @@ class FacultadesController extends Controller {
 		 */
 		public function show($id)
 		{
+			$usuario = Auth::user();
 			$facultad = \App\Facultad::find($id);
 			$campus = Campus::find($facultad->campus_id);
-			return view('facultades.show')->with('facultad',$facultad)->with('campus',$campus);
+			return view('facultades.show')->with('facultad',$facultad)->with('campus',$campus)->with('usuario',$usuario);
 		}
 
 		/**
@@ -70,8 +75,9 @@ class FacultadesController extends Controller {
 		 */
 		public function edit($id)
 		{
+			$usuario = Auth::user();
 			$campus = Campus::lists('nombre','id');
-			return view('facultades.edit')->with('facultad', \App\Facultad::find($id))->with('campus',$campus);
+			return view('facultades.edit')->with('facultad', \App\Facultad::find($id))->with('campus',$campus)->with('usuario',$usuario);
 		}
 
 		/**
@@ -82,6 +88,7 @@ class FacultadesController extends Controller {
 		 */
 		public function update(UpdateFacultadRequest $request, $id)
 		{
+			$usuario = Auth::user();
 			$facultad = \App\Facultad::find($id);
 
 			$facultad->nombre = ucwords($request->input('nombre'));
@@ -89,7 +96,7 @@ class FacultadesController extends Controller {
 			$facultad->descripcion = ucfirst($request->input('descripcion'));
 
 			$facultad->save();
-			return redirect()->route('facultades.index', ['facultad' => $id])->with('message', 'Cambios guardados');
+			return redirect()->route('facultades.index', ['facultad' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 		}
 
 		/**
@@ -100,11 +107,12 @@ class FacultadesController extends Controller {
 		 */
 		public function destroy($id)
 		{
+			$usuario = Auth::user();
 			$facultad = \App\Facultad::find($id);
 
 			$facultad->delete();
 
-			return redirect()->route('facultades.index')->with('message', 'Facultad Eliminada con éxito');
+			return redirect()->route('facultades.index')->with('message', 'Facultad Eliminada con éxito')->with('usuario',$usuario);
 		}
 
 	}

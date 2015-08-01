@@ -18,6 +18,7 @@ Route::get('/', function()
     return redirect('auth/login');
 });
 
+Route::post('layout/plantilla', 'Layout@index'); 
 /*Route::get('bienvenido', function()
 {
     return view();

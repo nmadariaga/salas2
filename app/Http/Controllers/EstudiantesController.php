@@ -5,6 +5,7 @@ use App\Http\Requests\UpdateEstudianteRequest;
 use App\Http\Controllers\Controller;
 use App\Carrera;
 use Illuminate\Http\Request;
+use Auth;
 
 class EstudiantesController extends Controller {
 
@@ -15,8 +16,9 @@ class EstudiantesController extends Controller {
 	 */
 	public function index()
 	{
+		$usuario = Auth::user();
 		$acursada = new \App\Asignaturacursada;
-		return view("estudiantes.index")->with('estudiantes', \App\Estudiante::paginate(5)->setPath('estudiante'))->with('acursada',$acursada);
+		return view("estudiantes.index")->with('usuario',$usuario)->with('estudiantes', \App\Estudiante::paginate(5)->setPath('estudiante'))->with('acursada',$acursada);
 	}
 
 	/**

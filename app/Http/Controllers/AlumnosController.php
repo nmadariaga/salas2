@@ -16,12 +16,13 @@ class AlumnosController extends Controller {
 	 */
 	public function index()
 	{
-		
+		$usuario = Auth::user();
 	}
 
 	public function buscar()
 	{
-		return view('alumno.buscar')->with('horarios', \App\Horario::paginate(5)->setPath('horario'));
+		$usuario = Auth::user();
+		return view('alumno.buscar')->with('horarios', \App\Horario::paginate(5)->setPath('horario'))->with('usuario',$usuario);
 	}
 	/**
 	 * Show the form for creating a new resource.

@@ -4,6 +4,7 @@ use App\Http\Requests\StoreTipoDeSalaRequest;
 use App\Http\Requests\UpdateTipoDeSalaRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class TiposdesalasController extends Controller {
 
@@ -14,7 +15,8 @@ class TiposdesalasController extends Controller {
 	 */
 	public function index()
 	{
-		return view('tiposdesalas.index')->with('tiposdesalas', \App\Tipodesala::paginate(5)->setPath('tiposdesala'));
+		$usuario = Auth::user();
+		return view('tiposdesalas.index')->with('tiposdesalas', \App\Tipodesala::paginate(5)->setPath('tiposdesala'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -24,7 +26,8 @@ class TiposdesalasController extends Controller {
 	 */
 	public function create()
 	{
-		return view('tiposdesalas.create');
+		$usuario = Auth::user();
+		return view('tiposdesalas.create')->with('usuario',$usuario);
 	}
 
 	/**
@@ -34,13 +37,14 @@ class TiposdesalasController extends Controller {
 	 */
 	public function store(StoreTipoDeSalaRequest $request)
 	{
+		$usuario = Auth::user();
 		$tiposdesalas = new \App\Tipodesala;
 
 		$tiposdesalas->nombre = ucwords($request->input('nombre'));
 		$tiposdesalas->descripcion = ucfirst($request->input('descripcion'));
 		$tiposdesalas->save();
 
-		return redirect()->route('tiposdesalas.index')->with('message', 'Tipo de Sala Agregada');
+		return redirect()->route('tiposdesalas.index')->with('message', 'Tipo de Sala Agregada')->with('usuario',$usuario);
 	}
 
 	/**
@@ -51,8 +55,9 @@ class TiposdesalasController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$tiposdesalas = \App\Tipodesala::find($id);
-		return view('tiposdesalas.show')->with('tiposdesala',$tiposdesalas);
+		return view('tiposdesalas.show')->with('tiposdesala',$tiposdesalas)->with('usuario',$usuario);
 	}
 
 	/**
@@ -63,7 +68,8 @@ class TiposdesalasController extends Controller {
 	 */
 	public function edit($id)
 	{
-		return view('tiposdesalas.edit')->with('tiposdesala', \App\Tipodesala::find($id));
+		$usuario = Auth::user();
+		return view('tiposdesalas.edit')->with('tiposdesala', \App\Tipodesala::find($id))->with('usuario',$usuario);
 	}
 
 	/**
@@ -74,11 +80,12 @@ class TiposdesalasController extends Controller {
 	 */
 	public function update(UpdateTipoDeSalaRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$tiposdesalas = \App\Tipodesala::find($id);
 		$tiposdesalas->nombre = ucwords($request->input('nombre'));
 		$tiposdesalas->descripcion = ucfirst($request->input('descripcion'));
 		$tiposdesalas->save();
-		return redirect()->route('tiposdesalas.index', ['tiposdesala' => $id])->with('message', 'Cambios guardados');
+		return redirect()->route('tiposdesalas.index', ['tiposdesala' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -89,9 +96,10 @@ class TiposdesalasController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$tiposdesalas = \App\Tipodesala::find($id);
 		$tiposdesalas->delete();
-		return redirect()->route('tiposdesalas.index')->with('message', 'Tipo de Sala Eliminada con éxito');
+		return redirect()->route('tiposdesalas.index')->with('message', 'Tipo de Sala Eliminada con éxito')->with('usuario',$usuario);
 	}
 
 }

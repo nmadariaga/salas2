@@ -7,6 +7,8 @@ use App\Estudiante;
 use Illuminate\Http\Request;
 use DB;
 use App\Asignaturacursada;
+use Auth;
+
 class AsignaturascursadasController extends Controller {
 
 	/**
@@ -16,11 +18,13 @@ class AsignaturascursadasController extends Controller {
 	 */
 	public function index($id)
 	{
+		$usuario = Auth::user();
 		$estudiantes = \App\Estudiante::find($id);
 		$asignaturacursada = $estudiantes->asignaturacursada;
 		return view('asignaturacursada.index')->with('estudiante',$estudiantes)
 																				->with('cursos', \App\Curso::paginate(20)->setPath('curso'))
-																				->with('asignaturacursada',$asignaturacursada);
+																				->with('asignaturacursada',$asignaturacursada)
+																				->with('usuario',$usuario);
 	}
 
 	/**
@@ -30,11 +34,12 @@ class AsignaturascursadasController extends Controller {
 	 */
    public function create($id)
    {
+   	$usuario = Auth::user();
 		$estudiante = \App\Estudiante::find($id);
 		$asignatura = \App\Asignatura::lists('nombre','id');
 		$curso = \App\Curso::lists('seccion','id');
 		return view('asignaturacursada.create')->with('cursos',$curso)->with('estudiante',$estudiante)
-		                                        ->with('asignatura',$asignatura);
+		                                        ->with('asignatura',$asignatura)->with('usuario',$usuario);
 
    }
 
@@ -45,6 +50,7 @@ class AsignaturascursadasController extends Controller {
 	 */
 	public function store()
 	{
+		$usuario = Auth::user();
 		$asignaturacursada = new \App\Asignaturacursada;
 
     $asignaturacursada->curso_id = \Request::input('curso_id');
@@ -53,7 +59,7 @@ class AsignaturascursadasController extends Controller {
     $asignaturacursada->save();
 
 		$estudiantes = \App\Estudiante::find($asignaturacursada->estudiante_id);
-    return redirect()->route('estudiantes.asignaturascursadas.index', [$estudiantes->id])->with('message', 'Asignatura agegada correctamente');
+    return redirect()->route('estudiantes.asignaturascursadas.index', [$estudiantes->id])->with('message', 'Asignatura agegada correctamente')->with('usuario',$usuario);
 	}
 
 	/**
@@ -64,10 +70,11 @@ class AsignaturascursadasController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$curso = \App\Curso::find($id);
 		$asignaturas = \App\Asignatura::find($curso->asignatura_id);
 		$docente = \App\Docente::find($curso->docente_id);
-		return view('asignaturacursada.show')->with('curso',$curso)->with('asignaturas',$asignaturas)->with('docente',$docente);
+		return view('asignaturacursada.show')->with('curso',$curso)->with('asignaturas',$asignaturas)->with('docente',$docente)->with('usuario',$usuario);
 
 	}
 
@@ -79,6 +86,7 @@ class AsignaturascursadasController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$usuario = Auth::user();
 		return $id;
 	}
 
@@ -101,11 +109,12 @@ class AsignaturascursadasController extends Controller {
 	 */
 	public function destroy($id_estudiante, $id_curso)
 	{
+		$usuario = Auth::user();
 		$curso = Curso::find($id_curso);
 		$estudiante = Estudiante::find($id_estudiante);
 
 		$estudiante->cursos()->detach($curso);
 
-		return redirect()->route('estudiantes.asignaturascursadas.index', [$id_estudiante])->with('message', 'Asignatura Eliminada con éxito');
+		return redirect()->route('estudiantes.asignaturascursadas.index', [$id_estudiante])->with('message', 'Asignatura Eliminada con éxito')->with('usuario',$usuario);
 	}
 }

@@ -5,6 +5,7 @@ use App\Http\Requests\UpdateDepartamentoRequest;
 use App\Http\Controllers\Controller;
 use App\Facultad;
 use Illuminate\Http\Request;
+use Auth;
 
 class DepartamentosController extends Controller {
 
@@ -15,7 +16,8 @@ class DepartamentosController extends Controller {
 			 */
 			public function index()
 			{
-				return view("departamentos.index")->with('departamentos', \App\Departamento::paginate(5)->setPath('departamento'));
+				$usuario = Auth::user();
+				return view("departamentos.index")->with('departamentos', \App\Departamento::paginate(5)->setPath('departamento'))->with('usuario',$usuario);
 			}
 
 			/**
@@ -25,8 +27,9 @@ class DepartamentosController extends Controller {
 			 */
 			public function create()
 			{
+				$usuario = Auth::user();
 				$facultad = Facultad::lists('nombre','id');
-				return view('departamentos.create')->with('facultad',$facultad);
+				return view('departamentos.create')->with('facultad',$facultad)->with('usuario',$usuario);
 			}
 
 			/**
@@ -36,6 +39,7 @@ class DepartamentosController extends Controller {
 			 */
 			public function store(StoreDepartamentoRequest $request)
 			{
+				$usuario = Auth::user();
 				$departamento = new \App\Departamento;
 
 				$departamento->nombre = ucwords($request->input('nombre'));
@@ -44,7 +48,7 @@ class DepartamentosController extends Controller {
 
 				$departamento->save();
 
-				return redirect()->route('departamentos.index')->with('message', 'Departamento Agregado');
+				return redirect()->route('departamentos.index')->with('message', 'Departamento Agregado')->with('usuario',$usuario);
 			}
 
 			/**
@@ -55,9 +59,10 @@ class DepartamentosController extends Controller {
 			 */
 			public function show($id)
 			{
+				$usuario = Auth::user();
 				$departamento = \App\Departamento::find($id);
 				$facultad = Facultad::find($departamento->facultad_id);
-				return view('departamentos.show')->with('departamento',$departamento)->with('facultad',$facultad);
+				return view('departamentos.show')->with('departamento',$departamento)->with('facultad',$facultad)->with('usuario',$usuario);
 			}
 
 
@@ -72,8 +77,9 @@ class DepartamentosController extends Controller {
 			 */
 			public function edit($id)
 			{
+				$usuario = Auth::user();
 				$facultad = Facultad::lists('nombre','id');
-				return view('departamentos.edit')->with('departamento', \App\Departamento::find($id))->with('facultad',$facultad);
+				return view('departamentos.edit')->with('departamento', \App\Departamento::find($id))->with('facultad',$facultad)->with('usuario',$usuario);
 			}
 
 			/**
@@ -84,6 +90,7 @@ class DepartamentosController extends Controller {
 			 */
 			public function update(UpdateDepartamentoRequest $request, $id)
 			{
+				$usuario = Auth::user();
 				$departamento = \App\Departamento::find($id);
 
 				$departamento->nombre = ucwords($request->input('nombre'));
@@ -91,7 +98,7 @@ class DepartamentosController extends Controller {
 				$departamento->descripcion = ucfirst($request->input('descripcion'));
 
 				$departamento->save();
-				return redirect()->route('departamentos.index', ['departamento' => $id])->with('message', 'Cambios guardados');
+				return redirect()->route('departamentos.index', ['departamento' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 			}
 
 			/**
@@ -102,11 +109,12 @@ class DepartamentosController extends Controller {
 			 */
 			public function destroy($id)
 			{
+				$usuario = Auth::user();
 				$departamento = \App\Departamento::find($id);
 
 				$departamento->delete();
 
-				return redirect()->route('departamentos.index')->with('message', 'Departamento Eliminado con éxito');
+				return redirect()->route('departamentos.index')->with('message', 'Departamento Eliminado con éxito')->with('usuario',$usuario);
 			}
 
 		}

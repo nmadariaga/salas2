@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,12 +32,14 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$usuario = Auth::user();
 		$name = User::find($user->id)->nombres;
-		return redirect()->route('admin.index');
+		return redirect()->route('admin.index')->with('usuario',$usuario);
 	}
 
 	public function match()
 	{
+		$usuario = Auth::user();
 		$datosUsuarios = DB::table('usuarios')->lists('rut', 'remember_token');
 	}
 }

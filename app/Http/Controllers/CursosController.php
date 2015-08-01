@@ -5,6 +5,7 @@ use App\Http\Requests\UpdateCursosRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Docente;
+use Auth;
 
 class CursosController extends Controller {
 
@@ -15,7 +16,8 @@ class CursosController extends Controller {
 		 */
 		public function index()
 		{
-			return view("cursos.index")->with('cursos', \App\Curso::paginate(20)->setPath('curso'));
+			$usuario = Auth::user();
+			return view("cursos.index")->with('cursos', \App\Curso::paginate(20)->setPath('curso'))->with('usuario',$usuario);
 		}
 
 		/**
@@ -25,10 +27,11 @@ class CursosController extends Controller {
 		 */
 		public function create()
 		{
+			$usuario = Auth::user();
 			$asignatura = \App\Asignatura::lists('nombre','id');
 			$docente = \App\Docente::lists('nombres','id');
 			//dd($docente);
-			return view('cursos.create')->with('asignatura',$asignatura)->with('docente',$docente);
+			return view('cursos.create')->with('asignatura',$asignatura)->with('docente',$docente)->with('usuario',$usuario);
 		}
 
 		/**
@@ -38,6 +41,7 @@ class CursosController extends Controller {
 		 */
 		public function store(StoreCursoRequest $request)
 		{
+			$usuario = Auth::user();
 			$curso = new \App\Curso;
 
 			$curso->semestre = $request->input('semestre');
@@ -48,7 +52,7 @@ class CursosController extends Controller {
 
 			$curso->save();
 
-			return redirect()->route('cursos.index')->with('message', 'curso agregado');
+			return redirect()->route('cursos.index')->with('message', 'curso agregado')->with('usuario',$usuario);
 		}
 
 		/**
@@ -59,10 +63,11 @@ class CursosController extends Controller {
 		 */
 		public function show($id)
 		{
+			$usuario = Auth::user();
 			$curso = \App\Curso::find($id);
       $asignaturas = \App\Asignatura::find($curso->asignatura_id);
 			$docente = \App\Docente::find($curso->docente_id);
-			return view('cursos.show')->with('curso',$curso)->with('asignaturas',$asignaturas)->with('docente',$docente);
+			return view('cursos.show')->with('curso',$curso)->with('asignaturas',$asignaturas)->with('docente',$docente)->with('usuario',$usuario);
 		}
 
 		/**
@@ -73,9 +78,10 @@ class CursosController extends Controller {
 		 */
 		public function edit($id)
 		{
+			$usuario = Auth::user();
 			$asignaturas = \App\Asignatura::lists('nombre','id');
 			$docente = \App\Docente::lists('nombres','id');
-			return view('cursos.edit')->with('curso', \App\Curso::find($id))->with('asignaturas',$asignaturas)->with('docente',$docente);
+			return view('cursos.edit')->with('curso', \App\Curso::find($id))->with('asignaturas',$asignaturas)->with('docente',$docente)->with('usuario',$usuario);
 		}
 
 		/**
@@ -86,6 +92,7 @@ class CursosController extends Controller {
 		 */
 		public function update(UpdateCursosRequest $request, $id)
 		{
+			$usuario = Auth::user();
 			$curso = \App\Curso::find($id);
 
 			$curso->semestre = $request->input('semestre');
@@ -95,7 +102,7 @@ class CursosController extends Controller {
 			$curso->docente_id = $request->input('docente_id');
 
 			$curso->save();
-			return redirect()->route('cursos.index', ['curso' => $id])->with('message', 'Cambios guardados');
+			return redirect()->route('cursos.index', ['curso' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 		}
 
 		/**
@@ -106,11 +113,12 @@ class CursosController extends Controller {
 		 */
 		public function destroy($id)
 		{
+			$usuario = Auth::user();
 			$curso = \App\Curso::find($id);
 
 			$curso->delete();
 
-			return redirect()->route('cursos.index')->with('message', 'curso eliminado con éxito');
+			return redirect()->route('cursos.index')->with('message', 'curso eliminado con éxito')->with('usuario',$usuario);
 		}
 
 	}

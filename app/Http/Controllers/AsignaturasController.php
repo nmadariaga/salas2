@@ -5,6 +5,8 @@ use App\Http\Requests\UpdateAsignaturasRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Departamento;
+use Auth;
+
 class AsignaturasController extends Controller {
 
 	/**
@@ -14,8 +16,8 @@ class AsignaturasController extends Controller {
 	 */
 	public function index()
 	{
-		
-		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(20)->setPath('asignatura'));
+		$usuario = Auth::user();
+		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(20)->setPath('asignatura'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -25,8 +27,9 @@ class AsignaturasController extends Controller {
 	 */
 	public function create()
 	{
+		$usuario = Auth::user();
 		$departamento = \App\Departamento::lists('nombre','id');
-		return view('asignaturas.create')->with('departamento',$departamento);
+		return view('asignaturas.create')->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -36,6 +39,7 @@ class AsignaturasController extends Controller {
 	 */
 	public function store(StoreAsignaturaRequest $request)
 	{
+		$usuario = Auth::user();
 		$asignaturas = new \App\Asignatura;
 
 		$asignaturas->nombre = ucwords($request->input('nombre'));
@@ -45,7 +49,7 @@ class AsignaturasController extends Controller {
 
 		$asignaturas->save();
 
-		return redirect()->route('asignaturas.index')->with('message', 'asignaturas Agregado');
+		return redirect()->route('asignaturas.index')->with('message', 'asignaturas Agregado')->with('usuario',$usuario);
 	}
 
 	/**
@@ -56,9 +60,10 @@ class AsignaturasController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$asignaturas = \App\Asignatura::find($id);
     $departamento = \App\Departamento::find($asignaturas->departamento_id);
-		return view('asignaturas.show')->with('asignatura',$asignaturas)->with('departamentos',$departamento);
+		return view('asignaturas.show')->with('asignatura',$asignaturas)->with('departamentos',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -69,8 +74,9 @@ class AsignaturasController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$usuario = Auth::user();
 		$departamentos = \App\Departamento::lists('nombre','id');
-		return view('asignaturas.edit')->with('asignatura', \App\Asignatura::find($id))->with('departamentos',$departamentos);
+		return view('asignaturas.edit')->with('asignatura', \App\Asignatura::find($id))->with('departamentos',$departamentos)->with('usuario',$usuario);
 	}
 
 	/**
@@ -81,6 +87,7 @@ class AsignaturasController extends Controller {
 	 */
 	public function update(UpdateAsignaturasRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$asignaturas = \App\Asignatura::find($id);
 
 		$asignaturas->nombre = ucwords($request->input('nombre'));
@@ -100,11 +107,12 @@ class AsignaturasController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$asignaturas = \App\Asignatura::find($id);
 
 		$asignaturas->delete();
 
-		return redirect()->route('asignaturas.index')->with('message', 'asignaturas Eliminado con éxito');
+		return redirect()->route('asignaturas.index')->with('message', 'asignaturas Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 

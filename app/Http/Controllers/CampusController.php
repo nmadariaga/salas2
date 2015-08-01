@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCampusRequest;
 use App\Http\Requests\UpdateCampusRequest;
 use Illuminate\Http\Request;
+use Auth;
 
 class CampusController extends Controller {
 
@@ -15,7 +16,8 @@ class CampusController extends Controller {
 	 */
 	public function index()
 	{
-		return view("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'));
+		$usuario = Auth::user();
+		return view("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -25,7 +27,8 @@ class CampusController extends Controller {
 	 */
 	public function create()
 	{
-		return view('campus.create');
+		$usuario = Auth::user();
+		return view('campus.create')->with('usuario',$usuario);
 	}
 
 	/**
@@ -35,6 +38,7 @@ class CampusController extends Controller {
 	 */
 	public function store(StoreCampusRequest $request)
 	{
+		$usuario = Auth::user();
 		$campus = new \App\Campus;
 
 		$campus->nombre = ucwords($request->input('nombre'));
@@ -46,11 +50,12 @@ class CampusController extends Controller {
 
 		$campus->save();
 
-		return redirect()->route('campus.index')->with('message', 'Campus Agregado');
+		return redirect()->route('campus.index')->with('message', 'Campus Agregado')->with('usuario',$usuario);
 	}
 
 	public function leerFichero(Request $request)
 	{
+		$usuario = Auth::user();
 
 		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'campus.csv');
  
@@ -73,7 +78,7 @@ class CampusController extends Controller {
 
 			}
 		})->get();
-		return view ("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'));
+		return view ("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'))->with('usuario',$usuario);
 	}
 	/**
 	 * Display the specified resource.
@@ -83,9 +88,11 @@ class CampusController extends Controller {
 	 */
 	public function show($id)
 	{
+
+		$usuario = Auth::user();
 		$campus = \App\Campus::find($id);
 
-		return view('campus.show')->with('campu',$campus);
+		return view('campus.show')->with('campu',$campus)->with('usuario',$usuario);
 	}
 
 	/**
@@ -96,7 +103,8 @@ class CampusController extends Controller {
 	 */
 	public function edit($id)
 	{
-		return view('campus.edit')->with('campu', \App\Campus::find($id));
+		$usuario = Auth::user();
+		return view('campus.edit')->with('campu', \App\Campus::find($id))->with('usuario',$usuario);
 	}
 
 	/**
@@ -107,6 +115,7 @@ class CampusController extends Controller {
 	 */
 	public function update(UpdateCampusRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$campus = \App\Campus::find($id);
 
 		$campus->nombre = ucwords($request->input('nombre'));
@@ -117,7 +126,7 @@ class CampusController extends Controller {
 		$campus->rut_encargado = $request->input('rut_encargado');
 
 		$campus->save();
-		return redirect()->route('campus.index', ['campu' => $id])->with('message', 'Cambios guardados');
+		return redirect()->route('campus.index', ['campu' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -128,11 +137,12 @@ class CampusController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$campus = \App\Campus::find($id);
 
 		$campus->delete();
 
-		return redirect()->route('campus.index')->with('message', 'Campus Eliminado con éxito');
+		return redirect()->route('campus.index')->with('message', 'Campus Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 

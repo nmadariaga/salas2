@@ -4,6 +4,7 @@ use App\Http\Requests\StoreRolRequest;
 use App\Http\Requests\UpdateRolRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class RolesController extends Controller {
 
@@ -14,7 +15,8 @@ class RolesController extends Controller {
 	 */
 	public function index()
 	{
-		return view("roles.index")->with('roles', \App\Role::paginate(5)->setPath('role'));
+		$usuario = Auth::user();
+		return view("roles.index")->with('roles', \App\Role::paginate(5)->setPath('role'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -24,7 +26,8 @@ class RolesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('roles.create');
+		$usuario = Auth::user();
+		return view('roles.create')->with('usuario',$usuario);
 	}
 
 	/**
@@ -34,6 +37,7 @@ class RolesController extends Controller {
 	 */
 	public function store(StoreRolRequest $request)
 	{
+		$usuario = Auth::user();
 		$roles = new \App\Role;
 
 		$roles->nombre = ucwords($request->input('nombre'));
@@ -41,7 +45,7 @@ class RolesController extends Controller {
 
 		$roles->save();
 
-		return redirect()->route('roles.index')->with('message', 'Rol Agregado');
+		return redirect()->route('roles.index')->with('message', 'Rol Agregado')->with('usuario',$usuario);
 	}
 
 	/**
@@ -52,6 +56,7 @@ class RolesController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$roles = \App\Role::find($id);
 
 		return view('roles.show')->with('role',$roles);
@@ -65,7 +70,8 @@ class RolesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		return view('roles.edit')->with('role', \App\Role::find($id));
+		$usuario = Auth::user();
+		return view('roles.edit')->with('role', \App\Role::find($id))->with('usuario',$usuario);
 	}
 
 	/**
@@ -76,13 +82,14 @@ class RolesController extends Controller {
 	 */
 	public function update(UpdateRolRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$roles = \App\Role::find($id);
 
 		$roles->nombre = ucwords($request->input('nombre'));
 		$roles->descripcion = ucfirst($request->input('descripcion'));
 
 		$roles->save();
-		return redirect()->route('roles.index')->with('message', 'Cambios guardados');
+		return redirect()->route('roles.index')->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -93,11 +100,12 @@ class RolesController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$roles = \App\Role::find($id);
 
 		$roles->delete();
 
-		return redirect()->route('roles.index')->with('message', 'Rol Eliminado con éxito');
+		return redirect()->route('roles.index')->with('message', 'Rol Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 

@@ -5,6 +5,8 @@ use App\Http\Requests\UpdateRolesUsuariosRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Role;
+use Auth;
+
 class RolesusuariosController extends Controller {
 
 	/**
@@ -14,7 +16,8 @@ class RolesusuariosController extends Controller {
 	 */
 	public function index()
 	{
-		return view("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(30)->setPath('rolesusuario'));
+		$usuario = Auth::user();
+		return view("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(30)->setPath('rolesusuario'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -24,8 +27,9 @@ class RolesusuariosController extends Controller {
 	 */
 	public function create()
 	{
+		$usuario = Auth::user();
 		$rol = \App\Role::lists('nombre', 'id');
-		return view('rolesusuarios.create')->with('rol',$rol);
+		return view('rolesusuarios.create')->with('rol',$rol)->with('usuario',$usuario);
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -34,6 +38,7 @@ class RolesusuariosController extends Controller {
 	 */
 	public function store(StoreRolesUsuariosRequest $request)
 	{
+		$usuario = Auth::user();
 		$rolesusuarios = new \App\Rolusuario;
 
 		$rolesusuarios->rut = $request->input('rut');
@@ -42,7 +47,7 @@ class RolesusuariosController extends Controller {
 
 		$rolesusuarios->save();
 
-		return redirect()->route('rolesusuarios.index')->with('message', 'Rol Agregado a usuario');
+		return redirect()->route('rolesusuarios.index')->with('message', 'Rol Agregado a usuario')->with('usuario',$usuario);
 	}
 
 	/**
@@ -53,9 +58,10 @@ class RolesusuariosController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$rolesusuarios = \App\Rolusuario::find($id);
 		$rol = \App\Role::find($rolesusuarios->rol_id);
-		return view('rolesusuarios.show')->with('rolesusuario',$rolesusuarios)->with('rol',$rol);
+		return view('rolesusuarios.show')->with('rolesusuario',$rolesusuarios)->with('rol',$rol)->with('usuario',$usuario);
 	}
 
 	/**
@@ -66,8 +72,9 @@ class RolesusuariosController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$usuario = Auth::user();
 		$rol = \App\Role::lists('nombre', 'id');
-		return view('rolesusuarios.edit')->with('rolesusuario', \App\Rolusuario::find($id))->with('rol',$rol);
+		return view('rolesusuarios.edit')->with('rolesusuario', \App\Rolusuario::find($id))->with('rol',$rol)->with('usuario',$usuario);
 	}
 
 	/**
@@ -78,13 +85,14 @@ class RolesusuariosController extends Controller {
 	 */
 	public function update(UpdateRolesUsuariosRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$rolesusuarios = \App\Rolusuario::find($id);
 
 		$rolesusuarios->rut = $request->input('rut');
 		$rolesusuarios->rol_id = $request->input('rol_id');
 
 		$rolesusuarios->save();
-		return redirect()->route('rolesusuarios.index')->with('message', 'Cambios guardados');
+		return redirect()->route('rolesusuarios.index')->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -95,11 +103,12 @@ class RolesusuariosController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$rolesusuarios = \App\Rolusuario::find($id);
 
 		$rolesusuarios->delete();
 
-		return redirect()->route('rolesusuarios.index')->with('message', 'Rol Eliminado con éxito');
+		return redirect()->route('rolesusuarios.index')->with('message', 'Rol Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 }

@@ -23,11 +23,6 @@
 
     <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style>
       body {overflow-x:hidden;}
     </style>
@@ -48,12 +43,32 @@
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
-                    <!-- settings start -->
-
-                    <!-- settings end -->
-                    <!-- inbox dropdown start-->
-
-                    <!-- inbox dropdown end -->
+                
+            <div class="btn-group">
+            Roles: 
+              @foreach($usuario->roles as $rol)
+                            @if($rol->nombre == 'Administrador')
+                            <a href="/admin/inicio" >
+                              <button type="button" class="btn btn-default">Administrador</button>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Encargado')
+                            <a href="/encargado/menu" >
+                              <button type="button" class="btn btn-default">Encargado</button>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Docente')
+                            <a href="#" >
+                                <button type="button" class="btn btn-default">Docente</button>
+                            </a>
+                            @endif
+                            @if($rol->nombre == 'Estudiante')
+                            <a href="/alumno" >
+                                <button type="button" class="btn btn-default">Alumno</button>
+                            </a>
+                            @endif
+              @endforeach
+            </div>              
                 </ul>
                 <!--  notification end -->
             </div>

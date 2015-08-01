@@ -4,6 +4,7 @@ use App\Http\Requests\StoreHorarioRequest;
 use App\Http\Requests\UpdateHorarioRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class HorariosController extends Controller {
 
@@ -14,13 +15,14 @@ class HorariosController extends Controller {
 			 */
 			public function index()
 			{
+				$usuario = Auth::user();
 				$cursos = \App\Curso::all();
 				$cursos_list = array();
 				foreach ($cursos as $curso) {
 					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
 						$curso->seccion);
 				}
-				return view("horarios.index")->with('curso',$cursos_list)->with('horarios', \App\Horario::paginate(20)->setPath('horario'));
+				return view("horarios.index")->with('curso',$cursos_list)->with('horarios', \App\Horario::paginate(20)->setPath('horario'))->with('usuario',$usuario);
 			}
 
 			/**
@@ -30,6 +32,7 @@ class HorariosController extends Controller {
 			 */
 			public function create()
 			{
+				$usuario = Auth::user();
 				$periodo = \App\Periodo::lists('bloque','id');
 				$sala = \App\Sala::lists('nombre','id');
 				$cursos = \App\Curso::all();
@@ -39,7 +42,7 @@ class HorariosController extends Controller {
 						$curso->seccion);
 				}
 				$asignatura = \App\Asignatura::lists('nombre','id');
-				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$cursos_list)->with('asignatura',$asignatura);
+				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$cursos_list)->with('asignatura',$asignatura)->with('usuario',$usuario);
 			}
 
 			/**
@@ -49,7 +52,7 @@ class HorariosController extends Controller {
 			 */
 			public function store(StoreHorarioRequest $request)
 			{
-
+					$usuario = Auth::user();
 					$inicio = $request->input('fechaInicial');
 					//$fin = $request->input('fechaFinal');
 					$fechaInicial = date_create($request->input('fechaInicial'));
@@ -69,7 +72,7 @@ class HorariosController extends Controller {
 						$horario->save();
 					}
 
-				return redirect()->route('horarios.index')->with('message', 'horario Agregado');
+				return redirect()->route('horarios.index')->with('message', 'horario Agregado')->with('usuario',$usuario);
 			}
 
 			/**
@@ -80,11 +83,12 @@ class HorariosController extends Controller {
 			 */
 			public function show($id)
 			{
+				$usuario = Auth::user();
 				$horario = \App\Horario::find($id);
-      	$periodo = \App\Periodo::find($horario->periodo_id);
+      			$periodo = \App\Periodo::find($horario->periodo_id);
 				$sala = \App\Sala::find($horario->sala_id);
 				$curso = \App\Curso::find($horario->sala_id);
-				return view('horarios.show')->with('horario',$horario)->with('periodo',$periodo)->with('sala',$sala)->with('curso',$curso);
+				return view('horarios.show')->with('horario',$horario)->with('periodo',$periodo)->with('sala',$sala)->with('curso',$curso)->with('usuario',$usuario);
 			}
 
 			/**
@@ -95,13 +99,15 @@ class HorariosController extends Controller {
 			 */
 			public function edit($id)
 			{
+				$usuario = Auth::user();
 				$periodos = \App\Periodo::lists('bloque','id');
 				$salas = \App\Sala::lists('nombre','id');
 				$asignaturas = \App\Asignatura::lists('nombre','id');
 				return view('horarios.edit')->with('horario', \App\Horario::find($id))
 				                            ->with('periodos',$periodos)
 				                            ->with('salas', $salas)
-			                                ->with('asignaturas', $asignaturas);
+			                                ->with('asignaturas', $asignaturas)
+			                                ->with('usuario',$usuario);
 
 			}
 
@@ -113,6 +119,7 @@ class HorariosController extends Controller {
 			 */
 			public function update(UpdateHorarioRequest $request, $id)
 			{
+				$usuario = Auth::user();
 				$horario = \App\Horario::find($id);
 
 				$horario->fecha = $request->input('fecha');
@@ -121,7 +128,7 @@ class HorariosController extends Controller {
 				$horario->curso_id = $request->input('curso_id');
 
 				$horario->save();
-				return redirect()->route('horarios.index', ['horario' => $id])->with('message', 'Cambios guardados');
+				return redirect()->route('horarios.index', ['horario' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 			}
 
 			/**
@@ -132,11 +139,12 @@ class HorariosController extends Controller {
 			 */
 			public function destroy($id)
 			{
+				$usuario = Auth::user();
 				$horario = \App\Horario::find($id);
 
 				$horario->delete();
 
-				return redirect()->route('horarios.index')->with('message', 'Horario eliminado con éxito');
+				return redirect()->route('horarios.index')->with('message', 'Horario eliminado con éxito')->with('usuario',$usuario);
 			}
 
 		}

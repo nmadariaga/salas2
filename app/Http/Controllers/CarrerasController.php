@@ -5,6 +5,7 @@ use App\Http\Requests\UpdateCarreraRequest;
 use App\Http\Controllers\Controller;
 use App\Escuela;
 use Illuminate\Http\Request;
+use Auth;
 
 class CarrerasController extends Controller {
 
@@ -15,7 +16,8 @@ class CarrerasController extends Controller {
 					 */
 					public function index()
 					{
-						return view("carreras.index")->with('carreras', \App\Carrera::paginate(5)->setPath('carrera'));
+						$usuario = Auth::user();
+						return view("carreras.index")->with('carreras', \App\Carrera::paginate(5)->setPath('carrera'))->with('usuario',$usuario);
 					}
 
 					/**
@@ -25,8 +27,9 @@ class CarrerasController extends Controller {
 					 */
 					public function create()
 					{
+						$usuario = Auth::user();
 						$escuela = Escuela::lists('nombre','id');
-						return view('carreras.create')->with('escuela',$escuela);
+						return view('carreras.create')->with('escuela',$escuela)->with('usuario',$usuario);
 					}
 
 					/**
@@ -36,6 +39,7 @@ class CarrerasController extends Controller {
 					 */
 					public function store(StoreCarreraRequest $request)
 					{
+						$usuario = Auth::user();
 						$carrera = new \App\Carrera;
 
 						$carrera->codigo = $request->input('codigo');
@@ -45,7 +49,7 @@ class CarrerasController extends Controller {
 
 						$carrera->save();
 
-						return redirect()->route('carreras.index')->with('message', 'Carrera Agregada');
+						return redirect()->route('carreras.index')->with('message', 'Carrera Agregada')->with('usuario',$usuario);
 					}
 
 					/**
@@ -56,9 +60,10 @@ class CarrerasController extends Controller {
 					 */
 					public function show($id)
 					{
+						$usuario = Auth::user();
 						$carrera = \App\Carrera::find($id);
 						$escuela= Escuela::find($carrera->escuela_id);
-						return view('carreras.show')->with('carrera',$carrera)->with('escuela',$escuela);
+						return view('carreras.show')->with('carrera',$carrera)->with('escuela',$escuela)->with('usuario',$usuario);
 					}
 
 					/**
@@ -69,8 +74,9 @@ class CarrerasController extends Controller {
 					 */
 					public function edit($id)
 					{
+						$usuario = Auth::user();
 						$escuela = Escuela::lists('nombre','id');
-						return view('carreras.edit')->with('carrera', \App\Carrera::find($id))->with('escuela',$escuela);
+						return view('carreras.edit')->with('carrera', \App\Carrera::find($id))->with('escuela',$escuela)->with('usuario',$usuario);
 					}
 
 					/**
@@ -81,6 +87,7 @@ class CarrerasController extends Controller {
 					 */
 					public function update(UpdateCarreraRequest $request, $id)
 					{
+						$usuario = Auth::user();
 						$carrera = \App\Carrera::find($id);
 
 						$carrera->codigo = $request->input('codigo');
@@ -89,7 +96,7 @@ class CarrerasController extends Controller {
 						$carrera->descripcion = ucfirst($request->input('descripcion'));
 
 						$carrera->save();
-						return redirect()->route('carreras.index', ['carrera' => $id])->with('message', 'Cambios guardados');
+						return redirect()->route('carreras.index', ['carrera' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 					}
 
 					/**
@@ -100,11 +107,12 @@ class CarrerasController extends Controller {
 					 */
 					public function destroy($id)
 					{
+						$usuario = Auth::user();
 						$carrera = \App\Carrera::find($id);
 
 						$carrera->delete();
 
-						return redirect()->route('carreras.index')->with('message', 'Carrera Eliminada con éxito');
+						return redirect()->route('carreras.index')->with('message', 'Carrera Eliminada con éxito')->with('usuario',$usuario);
 					}
 
 				}

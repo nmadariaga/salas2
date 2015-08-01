@@ -5,6 +5,7 @@ use App\Http\Requests\UpdateDocenteRequest;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use Illuminate\Http\Request;
+use Auth;
 
 class DocentesController extends Controller {
 
@@ -15,7 +16,8 @@ class DocentesController extends Controller {
 	 */
 	public function index()
 	{
-		return view("docentes.index")->with('docentes', \App\Docente::paginate(5)->setPath('docentes'));
+		$usuario = Auth::user();
+		return view("docentes.index")->with('docentes', \App\Docente::paginate(5)->setPath('docentes'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -25,9 +27,9 @@ class DocentesController extends Controller {
 	 */
 	public function create()
 	{
-
+		$usuario = Auth::user();
 		$departamento = Departamento::lists('nombre','id');
-		return view('docentes.create')->with('departamento',$departamento);
+		return view('docentes.create')->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -37,6 +39,7 @@ class DocentesController extends Controller {
 	 */
 	public function store(StoreDocenteRequest $request)
 	{
+		$usuario = Auth::user();
 		$docentes = new \App\Docente;
 
 		$docentes->departamento_id = $request->input('departamento_id');
@@ -46,7 +49,7 @@ class DocentesController extends Controller {
 
 		$docentes->save();
 
-		return redirect()->route('docentes.index')->with('message', 'Docente Agregado');
+		return redirect()->route('docentes.index')->with('message', 'Docente Agregado')->with('usuario',$usuario);
 	}
 
 	/**
@@ -57,9 +60,10 @@ class DocentesController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$docentes = \App\Docente::find($id);
 		$departamento = Departamento::find($docentes->departamento_id);
-		return view('docentes.show')->with('docente',$docentes)->with('departamento',$departamento);
+		return view('docentes.show')->with('docente',$docentes)->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -70,8 +74,9 @@ class DocentesController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$usuario = Auth::user();
 		$departamento = Departamento::lists('nombre','id');
-		return view('docentes.edit')->with('docente', \App\Docente::find($id))->with('departamento',$departamento);
+		return view('docentes.edit')->with('docente', \App\Docente::find($id))->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -82,6 +87,7 @@ class DocentesController extends Controller {
 	 */
 	public function update(UpdateDocenteRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$docentes = \App\Docente::find($id);
 
 		$docentes->departamento_id = $request->input('departamento_id');
@@ -90,7 +96,7 @@ class DocentesController extends Controller {
 		$docentes->apellidos = ucwords($request->input('apellidos'));
 
 		$docentes->save();
-		return redirect()->route('docentes.index', ['docente' => $id])->with('message', 'Cambios guardados');
+		return redirect()->route('docentes.index', ['docente' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -101,11 +107,12 @@ class DocentesController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$docentes = \App\Docente::find($id);
 
 		$docentes->delete();
 
-		return redirect()->route('docentes.index')->with('message', 'Docente Eliminado con éxito');
+		return redirect()->route('docentes.index')->with('message', 'Docente Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 }

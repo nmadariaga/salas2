@@ -5,6 +5,7 @@ use App\Http\Requests\UpdateFuncionarioRequest;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use Illuminate\Http\Request;
+use Auth;
 
 
 class FuncionariosController extends Controller {
@@ -16,7 +17,8 @@ class FuncionariosController extends Controller {
 	 */
 	public function index()
 	{
-		return view("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(5)->setPath('funcionario'));
+		$usuario = Auth::user();
+		return view("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(5)->setPath('funcionario'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -26,8 +28,9 @@ class FuncionariosController extends Controller {
 	 */
 	public function create()
 	{
+		$usuario = Auth::user();
 		$departamento = Departamento::lists('nombre','id');
-		return view('funcionarios.create')->with('departamento',$departamento);
+		return view('funcionarios.create')->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -37,6 +40,7 @@ class FuncionariosController extends Controller {
 	 */
 	public function store(StoreFuncionarioRequest $request)
 	{
+		$usuario = Auth::user();
 		$funcionarios = new \App\Funcionario;
 
 		$funcionarios->departamento_id = $request->input('departamento_id');
@@ -46,7 +50,7 @@ class FuncionariosController extends Controller {
 
 		$funcionarios->save();
 
-		return redirect()->route('funcionarios.index')->with('message', 'Funcionario Agregado');
+		return redirect()->route('funcionarios.index')->with('message', 'Funcionario Agregado')->with('usuario',$usuario);
 	}
 
 	/**
@@ -57,9 +61,10 @@ class FuncionariosController extends Controller {
 	 */
 	public function show($id)
 	{
+		$usuario = Auth::user();
 		$funcionarios = \App\Funcionario::find($id);
 		$departamento = Departamento::find($funcionarios->departamento_id);
-		return view('funcionarios.show')->with('funcionario',$funcionarios)->with('departamento',$departamento);;
+		return view('funcionarios.show')->with('funcionario',$funcionarios)->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -70,8 +75,9 @@ class FuncionariosController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$usuario = Auth::user();
 		$departamento = Departamento::lists('nombre','id');
-		return view('funcionarios.edit')->with('funcionario', \App\Funcionario::find($id))->with('departamento',$departamento);
+		return view('funcionarios.edit')->with('funcionario', \App\Funcionario::find($id))->with('departamento',$departamento)->with('usuario',$usuario);
 	}
 
 	/**
@@ -82,6 +88,7 @@ class FuncionariosController extends Controller {
 	 */
 	public function update(UpdateFuncionarioRequest $request, $id)
 	{
+		$usuario = Auth::user();
 		$funcionarios = \App\Funcionario::find($id);
 
 		$funcionarios->departamento_id = $request->input('departamento_id');
@@ -90,7 +97,7 @@ class FuncionariosController extends Controller {
 		$funcionarios->apellidos = ucwords($request->input('apellidos'));
 
 		$funcionarios->save();
-		return redirect()->route('funcionarios.index', ['funcionario' => $id])->with('message', 'Cambios guardados');
+		return redirect()->route('funcionarios.index', ['funcionario' => $id])->with('message', 'Cambios guardados')->with('usuario',$usuario);
 	}
 
 	/**
@@ -101,11 +108,12 @@ class FuncionariosController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		$usuario = Auth::user();
 		$funcionarios = \App\Funcionario::find($id);
 
 		$funcionarios->delete();
 
-		return redirect()->route('funcionarios.index')->with('message', 'Funcionario Eliminado con éxito');
+		return redirect()->route('funcionarios.index')->with('message', 'Funcionario Eliminado con éxito')->with('usuario',$usuario);
 	}
 
 }
