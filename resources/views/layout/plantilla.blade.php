@@ -74,7 +74,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
+                    <li><a class="logout" href="{{ action('Auth\AuthController@getLogout') }}">Cerrar Sesión</a></li>
               </ul>
             </div>
         </header>
