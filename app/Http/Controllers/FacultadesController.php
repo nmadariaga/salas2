@@ -17,10 +17,6 @@ class FacultadesController extends Controller {
 		public function index(Request $request)
 		{
 			$facultades = \App\Facultad::name($request->get("name"))->orderBy('id','DESC')->paginate();
-
-
-			//$facultades = \App\Facultad::name($request->get('name'))->orderBy('id', 'DESC');
-			//return view("facultades.index")->with('facultades', \App\Facultad::paginate(5)->setPath('facultad'));
 			return view('facultades.index',compact('facultades'));
 		}
 

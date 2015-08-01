@@ -141,11 +141,11 @@
                             <thead>
                               <tr>
                                 <th>&nbsp;</th>
-                                <th width="20%">Lunes</th>
-                                <th width="20%">Martes</th>
-                                <th width="20%">Miércoles</th>
-                                <th width="20%">Jueves</th>
-                                <th width="20%">Viernes</th>
+                                <th width="20%">Lunes {{$semana[0]}}</th>
+                                <th width="20%">Martes {{$semana[1]}}</th>
+                                <th width="20%">Miércoles {{$semana[2]}}</th>
+                                <th width="20%">Jueves {{$semana[3]}}</th>
+                                <th width="20%">Viernes {{$semana[4]}}</th>
                               </tr>
                             </thead>
                             <tbody>

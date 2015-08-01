@@ -174,7 +174,7 @@
                           @endforeach</h3></center>
 
                         <div class="row mt">
-                        <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>
+                <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>
 
                         <center><p>An abbreviation of the word attribute is attr.</p></center>
                         </div><!-- /row -->
