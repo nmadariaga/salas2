@@ -82,7 +82,7 @@
                       {!! Form::open(['route' => 'horarios.store']) !!}
                       <form class="form-horizontal style-form" method="get">
                       		<div class="form-group">Fecha inicial del semestre
-								            {!! Form::text('fechaInicial', null, ['id' => 'datepicker', 'class' => 'form-control', 'placeholder'=>'Dia de Inicio']) !!}
+								            {!! Form::text('fechaInicial', null, ['id' => 'fecha1', 'class' => 'form-control', 'placeholder'=>'Dia de Inicio']) !!}
 							            <script>
                   $(function() {
                     $("#datepicker").datepicker();
@@ -99,7 +99,7 @@
 								            {!! Form::select('curso_id', $curso) !!}</p>
 							            </div>
                           <div class="form-group">Fecha final del semestre
-								            {!! Form::text('fechaFinal', null, ['id' => 'datepicker2', 'class' => 'form-control', 'placeholder'=>'Dia de termino']) !!}
+								            {!! Form::text('fechaFinal', null, ['id' => 'fecha2', 'class' => 'form-control', 'placeholder'=>'Dia de termino']) !!}
                             <script>
                   $(function() {
                     $("#datepicker2").datepicker();

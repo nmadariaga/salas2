@@ -64,10 +64,11 @@ Route::group(['middleware' => 'rolencargado'], function ()
   Route::resource('tiposdesalas','TiposdesalasController');
   Route::resource('asignaturas','AsignaturasController');
   Route::resource('cursos','CursosController');
-  Route::resource('periodos','PeriodosController');
   Route::resource('horarios','HorariosController');
+Route::resource('periodos','PeriodosController');
 
 });
+
 
 Route::resource('roles','RolesController');
 Route::resource('rolesusuarios','RolesusuariosController');

@@ -16,12 +16,62 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/zabuto_calendar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/js/gritter/css/jquery.gritter.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('/lineicons/style.css') }}">
-
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
 
     <script src="{{ asset('/js/chart-master/Chart.js') }}"></script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script>
+      $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '<Ant',
+        nextText: 'Sig>',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+        weekHeader: 'Sm',
+        dateFormat: 'yy-mm-dd',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+      };
+      $.datepicker.setDefaults($.datepicker.regional['es']);
+      $(function () {
+      $("#fecha1").datepicker();
+      });
+    </script>
+
+    <script>
+      $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '<Ant',
+        nextText: 'Sig>',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+        weekHeader: 'Sm',
+        dateFormat: 'yy-mm-dd',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+      };
+      $.datepicker.setDefaults($.datepicker.regional['es']);
+      $(function () {
+      $("#fecha2").datepicker();
+      });
+    </script>
 
     <style>
       body {overflow-x:hidden;}
@@ -45,29 +95,7 @@
                 <ul class="nav top-menu">
                 
             <div class="btn-group">
-            Roles: 
-              @foreach($usuario->roles as $rol)
-                            @if($rol->nombre == 'Administrador')
-                            <a href="/admin/inicio" >
-                              <button type="button" class="btn btn-default">Administrador</button>
-                            </a>
-                            @endif
-                            @if($rol->nombre == 'Encargado')
-                            <a href="/encargado/menu" >
-                              <button type="button" class="btn btn-default">Encargado</button>
-                            </a>
-                            @endif
-                            @if($rol->nombre == 'Docente')
-                            <a href="#" >
-                                <button type="button" class="btn btn-default">Docente</button>
-                            </a>
-                            @endif
-                            @if($rol->nombre == 'Estudiante')
-                            <a href="/alumno" >
-                                <button type="button" class="btn btn-default">Alumno</button>
-                            </a>
-                            @endif
-              @endforeach
+            
             </div>              
                 </ul>
                 <!--  notification end -->
