@@ -17,7 +17,7 @@ class EstudiantesController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$estudiantes = \App\Estudiante::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$estudiantes = \App\Estudiante::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('estudiantes.index',compact('estudiantes'))->with('usuario',$usuario);
 		}
 

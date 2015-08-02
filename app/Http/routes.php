@@ -18,7 +18,7 @@ Route::get('/', function()
     return redirect('auth/login');
 });
 
-Route::post('layout/plantilla', 'Layout@index'); 
+Route::post('layout/plantilla', 'Layout@index');
 /*Route::get('bienvenido', function()
 {
     return view();
@@ -44,8 +44,8 @@ Route::post('hola','CampusController@leerFichero');
 
 
 
-Route::group(['middleware' => 'roladmin'], function ()
-{
+//Route::group(['middleware' => 'roladmin'], function ()
+//{
   Route::resource('campus','CampusController');
   Route::resource('facultades','FacultadesController');
   Route::resource('departamentos','DepartamentosController');
@@ -56,10 +56,10 @@ Route::group(['middleware' => 'roladmin'], function ()
   Route::resource('funcionarios','FuncionariosController');
   Route::resource('estudiantes.asignaturascursadas','AsignaturascursadasController');
 
-});
+//});
 
-Route::group(['middleware' => 'rolencargado'], function ()
-{
+//Route::group(['middleware' => 'rolencargado'], function ()
+//{
   Route::resource('salas','SalasController');
   Route::resource('tiposdesalas','TiposdesalasController');
   Route::resource('asignaturas','AsignaturasController');
@@ -67,7 +67,7 @@ Route::group(['middleware' => 'rolencargado'], function ()
   Route::resource('periodos','PeriodosController');
   Route::resource('horarios','HorariosController');
 
-});
+//});
 
 Route::resource('roles','RolesController');
 Route::resource('rolesusuarios','RolesusuariosController');

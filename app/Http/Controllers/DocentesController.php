@@ -17,7 +17,7 @@ class DocentesController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$docentes = \App\Docente::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$docentes = \App\Docente::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('docentes.index',compact('docentes'))->with('usuario',$usuario);
 		}
 

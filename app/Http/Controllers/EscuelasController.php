@@ -17,7 +17,7 @@ class EscuelasController extends Controller {
 				public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$escuelas = \App\Escuela::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$escuelas = \App\Escuela::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('escuelas.index',compact('escuelas'))->with('usuario',$usuario);
 		}
 

@@ -18,7 +18,7 @@ class FacultadesController extends Controller {
 		public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$facultades = \App\Facultad::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$facultades = \App\Facultad::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('facultades.index',compact('facultades'))->with('usuario',$usuario);
 		}
 

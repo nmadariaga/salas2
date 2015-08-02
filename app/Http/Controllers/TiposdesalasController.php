@@ -16,7 +16,7 @@ class TiposdesalasController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$tiposdesalas = \App\Tipodesala::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$tiposdesalas = \App\Tipodesala::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('tiposdesalas.index',compact('tiposdesalas'))->with('usuario',$usuario);
 		}
 

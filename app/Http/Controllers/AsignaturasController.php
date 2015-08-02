@@ -17,7 +17,7 @@ class AsignaturasController extends Controller {
 	public function index(Request $request)
 	{
 		$usuario = Auth::user();
-			$asignaturas = \App\Asignatura::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$asignaturas = \App\Asignatura::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('asignaturas.index',compact('asignaturas'))->with('usuario',$usuario);
 	}
 

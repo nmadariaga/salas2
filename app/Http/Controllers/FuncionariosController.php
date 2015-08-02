@@ -18,7 +18,7 @@ class FuncionariosController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$funcionarios = \App\Funcionario::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$funcionarios = \App\Funcionario::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('funcionarios.index',compact('funcionarios'))->with('usuario',$usuario);
 		}
 

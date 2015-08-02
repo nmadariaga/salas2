@@ -16,7 +16,7 @@ class PeriodosController extends Controller {
 					public function index(Request $request)
 					{
 						$usuario = Auth::user();
-						$periodos = \App\Periodo::name($request->get("name"))->orderBy('id','DESC')->paginate();
+						$periodos = \App\Periodo::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 						return view('periodos.index',compact('periodos'))->with('usuario',$usuario);
 					}
 

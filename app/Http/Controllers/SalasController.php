@@ -18,7 +18,7 @@ class SalasController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$salas = \App\Sala::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$salas = \App\Sala::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('salas.index',compact('salas'))->with('usuario',$usuario);
 		}
 

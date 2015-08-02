@@ -17,7 +17,7 @@ class CarrerasController extends Controller {
 					public function index(Request $request)
 					{
 						$usuario = Auth::user();
-						$carreras = \App\Carrera::name($request->get("name"))->orderBy('id','DESC')->paginate();
+						$carreras = \App\Carrera::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 						return view('carreras.index',compact('carreras'))->with('usuario',$usuario);
 					}
 

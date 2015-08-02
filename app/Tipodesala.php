@@ -19,7 +19,7 @@ public function sala()
             //dd('scope: '.$name);
             if($name != "")
             {
-            $query->where('nombre', ucwords($name));
+            $query->where('nombre', "like" ,"%$name%");
             }
     }
 

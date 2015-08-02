@@ -16,7 +16,7 @@ class RolesController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$roles = \App\Role::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$roles = \App\Role::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('roles.index',compact('roles'))->with('usuario',$usuario);
 		}
 

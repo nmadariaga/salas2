@@ -13,7 +13,7 @@ class HorariosController extends Controller {
 			 *
 			 * @return Response
 			 */
-			public function index()
+			public function index(Request $request)
 			{
 				$usuario = Auth::user();
 				$cursos = \App\Curso::all();
@@ -23,7 +23,7 @@ class HorariosController extends Controller {
 						$curso->seccion);
 				}
 				return view("horarios.index")->with('curso',$cursos_list)
-																			->with('horarios', \App\Horario::paginate(10)
+																			->with('horarios', \App\Horario::name($request->get("name"))->paginate(10)
 																			->setPath('horarios'))->with('usuario',$usuario);
 			}
 

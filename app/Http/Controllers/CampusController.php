@@ -17,7 +17,7 @@ class CampusController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$campus = \App\Campus::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$campus = \App\Campus::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('campus.index',compact('campus'))->with('usuario',$usuario);
 		}
 

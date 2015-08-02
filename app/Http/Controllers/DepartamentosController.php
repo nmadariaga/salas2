@@ -17,7 +17,7 @@ class DepartamentosController extends Controller {
 			public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$departamentos = \App\Departamento::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$departamentos = \App\Departamento::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('departamentos.index',compact('departamentos'))->with('usuario',$usuario);
 		}
 

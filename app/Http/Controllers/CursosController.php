@@ -17,7 +17,7 @@ class CursosController extends Controller {
 		public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$cursos = \App\Curso::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			$cursos = \App\Curso::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
 			return view('cursos.index',compact('cursos'))->with('usuario',$usuario);
 		}
 		/**
