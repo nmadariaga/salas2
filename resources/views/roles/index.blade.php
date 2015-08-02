@@ -57,6 +57,7 @@
 </p>
 <table>
   <td width= 505><a href="/admin/menu" class="btn btn-danger btn-xs">Cerrar</a></td>
+  <td width= 505><a href="/descargarRoles" class="btn btn-danger btn-xs">Descargar Csv</a></td>
     <div class="col-md-12">
 </table>
 @stop

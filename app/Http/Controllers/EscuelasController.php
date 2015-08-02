@@ -114,4 +114,19 @@ class EscuelasController extends Controller {
 					return redirect()->route('escuelas.index')->with('message', 'Escuela Eliminada con éxito')->with('usuario',$usuario);
 				}
 
+				public function exportarEscuelas()
+				{
+					\Excel::create('EscuelasExportadas', function($excel) {
+
+					           $excel->sheet('Escuelas', function($sheet) {
+
+					               $escuela = \App\Escuela::all();
+					               $sheet->fromArray($escuela);
+
+					           });
+					       })->export('csv');
+								return redirect()->route("escuelas.index")->with('escuelas', \App\Escuela::paginate(10)
+																->setPath('escuelas'));
+				}
+
 			}

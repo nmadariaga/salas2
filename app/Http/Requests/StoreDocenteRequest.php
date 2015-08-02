@@ -23,7 +23,7 @@ class StoreDocenteRequest extends Request {
 	{
 		return [
 			"departamento_id" => "required",
-			"rut" => "required|min:7|max:8",
+			"rut" => "required|min:7|max:9",
 			"nombres" => "required|min:3|max:50",
 			"apellidos" => "required|min:3|max:50",
 

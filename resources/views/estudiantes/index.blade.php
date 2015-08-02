@@ -82,7 +82,7 @@
                             <hr>
                             {!! Form::open(['route' => 'estudiantes.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
                           <div class="form-group">
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Estudiante']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre del estudiante para buscar..']) !!}
 
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>
@@ -124,10 +124,11 @@
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->
               <p>
-  @if(Session::has('message'))
-    <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
-  @endif
-</p>
+                @if(Session::has('message'))
+                  <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
+                @endif
+                <td width= 505><a href="/descargarEstudiantes" class="btn btn-danger btn-xs">Descargar Registros</a></td>
+              </p>
               </section>
               </section>
 @endsection

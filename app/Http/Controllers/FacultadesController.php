@@ -115,4 +115,19 @@ class FacultadesController extends Controller {
 			return redirect()->route('facultades.index')->with('message', 'Facultad Eliminada con éxito')->with('usuario',$usuario);
 		}
 
+		public function exportarFacultades()
+		{
+			\Excel::create('FacultadesExportadas', function($excel) {
+
+			           $excel->sheet('Facultades', function($sheet) {
+
+			               $facultad = \App\Facultad::all();
+			               $sheet->fromArray($facultad);
+
+			           });
+			       })->export('csv');
+						return redirect()->route("facultades.index")->with('facultades', \App\Facultad::paginate(10)
+														->setPath('facultades'));
+		}
+
 	}

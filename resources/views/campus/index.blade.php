@@ -1,7 +1,7 @@
 @extends('layout.plantilla')
 @section('contenido')
 
-      
+
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -11,9 +11,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               <br><br>
-                  
+
                   <h5 class="centered">Menú Administrador</h5>
-                    
+
                   <li class="mt">
                       <a href="/admin/inicio">
                           <span>INICIO</span>
@@ -83,7 +83,7 @@
                             <hr>
                             {!! Form::open(['route' => 'campus.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
                           <div class="form-group">
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Campus']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre del campus para buscar..']) !!}
 
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>

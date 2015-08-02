@@ -18,7 +18,7 @@ class FuncionariosController extends Controller {
 	public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			$funcionarios = \App\Funcionario::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate();
+			$funcionarios = \App\Funcionario::name(ucwords($request->get("name")))->orderBy('id','DESC')->paginate(10);
 			return view('funcionarios.index',compact('funcionarios'))->with('usuario',$usuario);
 		}
 
@@ -115,6 +115,48 @@ class FuncionariosController extends Controller {
 		$funcionarios->delete();
 
 		return redirect()->route('funcionarios.index')->with('message', 'Funcionario Eliminado con éxito')->with('usuario',$usuario);
+	}
+
+	public function leerFichero(Request $request)
+	{
+
+		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'funcionarios.csv');
+
+		\Excel::load(storage_path('archivos/funcionarios.csv'), function($archivo)
+		{
+			$resultado = $archivo->get();
+			foreach($resultado as $key => $dato)
+			{
+					//echo $dato->nombre.'---'.$dato->direccion.'<br>';
+					$funcionario = new \App\Funcionario;
+
+					$funcionario->departamento_id = $dato->departamento_id;
+					$funcionario->rut = $dato->rut;
+					$funcionario->nombres = ucwords($dato->nombres);
+					$funcionario->apellidos = ucwords($dato->apellidos);
+
+					$funcionario->save();
+
+			}
+		})->get();
+		return redirect()->route("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(10)
+																									 ->setPath('funcionarios'))
+																									->with('message', 'Archivo cargado con éxito');
+	}
+
+	public function exportarFuncionarios()
+	{
+		\Excel::create('FuncionariosExportados', function($excel) {
+
+		           $excel->sheet('Funcionarios', function($sheet) {
+
+		               $funcionario = \App\Funcionario::all();
+		               $sheet->fromArray($funcionario);
+
+		           });
+		       })->export('csv');
+					return redirect()->route("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(10)
+													->setPath('funcionarios'));
 	}
 
 }

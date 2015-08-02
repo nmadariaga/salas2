@@ -128,4 +128,47 @@ class EstudiantesController extends Controller {
 		return redirect()->route('estudiantes.index')->with('message', 'Estudiante Eliminado con éxito')->with('usuario',$usuario);
 	}
 
+	public function leerFichero(Request $request)
+	{
+
+		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'estudiantes.csv');
+
+		\Excel::load(storage_path('archivos/estudiantes.csv'), function($archivo)
+		{
+			$resultado = $archivo->get();
+			foreach($resultado as $key => $dato)
+			{
+					//echo $dato->nombre.'---'.$dato->direccion.'<br>';
+					$estudiante = new \App\Estudiante;
+
+					$estudiante->carrera_id = $dato->carrera_id;
+					$estudiante->rut = $dato->rut;
+					$estudiante->nombres = ucwords($dato->nombres);
+					$estudiante->apellidos = ucwords($dato->apellidos);
+					$estudiante->email = $dato->email;
+
+					$estudiante->save();
+
+			}
+		})->get();
+		return redirect()->route("estudiantes.index")->with('estudiantes', \App\Estudiante::paginate(5)
+																									 ->setPath('estudiantes'))
+																									->with('message', 'Archivo cargado con éxito');
+	}
+
+	public function exportarEstudiantes()
+	{
+		\Excel::create('EstudiantesExportados', function($excel) {
+
+		           $excel->sheet('Estudiantes', function($sheet) {
+
+		               $estudiante = \App\Estudiante::all();
+		               $sheet->fromArray($estudiante);
+
+		           });
+		       })->export('csv');
+					return redirect()->route("estudiantes.index")->with('estudiantes', \App\Docente::paginate(10)
+													->setPath('estudiantes'));
+	}
+
 }

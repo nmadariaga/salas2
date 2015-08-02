@@ -112,4 +112,44 @@ class RolesusuariosController extends Controller {
 		return redirect()->route('rolesusuarios.index')->with('message', 'Rol Eliminado con éxito')->with('usuario',$usuario);
 	}
 
+	public function leerFichero(Request $request)
+	{
+
+		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'rolesUsuarios.csv');
+
+		\Excel::load(storage_path('archivos/rolesUsuarios.csv'), function($archivo)
+		{
+			$resultado = $archivo->get();
+			foreach($resultado as $key => $dato)
+			{
+					//echo $dato->nombre.'---'.$dato->direccion.'<br>';
+					$rolesUsuarios = new \App\Rolusuario;
+
+					$rolesUsuarios->rol_id = $dato->rol_id;
+					$rolesUsuarios->rut = $dato->rut;
+
+					$rolesUsuarios->save();
+
+			}
+		})->get();
+		return redirect()->route("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(5)
+																									 ->setPath('rolesusuario'))
+																									->with('message', 'Archivo cargado con éxito');
+	}
+
+	public function exportarRolesUsuarios()
+	{
+		\Excel::create('RolesUsuariosExportados', function($excel) {
+
+		           $excel->sheet('RolesUsuario', function($sheet) {
+
+		               $RolesUsuario = \App\Rolusuario::all();
+		               $sheet->fromArray($RolesUsuario);
+
+		           });
+		       })->export('csv');
+					return redirect()->route("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(10)
+													->setPath('rolesusuarios'));;
+	}
+
 }

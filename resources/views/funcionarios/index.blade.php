@@ -82,7 +82,7 @@
                             <hr>
                             {!! Form::open(['route' => 'funcionarios.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
                           <div class="form-group">
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Funcionario']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre del funcionario para buscar..']) !!}
 
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>
@@ -124,6 +124,7 @@
   @if(Session::has('message'))
     <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
   @endif
+  <td width= 505><a href="/descargarFuncionarios" class="btn btn-danger btn-xs">Descargar Registros</a></td>
 </p>
               </section>
               </section>

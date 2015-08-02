@@ -113,6 +113,12 @@
           						<div class="btn btn-success disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
         						@endif
       						</p>
+                  <form class="form-horizontal style-form" method="post" action="/ficheroDocentes" enctype="multipart/form-data">
+                  <input type="file" id="archivo" name="archivo" accept=".csv" />
+                  <br>
+                  <input type="submit" value="Cargar Archivo">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                  </form>
                   </div>
               </div><!-- col-lg-12-->
             </div><!-- /row -->

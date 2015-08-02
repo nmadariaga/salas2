@@ -19,7 +19,7 @@ public function scopeName($query, $name)
             //dd('scope: '.$name);
             if($name != "")
             {
-            $query->where('nombre', "like" ,"%$name%");
+            $query->where('rut',$name);
             }
     }
 

@@ -116,4 +116,19 @@ class CarrerasController extends Controller {
 						return redirect()->route('carreras.index')->with('message', 'Carrera Eliminada con éxito')->with('usuario',$usuario);
 					}
 
+					public function exportarCarreras()
+					{
+						\Excel::create('CarrerasExportadas', function($excel) {
+
+						           $excel->sheet('Carreras', function($sheet) {
+
+						               $carrera = \App\Carrera::all();
+						               $sheet->fromArray($carrera);
+
+						           });
+						       })->export('csv');
+									return redirect()->route("carreras.index")->with('carreras', \App\Carrera::paginate(10)
+																	->setPath('carreras'));
+					}
+
 				}

@@ -116,4 +116,46 @@ class DocentesController extends Controller {
 		return redirect()->route('docentes.index')->with('message', 'Docente Eliminado con éxito')->with('usuario',$usuario);
 	}
 
+	public function leerFichero(Request $request)
+	{
+
+		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'docentes.csv');
+
+		\Excel::load(storage_path('archivos/docentes.csv'), function($archivo)
+		{
+			$resultado = $archivo->get();
+			foreach($resultado as $key => $dato)
+			{
+					//echo $dato->nombre.'---'.$dato->direccion.'<br>';
+					$docente = new \App\Docente;
+
+					$docente->departamento_id = $dato->departamento_id;
+					$docente->rut = $dato->rut;
+					$docente->nombres = ucwords($dato->nombres);
+					$docente->apellidos = ucwords($dato->apellidos);
+
+					$docente->save();
+
+			}
+		})->get();
+		return redirect()->route("docentes.index")->with('docentes', \App\Docente::paginate(5)
+																									 ->setPath('docentes'))
+																									->with('message', 'Archivo cargado con éxito');
+	}
+
+	public function exportarDocentes()
+	{
+		\Excel::create('DocentesExportados', function($excel) {
+
+		           $excel->sheet('Docentes', function($sheet) {
+
+		               $docente = \App\Docente::all();
+		               $sheet->fromArray($docente);
+
+		           });
+		       })->export('csv');
+					return redirect()->route("docentes.index")->with('docente', \App\Docente::paginate(10)
+													->setPath('docente'));;
+	}
+
 }

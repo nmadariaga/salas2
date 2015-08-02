@@ -109,5 +109,21 @@ class RolesController extends Controller {
 		return redirect()->route('roles.index')->with('message', 'Rol Eliminado con éxito')->with('usuario',$usuario);
 	}
 
+	public function exportarRoles()
+	{
+		\Excel::create('RolesExportados', function($excel) {
+
+		           $excel->sheet('Roles', function($sheet) {
+
+		               $roles = \App\Role::all();
+
+		               $sheet->fromArray($roles);
+
+		           });
+		       })->export('csv');
+					return redirect()->route("roles.index")->with('roles', \App\Role::paginate(10)->setPath('role'));;
+	}
+
+
 
 }

@@ -118,4 +118,19 @@ class DepartamentosController extends Controller {
 				return redirect()->route('departamentos.index')->with('message', 'Departamento Eliminado con éxito')->with('usuario',$usuario);
 			}
 
+			public function exportarDepartamentos()
+			{
+				\Excel::create('DepartamentosExportados', function($excel) {
+
+				           $excel->sheet('Departamentos', function($sheet) {
+
+				               $departamento = \App\Departamento::all();
+				               $sheet->fromArray($departamento);
+
+				           });
+				       })->export('csv');
+							return redirect()->route("departamentos.index")->with('departamentos', \App\Departamento::paginate(10)
+															->setPath('departamentos'));
+			}
+
 		}

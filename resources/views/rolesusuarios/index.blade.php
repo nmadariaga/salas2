@@ -82,7 +82,7 @@
                             <hr>
                             {!! Form::open(['route' => 'rolesusuarios.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
                           <div class="form-group">
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese rut del usuario sin digito verificador..']) !!}
 
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>
@@ -119,6 +119,7 @@
   @if(Session::has('message'))
     <div class="btn btn-info disabled{{ Session::get('class') }}">{{ Session::get('message')}}</div>
   @endif
+  <td width= 505><a href="/descargarRolesUsuarios" class="btn btn-danger btn-xs">Descargar Registros</a></td>
 </p>
               </section>
               </section>
