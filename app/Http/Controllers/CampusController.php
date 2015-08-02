@@ -14,11 +14,12 @@ class CampusController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$usuario = Auth::user();
-		return view("campus.index")->with('campus', \App\Campus::paginate(10)->setPath('campu'))->with('usuario',$usuario);
-	}
+	public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$campus = \App\Campus::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('campus.index',compact('campus'))->with('usuario',$usuario);
+		}
 
 	/**
 	 * Show the form for creating a new resource.

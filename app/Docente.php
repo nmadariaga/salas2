@@ -19,5 +19,14 @@ class Docente extends Model {
         return $this->belongsTo('App\Departamento');
     }
 
+    public function scopeName($query, $name)
+    {
+            //dd('scope: '.$name);
+            if($name != "")
+            {
+            $query->where('nombre', ucwords($name));
+            }
+    }
+
 
 }

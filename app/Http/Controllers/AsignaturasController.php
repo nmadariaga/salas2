@@ -14,10 +14,11 @@ class AsignaturasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
 		$usuario = Auth::user();
-		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(10)->setPath('asignaturas'))->with('usuario',$usuario);
+			$asignaturas = \App\Asignatura::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('asignaturas.index',compact('asignaturas'))->with('usuario',$usuario);
 	}
 
 	/**

@@ -14,13 +14,12 @@ class EscuelasController extends Controller {
 				 *
 				 * @return Response
 				 */
-				public function index()
-				{
-					$usuario = Auth::user();
-					return view("escuelas.index")->with('escuelas', \App\Escuela::paginate(10)
-																				->setPath('escuelas'))
-																				->with('usuario',$usuario);
-				}
+				public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$escuelas = \App\Escuela::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('escuelas.index',compact('escuelas'))->with('usuario',$usuario);
+		}
 
 				/**
 				 * Show the form for creating a new resource.

@@ -90,6 +90,7 @@
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>
                           {!! Form::close() !!}
+                          <hr>
 
                               <thead>
                               <tr>

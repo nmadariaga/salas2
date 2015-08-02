@@ -14,13 +14,12 @@ class RolesusuariosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$usuario = Auth::user();
-		return view("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(10)
-																		  ->setPath('rolesusuarios'))
-																			->with('usuario',$usuario);
-	}
+	public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$rolesusuarios = \App\Rolusuario::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('rolesusuarios.index',compact('rolesusuarios'))->with('usuario',$usuario);
+		}
 
 	/**
 	 * Show the form for creating a new resource.

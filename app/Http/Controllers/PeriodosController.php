@@ -13,12 +13,11 @@ class PeriodosController extends Controller {
 					 *
 					 * @return Response
 					 */
-					public function index()
+					public function index(Request $request)
 					{
 						$usuario = Auth::user();
-						return view("periodos.index")->with('periodos', \App\Periodo::paginate(10)
-																					->setPath('periodos'))
-																					->with('usuario',$usuario);
+						$periodos = \App\Periodo::name($request->get("name"))->orderBy('id','DESC')->paginate();
+						return view('periodos.index',compact('periodos'))->with('usuario',$usuario);
 					}
 
 					/**

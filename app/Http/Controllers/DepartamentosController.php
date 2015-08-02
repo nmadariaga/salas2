@@ -14,13 +14,12 @@ class DepartamentosController extends Controller {
 			 *
 			 * @return Response
 			 */
-			public function index()
-			{
-				$usuario = Auth::user();
-				return view("departamentos.index")->with('departamentos', \App\Departamento::paginate(10)
-																					->setPath('departamentos'))
-																					->with('usuario',$usuario);
-			}
+			public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$departamentos = \App\Departamento::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('departamentos.index',compact('departamentos'))->with('usuario',$usuario);
+		}
 
 			/**
 			 * Show the form for creating a new resource.

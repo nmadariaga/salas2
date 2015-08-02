@@ -14,14 +14,12 @@ class CursosController extends Controller {
 		 *
 		 * @return Response
 		 */
-		public function index()
+		public function index(Request $request)
 		{
 			$usuario = Auth::user();
-			return view("cursos.index")->with('cursos', \App\Curso::paginate(10)
-																->setPath('cursos'))
-																->with('usuario',$usuario);
+			$cursos = \App\Curso::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('cursos.index',compact('cursos'))->with('usuario',$usuario);
 		}
-
 		/**
 		 * Show the form for creating a new resource.
 		 *

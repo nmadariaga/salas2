@@ -71,6 +71,14 @@
                             </h4>
                           </div>
                             <hr>
+                            {!! Form::open(['route' => 'periodos.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+                          <div class="form-group">
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Periodo']) !!}
+
+                          </div>
+                          <button type="submit" class="btn btn-default">Buscar</button>
+                          {!! Form::close() !!}
+                          <hr>
                               <thead>
                               <tr>
                                   <th> Bloque</th>

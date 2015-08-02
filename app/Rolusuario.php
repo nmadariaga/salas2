@@ -14,5 +14,13 @@ public function rol()
         return $this->belongsTo('App\Role');
     }
 
+public function scopeName($query, $name)
+    {
+            //dd('scope: '.$name);
+            if($name != "")
+            {
+            $query->where('nombre', ucwords($name));
+            }
+    }
 
 }

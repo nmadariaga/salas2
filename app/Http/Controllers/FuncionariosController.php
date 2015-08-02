@@ -15,13 +15,12 @@ class FuncionariosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$usuario = Auth::user();
-		return view("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(10)
-																			->setPath('funcionarios'))
-																			->with('usuario',$usuario);
-	}
+	public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$funcionarios = \App\Funcionario::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('funcionarios.index',compact('funcionarios'))->with('usuario',$usuario);
+		}
 
 	/**
 	 * Show the form for creating a new resource.

@@ -14,15 +14,12 @@ class EstudiantesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$usuario = Auth::user();
-		$acursada = new \App\Asignaturacursada;
-		return view("estudiantes.index")->with('usuario',$usuario)
-																		->with('estudiantes', \App\Estudiante::paginate(10)
-																		->setPath('estudiantes'))
-																		->with('acursada',$acursada);
-	}
+	public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$estudiantes = \App\Estudiante::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('estudiantes.index',compact('estudiantes'))->with('usuario',$usuario);
+		}
 
 	/**
 	 * Show the form for creating a new resource.

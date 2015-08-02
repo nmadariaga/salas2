@@ -80,6 +80,14 @@
                             </h4>
                           </div>
                             <hr>
+                            {!! Form::open(['route' => 'rolesusuarios.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+                          <div class="form-group">
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+
+                          </div>
+                          <button type="submit" class="btn btn-default">Buscar</button>
+                          {!! Form::close() !!}
+                          <hr>
                               <thead>
                               <tr>
                                   <th> RUT</th>

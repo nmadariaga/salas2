@@ -17,4 +17,13 @@ public function estudiantes()
         return $this->hasMany('App\Estudiante');
     }
 
+    public function scopeName($query, $name)
+    {
+            //dd('scope: '.$name);
+            if($name != "")
+            {
+            $query->where('nombre', ucwords($name));
+            }
+    }
+
 }

@@ -14,12 +14,11 @@ class CarrerasController extends Controller {
 					 *
 					 * @return Response
 					 */
-					public function index()
+					public function index(Request $request)
 					{
 						$usuario = Auth::user();
-						return view("carreras.index")->with('carreras', \App\Carrera::paginate(10)
-																				 ->setPath('carreras'))
-																				 ->with('usuario',$usuario);
+						$carreras = \App\Carrera::name($request->get("name"))->orderBy('id','DESC')->paginate();
+						return view('carreras.index',compact('carreras'))->with('usuario',$usuario);
 					}
 
 					/**

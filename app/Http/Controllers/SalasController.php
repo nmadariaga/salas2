@@ -15,13 +15,12 @@ class SalasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$usuario = Auth::user();
-		return view("salas.index")->with('salas', \App\Sala::paginate(10)
-															->setPath('salas'))
-															->with('usuario',$usuario);
-	}
+	public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$salas = \App\Sala::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('salas.index',compact('salas'))->with('usuario',$usuario);
+		}
 
 	/**
 	 * Show the form for creating a new resource.

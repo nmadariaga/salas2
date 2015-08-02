@@ -13,12 +13,12 @@ class TiposdesalasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$usuario = Auth::user();
-		return view('tiposdesalas.index')->with('tiposdesalas', \App\Tipodesala::paginate(5)
-																			->setPath('tiposdesalas'))->with('usuario',$usuario);
-	}
+	public function index(Request $request)
+		{
+			$usuario = Auth::user();
+			$tiposdesalas = \App\Tipodesala::name($request->get("name"))->orderBy('id','DESC')->paginate();
+			return view('tiposdesalas.index',compact('tiposdesalas'))->with('usuario',$usuario);
+		}
 
 	/**
 	 * Show the form for creating a new resource.

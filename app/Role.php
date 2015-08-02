@@ -19,5 +19,14 @@ public function usuarios()
         return $this->belongsToMany('App\Usuario', 'roles_usuarios', 'rol_id', 'rut');
     }
 
+    public function scopeName($query, $name)
+    {
+            //dd('scope: '.$name);
+            if($name != "")
+            {
+            $query->where('nombre', ucwords($name));
+            }
+    }
+
 
 }

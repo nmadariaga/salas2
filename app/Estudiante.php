@@ -23,4 +23,13 @@ class Estudiante extends Model {
 	{
 		return $this->belongsTo('App\Usuario', 'rut');
 	}
+
+	public function scopeName($query, $name)
+    {
+            //dd('scope: '.$name);
+            if($name != "")
+            {
+            $query->where('nombre', ucwords($name));
+            }
+    }
 }
