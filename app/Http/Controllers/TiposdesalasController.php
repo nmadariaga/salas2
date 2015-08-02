@@ -16,7 +16,8 @@ class TiposdesalasController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view('tiposdesalas.index')->with('tiposdesalas', \App\Tipodesala::paginate(5)->setPath('tiposdesala'))->with('usuario',$usuario);
+		return view('tiposdesalas.index')->with('tiposdesalas', \App\Tipodesala::paginate(5)
+																			->setPath('tiposdesalas'))->with('usuario',$usuario);
 	}
 
 	/**

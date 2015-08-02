@@ -1,6 +1,6 @@
 @extends('layout.plantilla')
 @section('contenido')
-      
+
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -10,9 +10,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               <br><br>
-                  
+
                   <h5 class="centered">Menú Administrador</h5>
-                    
+
                   <li class="mt">
                       <a href="/admin/inicio">
                           <span>INICIO</span>
@@ -106,6 +106,7 @@
                               @endforeach
                               </tbody>
                           </table>
+                          <center>{!!$departamentos->render()!!}</center>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

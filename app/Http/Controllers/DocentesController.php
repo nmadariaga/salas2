@@ -17,7 +17,9 @@ class DocentesController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("docentes.index")->with('docentes', \App\Docente::paginate(5)->setPath('docentes'))->with('usuario',$usuario);
+		return view("docentes.index")->with('docentes', \App\Docente::paginate(10)
+																 ->setPath('docentes'))
+																 ->with('usuario',$usuario);
 	}
 
 	/**

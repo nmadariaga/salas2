@@ -17,7 +17,9 @@ class DepartamentosController extends Controller {
 			public function index()
 			{
 				$usuario = Auth::user();
-				return view("departamentos.index")->with('departamentos', \App\Departamento::paginate(5)->setPath('departamento'))->with('usuario',$usuario);
+				return view("departamentos.index")->with('departamentos', \App\Departamento::paginate(10)
+																					->setPath('departamentos'))
+																					->with('usuario',$usuario);
 			}
 
 			/**

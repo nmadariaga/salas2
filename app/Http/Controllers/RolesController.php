@@ -16,7 +16,9 @@ class RolesController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("roles.index")->with('roles', \App\Role::paginate(5)->setPath('role'))->with('usuario',$usuario);
+		return view("roles.index")->with('roles', \App\Role::paginate(5)
+															->setPath('roles'))
+															->with('usuario',$usuario);
 	}
 
 	/**

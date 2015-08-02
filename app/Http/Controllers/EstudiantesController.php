@@ -18,7 +18,10 @@ class EstudiantesController extends Controller {
 	{
 		$usuario = Auth::user();
 		$acursada = new \App\Asignaturacursada;
-		return view("estudiantes.index")->with('usuario',$usuario)->with('estudiantes', \App\Estudiante::paginate(5)->setPath('estudiante'))->with('acursada',$acursada);
+		return view("estudiantes.index")->with('usuario',$usuario)
+																		->with('estudiantes', \App\Estudiante::paginate(10)
+																		->setPath('estudiantes'))
+																		->with('acursada',$acursada);
 	}
 
 	/**

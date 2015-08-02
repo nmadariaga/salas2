@@ -97,6 +97,7 @@
                               @endforeach
                               </tbody>
                           </table>
+                          <center>{!!$periodos->render()!!}</center>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

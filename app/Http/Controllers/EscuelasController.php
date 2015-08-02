@@ -17,7 +17,9 @@ class EscuelasController extends Controller {
 				public function index()
 				{
 					$usuario = Auth::user();
-					return view("escuelas.index")->with('escuelas', \App\Escuela::paginate(5)->setPath('escuela'))->with('usuario',$usuario);
+					return view("escuelas.index")->with('escuelas', \App\Escuela::paginate(10)
+																				->setPath('escuelas'))
+																				->with('usuario',$usuario);
 				}
 
 				/**

@@ -100,6 +100,7 @@
                               @endforeach
                               </tbody>
                           </table>
+                          <center>{!!$horarios->render()!!}</center>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

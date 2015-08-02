@@ -17,7 +17,9 @@ class CarrerasController extends Controller {
 					public function index()
 					{
 						$usuario = Auth::user();
-						return view("carreras.index")->with('carreras', \App\Carrera::paginate(5)->setPath('carrera'))->with('usuario',$usuario);
+						return view("carreras.index")->with('carreras', \App\Carrera::paginate(10)
+																				 ->setPath('carreras'))
+																				 ->with('usuario',$usuario);
 					}
 
 					/**

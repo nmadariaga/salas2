@@ -17,7 +17,9 @@ class CursosController extends Controller {
 		public function index()
 		{
 			$usuario = Auth::user();
-			return view("cursos.index")->with('cursos', \App\Curso::paginate(20)->setPath('curso'))->with('usuario',$usuario);
+			return view("cursos.index")->with('cursos', \App\Curso::paginate(10)
+																->setPath('cursos'))
+																->with('usuario',$usuario);
 		}
 
 		/**

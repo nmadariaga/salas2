@@ -17,7 +17,7 @@ class CampusController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("campus.index")->with('campus', \App\Campus::paginate(20)->setPath('campu'))->with('usuario',$usuario);
+		return view("campus.index")->with('campus', \App\Campus::paginate(10)->setPath('campu'))->with('usuario',$usuario);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class CampusController extends Controller {
 		$usuario = Auth::user();
 
 		$archivo=$request->file('archivo')->move(storage_path('archivos'), 'campus.csv');
- 
+
 		\Excel::load(storage_path('archivos/campus.csv'), function($archivo)
 		{
 			$resultado = $archivo->get();

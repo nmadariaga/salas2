@@ -18,7 +18,9 @@ class SalasController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("salas.index")->with('salas', \App\Sala::paginate(5)->setPath('sala'))->with('usuario',$usuario);
+		return view("salas.index")->with('salas', \App\Sala::paginate(10)
+															->setPath('salas'))
+															->with('usuario',$usuario);
 	}
 
 	/**

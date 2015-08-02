@@ -103,6 +103,7 @@
                               @endforeach
                               </tbody>
                           </table>
+                        <center>{!!$rolesusuarios->render()!!}</center>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

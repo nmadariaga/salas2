@@ -103,6 +103,7 @@
                               @endforeach
                               </tbody>
                           </table>
+                          <center>{!!$cursos->render()!!}</center>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

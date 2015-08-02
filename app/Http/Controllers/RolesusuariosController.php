@@ -17,7 +17,9 @@ class RolesusuariosController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(30)->setPath('rolesusuario'))->with('usuario',$usuario);
+		return view("rolesusuarios.index")->with('rolesusuarios', \App\Rolusuario::paginate(10)
+																		  ->setPath('rolesusuarios'))
+																			->with('usuario',$usuario);
 	}
 
 	/**

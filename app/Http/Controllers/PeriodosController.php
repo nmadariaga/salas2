@@ -16,7 +16,9 @@ class PeriodosController extends Controller {
 					public function index()
 					{
 						$usuario = Auth::user();
-						return view("periodos.index")->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'))->with('usuario',$usuario);
+						return view("periodos.index")->with('periodos', \App\Periodo::paginate(10)
+																					->setPath('periodos'))
+																					->with('usuario',$usuario);
 					}
 
 					/**

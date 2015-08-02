@@ -108,6 +108,7 @@
                               @endforeach
                               </tbody>
                           </table>
+                          <center>{!!$funcionarios->render()!!}</center>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->

@@ -17,7 +17,7 @@ class AsignaturasController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(20)->setPath('asignatura'))->with('usuario',$usuario);
+		return view("asignaturas.index")->with('asignaturas', \App\Asignatura::paginate(10)->setPath('asignaturas'))->with('usuario',$usuario);
 	}
 
 	/**

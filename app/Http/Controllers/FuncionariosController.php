@@ -18,7 +18,9 @@ class FuncionariosController extends Controller {
 	public function index()
 	{
 		$usuario = Auth::user();
-		return view("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(5)->setPath('funcionario'))->with('usuario',$usuario);
+		return view("funcionarios.index")->with('funcionarios', \App\Funcionario::paginate(10)
+																			->setPath('funcionarios'))
+																			->with('usuario',$usuario);
 	}
 
 	/**
