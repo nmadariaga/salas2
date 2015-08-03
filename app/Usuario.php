@@ -14,4 +14,14 @@ class Usuario extends \UTEM\Dirdoc\Auth\Models\DirdocWSUser {
     	return $this->hasOne('App\Estudiante', 'rut', 'rut');
     }
 
+		public function funcionario()
+    {
+    	return $this->hasOne('App\Funcionario', 'rut', 'rut');
+    }
+
+		public function docente()
+    {
+    	return $this->hasOne('App\Docente', 'rut', 'rut');
+    }
+
 }
