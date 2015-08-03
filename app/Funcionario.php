@@ -13,6 +13,12 @@ public function departamento ()
     return $this->belongsTo('App\Departamento');
 }
 
+public function usuario()
+{
+	return $this->belongsTo('App\Usuario', 'rut');
+}
+
+
 public function scopeName($query, $name)
     {
             //dd('scope: '.$name);
