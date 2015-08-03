@@ -77,7 +77,7 @@ Route::post('hola','CampusController@leerFichero');
     Route::get('descargarCarreras','CarrerasController@exportarCarreras');
     Route::resource('carreras','CarrerasController');
 
-
+    Route::resource('rolesusuarios','RolesusuariosController');
 
     Route::resource('estudiantes.asignaturascursadas','AsignaturascursadasController');
 
