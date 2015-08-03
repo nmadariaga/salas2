@@ -88,7 +88,7 @@
       <header class="header black-bg">
 
             <!--logo start-->
-            <a href="index.html" class="logo">{!!HTML::image('utem.png')!!}</a>
+            <a href="http://www.utem.cl" target="_blank" class="logo">{!!HTML::image('utem.png')!!}</a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
