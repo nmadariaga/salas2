@@ -36,10 +36,14 @@ class AsignaturascursadasController extends Controller {
    {
    	$usuario = Auth::user();
 		$estudiante = \App\Estudiante::find($id);
-		$asignatura = \App\Asignatura::lists('nombre','id');
-		$curso = \App\Curso::lists('seccion','id');
-		return view('asignaturacursada.create')->with('cursos',$curso)->with('estudiante',$estudiante)
-		                                        ->with('asignatura',$asignatura)->with('usuario',$usuario);
+		$cursos = \App\Curso::all();
+		$cursos_list = array();
+		foreach ($cursos as $curso) {
+					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
+						$curso->seccion);
+				}
+		return view('asignaturacursada.create')->with('cursos_list',$cursos_list)->with('estudiante',$estudiante)
+				->with('usuario',$usuario);
 
    }
 
