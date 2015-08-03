@@ -19,12 +19,6 @@
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="buscar" >
-                          <span>BUSCAR</span>
-                      </a>
-                  </li>
-
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -37,66 +31,200 @@
       <!--main content start-->
       <section id="main-content">
         <section class="wrapper">
-              <div class="row">
-
                         <div class="row mtbox">
                         <!--  @if ( !Auth::guest() )
                         <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
                         @endif-->
                         <center><h1>Bienvenido {{$nombreCompleto}}</h1></center>
-                        </div><!-- /row mt -->
-                        <div class="row mt">
-                        <center><h3>Tu horario para este semestre es el siguiente.</h3></center>
-                        </div><!-- /row -->
-                          <table class="calendar table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>&nbsp;</th>
-                                <th width="20%">Lunes {{$semana[0]}}</th>
-                                <th width="20%">Martes {{$semana[1]}}</th>
-                                <th width="20%">Miércoles {{$semana[2]}}</th>
-                                <th width="20%">Jueves {{$semana[3]}}</th>
-                                <th width="20%">Viernes {{$semana[4]}}</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($periodos as $periodo)
-                              <tr>
-                                <td>{{ $periodo->inicio }} - {{ $periodo->fin }}</td>
-                                    @foreach($cursos as $curso)
-                                        <td class=" has-events" rowspan="1"><!-- lunes-->
-                                        <div style="width: 99%; height: 100%;">
-                                          <?php $i=0; ?>
-                                          lunes
-                                            @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[i])
-                                                @if($horario->periodo->bloque == $periodo->bloque)
-                                                {{$curso->asignatura->nombre}}
-                                                Seccion:{{$curso->seccion}}
-                                                {{$horario->sala->nombre}}
-                                                {{$curso->docente->nombres}} {{$curso->docente->apellidos}}
-                                                <?php $i++; ?>
-                                                @endif
-                                              @endif
-                                            @endforeach
-                                        </div>
-                                      </td>
 
-                                    @endforeach
-                              </tr>
-                              @endforeach
-                            </tbody>
-                          </table>
+                        <center><h3>Tus clases para esta semana son las siguientes.</h3></center>
+
+                        </div>
 
                         <div class="row">
+                      <div class="col-md-12">
+                          <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                              <h3>Lunes {{$semana[0]}}</h3>
+                          </div>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th> Periodo</th>
+                                  <th> Hora Inicio</th>
+                                  <th> Curso</th>
+                                  <th> Profesor</th>
+                                  <th> Sala</th>
+                              </tr>
+                              </thead>
 
+                              <tbody>
+                            @foreach($cursos as $curso)
+                            @foreach($curso->horarios as $horario)
+                            @if($horario->fecha == $semana[0])
+                              <tr>
+                                  <td>{{ $horario->periodo->bloque}}</td>
+                                  <td>{{ $horario->periodo->inicio}}</td>     
+                                  <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
+                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $horario->sala->nombre}}</td>
+                              </tr>
+                            @endif
+                            @endforeach
+                            @endforeach
+                              </tbody>
+                          </table>
+                          </div>
+                          </div>
                         </div><!-- /row -->
 
                         <div class="row mt">
+                      <div class="col-md-12">
+                          <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                              <h3>Martes {{$semana[1]}}</h3>
+                          </div>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th> Periodo</th>
+                                  <th> Hora Inicio</th>
+                                  <th> Curso</th>
+                                  <th> Profesor</th>
+                                  <th> Sala</th>
+                              </tr>
+                              </thead>
 
+                              <tbody>
+                            @foreach($cursos as $curso)
+                            @foreach($curso->horarios as $horario)
+                            @if($horario->fecha == $semana[1])
+                              <tr>
+                                  <td>{{ $horario->periodo->bloque}}</td>
+                                  <td>{{ $horario->periodo->inicio}}</td>     
+                                  <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
+                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $horario->sala->nombre}}</td>
+                              </tr>
+                            @endif
+                            @endforeach
+                            @endforeach
+                              </tbody>
+                          </table>
+                          </div>
+                          </div>
                         </div><!-- /row -->
 
-              </div>
+                        <div class="row mt">
+                          <div class="col-md-12">
+                          <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                              <h3>Miércoles {{$semana[2]}}</h3>
+                          </div>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th> Periodo</th>
+                                  <th> Hora Inicio</th>
+                                  <th> Curso</th>
+                                  <th> Profesor</th>
+                                  <th> Sala</th>
+                              </tr>
+                              </thead>
+
+                              <tbody>
+                            @foreach($cursos as $curso)
+                            @foreach($curso->horarios as $horario)
+                            @if($horario->fecha == $semana[2])
+                              <tr>
+                                  <td>{{ $horario->periodo->bloque}}</td>
+                                  <td>{{ $horario->periodo->inicio}}</td>     
+                                  <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
+                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $horario->sala->nombre}}</td>
+                              </tr>
+                            @endif
+                            @endforeach
+                            @endforeach
+                              </tbody>
+                          </table>
+                          </div>
+                          </div>
+                        </div><!-- /row -->
+
+                        <div class="row mt">
+                       <div class="col-md-12">
+                          <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                              <h3>Jueves {{$semana[3]}}</h3>
+                          </div>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th> Periodo</th>
+                                  <th> Hora Inicio</th>
+                                  <th> Curso</th>
+                                  <th> Profesor</th>
+                                  <th> Sala</th>
+                              </tr>
+                              </thead>
+
+                              <tbody>
+                            @foreach($cursos as $curso)
+                            @foreach($curso->horarios as $horario)
+                            @if($horario->fecha == $semana[3])
+                              <tr>
+                                  <td>{{ $horario->periodo->bloque}}</td>
+                                  <td>{{ $horario->periodo->inicio}}</td>     
+                                  <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
+                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $horario->sala->nombre}}</td>
+                              </tr>
+                            @endif
+                            @endforeach
+                            @endforeach
+                              </tbody>
+                          </table>
+                          </div>
+                          </div>
+                        </div><!-- /row -->
+
+                        <div class="row mt">
+                      <div class="col-md-12">
+                          <div class="content-panel">
+                          <table class="table table-striped table-advance table-hover">
+                              <h3>Viernes {{$semana[4]}}</h3>
+                          </div>
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th> Periodo</th>
+                                  <th> Hora Inicio</th>
+                                  <th> Curso</th>
+                                  <th> Profesor</th>
+                                  <th> Sala</th>
+                              </tr>
+                              </thead>
+
+                              <tbody>
+                            @foreach($cursos as $curso)
+                            @foreach($curso->horarios as $horario)
+                            @if($horario->fecha == $semana[4])
+                              <tr>
+                                  <td>{{ $horario->periodo->bloque}}</td>
+                                  <td>{{ $horario->periodo->inicio}}</td>     
+                                  <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
+                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $horario->sala->nombre}}</td>
+                              </tr>
+                            @endif
+                            @endforeach
+                            @endforeach
+                              </tbody>
+                          </table>
+                          </div>
+                          </div>
+                        </div><!-- /row -->
         </section>
       </section>
 
