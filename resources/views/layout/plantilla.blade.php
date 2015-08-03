@@ -93,10 +93,32 @@
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
-                
+
             <div class="btn-group">
-            
-            </div>              
+              Conectado como:
+                 @foreach($usuario->roles as $rol)
+                              @if($rol->nombre == 'Administrador')
+                              <a href="/admin/inicio" >
+                                  <button type="button" class="btn btn-default">Administrador</button>
+                              </a>
+                              @endif
+                              @if($rol->nombre == 'Encargado')
+                              <a href="/encargado/menu" >
+                                  <button type="button" class="btn btn-default">Encargado</button>
+                              </a>
+                              @endif
+                              @if($rol->nombre == 'Docente')
+                              <a href="#" >
+                                  <button type="button" class="btn btn-default">Docente</button>
+                              </a>
+                              @endif
+                              @if($rol->nombre == 'Estudiante')
+                              <a href="/alumno" >
+                                  <button type="button" class="btn btn-default">Estudiante</button>
+                              </a>
+                              @endif
+                            @endforeach</h3></center>
+            </div>
                 </ul>
                 <!--  notification end -->
             </div>

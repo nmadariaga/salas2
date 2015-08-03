@@ -44,29 +44,6 @@
                         <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
                         @endif-->
                         <center><h1>Bienvenido {{$nombreCompleto}}</h1></center>
-                        <center><h4>Contectado como:
-                          @foreach($usuario->roles as $rol)
-                            @if($rol->nombre == 'Administrador')
-                            <a href="/admin/inicio" >
-                                -<span>Administrador</span>-
-                            </a>
-                            @endif
-                            @if($rol->nombre == 'Encargado')
-                            <a href="/encargado/menu" >
-                                -<span>Encargado</span>-
-                            </a>
-                            @endif
-                            @if($rol->nombre == 'Docente')
-                            <a href="#" >
-                                -<span>Docente</span>-
-                            </a>
-                            @endif
-                            @if($rol->nombre == 'Estudiante')
-                            <a href="/alumno" >
-                                >><u><b><span>Alumno</span></b></u><<
-                            </a>
-                            @endif
-                          @endforeach</h3></center>
                         </div><!-- /row mt -->
                         <div class="row mt">
                         <center><h3>Tu horario para este semestre es el siguiente.</h3></center>

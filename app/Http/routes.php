@@ -42,13 +42,10 @@ Route::controller('auth', 'Auth\AuthController', [
 ]);
 Route::post('hola','CampusController@leerFichero');
 
-
-
   Route::group(['middleware' => 'roladmin'], function ()
   {
     Route::get('descargarRolesUsuarios','RolesusuariosController@exportarRolesUsuarios');
     Route::post('ficheroRolesUsuarios','RolesusuariosController@leerFichero');
-    Route::resource('rolesusuarios','RolesusuariosController');
 
     Route::get('descargarEstudiantes','EstudiantesController@exportarEstudiantes');
     Route::post('ficheroEstudiantes','EstudiantesController@leerFichero');
@@ -81,7 +78,7 @@ Route::post('hola','CampusController@leerFichero');
     Route::resource('carreras','CarrerasController');
 
 
-    Route::resource('rolesusuarios','RolesusuariosController');
+
     Route::resource('estudiantes.asignaturascursadas','AsignaturascursadasController');
 
   });
