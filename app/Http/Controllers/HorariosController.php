@@ -44,7 +44,11 @@ class HorariosController extends Controller {
 						$curso->seccion);
 				}
 				$asignatura = \App\Asignatura::lists('nombre','id');
-				return view('horarios.create')->with('periodo',$periodo)->with('salas',$sala)->with('curso',$cursos_list)->with('asignatura',$asignatura)->with('usuario',$usuario);
+				return view('horarios.create')->with('periodo',$periodo)
+																			->with('salas',$sala)
+																			->with('curso',$cursos_list)
+																			->with('asignatura',$asignatura)
+																			->with('usuario',$usuario);
 			}
 
 			/**
@@ -90,7 +94,10 @@ class HorariosController extends Controller {
       			$periodo = \App\Periodo::find($horario->periodo_id);
 				$sala = \App\Sala::find($horario->sala_id);
 				$curso = \App\Curso::find($horario->sala_id);
-				return view('horarios.show')->with('horario',$horario)->with('periodo',$periodo)->with('sala',$sala)->with('curso',$curso)->with('usuario',$usuario);
+				return view('horarios.show')->with('horario',$horario)
+																		->with('periodo',$periodo)
+																		->with('sala',$sala)->with('curso',$curso)
+																		->with('usuario',$usuario);
 			}
 
 			/**
@@ -104,12 +111,19 @@ class HorariosController extends Controller {
 				$usuario = Auth::user();
 				$periodos = \App\Periodo::lists('bloque','id');
 				$salas = \App\Sala::lists('nombre','id');
+				$cursos = \App\Curso::all();
+				$cursos_list = array();
+				foreach ($cursos as $curso) {
+					$cursos_list[$curso->id] = sprintf('%s (Seccion %d)', $curso->asignatura->nombre,
+						$curso->seccion);
+				}
 				$asignaturas = \App\Asignatura::lists('nombre','id');
 				return view('horarios.edit')->with('horario', \App\Horario::find($id))
 				                            ->with('periodos',$periodos)
 				                            ->with('salas', $salas)
-			                                ->with('asignaturas', $asignaturas)
-			                                ->with('usuario',$usuario);
+			                              ->with('asignaturas', $asignaturas)
+																		->with('curso',$cursos_list)
+			                              ->with('usuario',$usuario);
 
 			}
 

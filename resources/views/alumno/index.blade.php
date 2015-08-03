@@ -78,7 +78,7 @@
                                       <td class=" has-events" rowspan="1">
                                         <div style="width: 99%; height: 100%;">
                                             @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[0])
+                                              @if($horario->fecha == $semana[1])
                                                 {{$curso->asignatura->nombre}}
                                                 {{$horario->fecha}}
                                               @endif
@@ -88,7 +88,7 @@
                                       <td class=" has-events" rowspan="1">
                                         <div style="width: 99%; height: 100%;">
                                             @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[0])
+                                              @if($horario->fecha == $semana[2])
                                                 {{$curso->asignatura->nombre}}
                                                 {{$horario->fecha}}
                                               @endif
@@ -98,7 +98,7 @@
                                       <td class=" has-events" rowspan="1">
                                         <div style="width: 99%; height: 100%;">
                                             @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[0])
+                                              @if($horario->fecha == $semana[3])
                                                 {{$curso->asignatura->nombre}}
                                                 {{$horario->fecha}}
                                               @endif
@@ -108,7 +108,7 @@
                                       <td class=" has-events" rowspan="1">
                                         <div style="width: 99%; height: 100%;">
                                             @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[0])
+                                              @if($horario->fecha == $semana[4])
                                                 {{$curso->asignatura->nombre}}
                                                 {{$horario->fecha}}
                                               @endif

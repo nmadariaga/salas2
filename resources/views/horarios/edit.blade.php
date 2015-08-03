@@ -99,7 +99,7 @@
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Curso: </label>
                               <div class="col-sm-10">
-                                 {!! Form::select('asignatura_id', $asignaturas) !!}
+                                 {!! Form::select('curso_id', $curso) !!}
                               </div>
                               <br><br><br>
                                 {!! Form::submit('Actualizar', ["class" => "btn btn-success btn-block"]) !!}

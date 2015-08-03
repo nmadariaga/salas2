@@ -22,9 +22,8 @@ class UpdateHorarioRequest extends Request {
 	public function rules()
 	{
 		return [
-			"fechaInicial" => "required|date",
-			"fechaFinal" => "required|date",
-			"salas_id" => "required",
+			"fecha" => "required|date",
+			"sala_id" => "required",
 			"periodo_id" => "required",
 			"curso_id" => "required"
 		];
