@@ -91,7 +91,7 @@
                       {!! Form::open(['route' => 'rolesusuarios.store']) !!}
                       <form class="form-horizontal style-form" method="get">
                       		<div class="form-group">
-								{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'Rut']) !!}
+								{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'Rut sin digito verificador']) !!}
 							</div>
 							<div class="form-group"><p>Rol:
 								{!! Form::select('rol_id', $rol, ['class' => 'form-control']) !!}<p>

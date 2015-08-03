@@ -94,7 +94,7 @@
 								{!! Form::select('departamento_id', $departamento, ['class' => 'form-control']) !!}<p>
 							</div>
 							<div class="form-group">
-								{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'RUT']) !!}
+								{!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'RUT sin digito verificador']) !!}
 							</div>
 							<div class="form-group">
 								{!! Form::text('nombres', null,['class'=>'form-control', 'placeholder'=>'Nombres'])!!}

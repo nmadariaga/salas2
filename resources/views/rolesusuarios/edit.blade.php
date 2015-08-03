@@ -94,7 +94,7 @@
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">RUT: </label>
                               <div class="col-sm-10">
-                                 {!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'RUT']) !!}
+                                 {!! Form::text('rut', null, ['class' => 'form-control', 'placeholder'=>'RUT sin digito verificador']) !!}
                               </div>
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Rol: </label>

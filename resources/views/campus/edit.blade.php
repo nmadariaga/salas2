@@ -118,7 +118,7 @@
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Encargado: </label>
                               <div class="col-sm-10">
-                                  {!! Form::text('rut_encargado', null, ['class' => 'form-control', 'placeholder'=>'RUT Encargado']) !!}
+                                  {!! Form::text('rut_encargado', null, ['class' => 'form-control', 'placeholder'=>'RUT Encargado sin digito verificador']) !!}
                               </div>
                               <br><br><br>
                                 {!! Form::submit('Actualizar', ["class" => "btn btn-success btn-block"]) !!}
