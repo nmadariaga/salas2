@@ -47,7 +47,6 @@
                         </div><!-- /row mt -->
                         <div class="row mt">
                         <center><h3>Tu horario para este semestre es el siguiente.</h3></center>
-
                         </div><!-- /row -->
                           <table class="calendar table table-bordered">
                             <thead>
@@ -67,58 +66,22 @@
                                     @foreach($cursos as $curso)
                                         <td class=" has-events" rowspan="1"><!-- lunes-->
                                         <div style="width: 99%; height: 100%;">
+                                          <?php $i=0; ?>
+                                          lunes
                                             @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[0])
+                                              @if($horario->fecha == $semana[i])
                                                 @if($horario->periodo->bloque == $periodo->bloque)
                                                 {{$curso->asignatura->nombre}}
                                                 Seccion:{{$curso->seccion}}
                                                 {{$horario->sala->nombre}}
-                                                {{$curso->docente->nombres}} {{$curso->docente->nombres}}
+                                                {{$curso->docente->nombres}} {{$curso->docente->apellidos}}
+                                                <?php $i++; ?>
                                                 @endif
                                               @endif
                                             @endforeach
                                         </div>
                                       </td>
-                                      <td class=" has-events" rowspan="1">
-                                        <div style="width: 99%; height: 100%;">
-                                            @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[1])
-                                                {{$curso->asignatura->nombre}}
-                                                {{$horario->fecha}}
-                                              @endif
-                                            @endforeach
-                                        </div>
-                                      </td><!-- martes-->
-                                      <td class=" has-events" rowspan="1">
-                                        <div style="width: 99%; height: 100%;">
-                                            @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[2])
-                                                {{$curso->asignatura->nombre}}
-                                                {{$horario->fecha}}
-                                              @endif
-                                            @endforeach
-                                        </div>
-                                      </td><!-- miercoles-->
-                                      <td class=" has-events" rowspan="1">
-                                        <div style="width: 99%; height: 100%;">
-                                            @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[3])
-                                                {{$curso->asignatura->nombre}}
-                                                {{$horario->fecha}}
-                                              @endif
-                                            @endforeach
-                                        </div>
-                                      </td><!-- jueves-->
-                                      <td class=" has-events" rowspan="1">
-                                        <div style="width: 99%; height: 100%;">
-                                            @foreach($curso->horarios as $horario)
-                                              @if($horario->fecha == $semana[4])
-                                                {{$curso->asignatura->nombre}}
-                                                {{$horario->fecha}}
-                                              @endif
-                                            @endforeach
-                                        </div>
-                                      </td><!-- viernes-->
+
                                     @endforeach
                               </tr>
                               @endforeach
