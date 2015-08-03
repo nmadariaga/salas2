@@ -60,13 +60,20 @@ class HorariosController extends Controller {
 			{
 					$usuario = Auth::user();
 					$inicio = $request->input('fechaInicial');
+					$horario = new \App\Horario;
+					$horario->fecha = $request->input('fechaInicial');
+
+					$horario->sala_id = $request->input('salas_id');
+					$horario->periodo_id = $request->input('periodo_id');
+					$horario->curso_id= $request->input('curso_id');
+					$horario->save();
 					//$fin = $request->input('fechaFinal');
 					$fechaInicial = date_create($request->input('fechaInicial'));
 					$fechaFinal = date_create($request->input('fechaFinal'));
 					(int)$diferenciaEnSemanas = $fechaInicial->diff($fechaFinal)
 																									 ->format('%R%a días')/7;
 
-					for($i=1; $i<$diferenciaEnSemanas; $i++)
+					for($i=1; $i<=$diferenciaEnSemanas; $i++)
 					{
 						$inicio = strtotime ( '+7 day' , strtotime ( $inicio ) ) ;
 						$inicio = date ( 'Y-m-j' , $inicio );
