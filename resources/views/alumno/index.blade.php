@@ -69,8 +69,12 @@
                                         <div style="width: 99%; height: 100%;">
                                             @foreach($curso->horarios as $horario)
                                               @if($horario->fecha == $semana[0])
+                                                @if($horario->periodo->bloque == $periodo->bloque)
                                                 {{$curso->asignatura->nombre}}
-                                                {{$horario->fecha}}
+                                                Seccion:{{$curso->seccion}}
+                                                {{$horario->sala->nombre}}
+                                                {{$curso->docente->nombres}} {{$curso->docente->nombres}}
+                                                @endif
                                               @endif
                                             @endforeach
                                         </div>

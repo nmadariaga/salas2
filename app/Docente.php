@@ -14,6 +14,11 @@ class Docente extends Model {
         return $this->hasMany('App\Curso');
     }
 
+		public function horarios()
+		    {
+		        return $this->hasMany('App\Horario');
+		    }
+
     public function departamento()
     {
         return $this->belongsTo('App\Departamento');
