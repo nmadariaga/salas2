@@ -108,7 +108,7 @@
                               </a>
                               @endif
                               @if($rol->nombre == 'Academico')
-                              <a href="#" >
+                              <a href="/academico" >
                                   <button type="button" class="btn btn-default">Academico</button>
                               </a>
                               @endif

@@ -53,7 +53,7 @@
                                   <th> Periodo</th>
                                   <th> Hora Inicio</th>
                                   <th> Curso</th>
-                                  <th> Profesor</th>
+                                  <th> Facultad</th>
                                   <th> Sala</th>
                               </tr>
                               </thead>
@@ -66,7 +66,7 @@
                                   <td>{{ $horario->periodo->bloque}}</td>
                                   <td>{{ $horario->periodo->inicio}}</td>
                                   <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
-                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $usuario->docente->departamento->facultad->nombre }}</td>
                                   <td>{{ $horario->sala->nombre}}</td>
                               </tr>
                             @endif
@@ -90,7 +90,7 @@
                                   <th> Periodo</th>
                                   <th> Hora Inicio</th>
                                   <th> Curso</th>
-                                  <th> Profesor</th>
+                                  <th> Facultad</th>
                                   <th> Sala</th>
                               </tr>
                               </thead>
@@ -103,7 +103,7 @@
                                   <td>{{ $horario->periodo->bloque}}</td>
                                   <td>{{ $horario->periodo->inicio}}</td>
                                   <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
-                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $usuario->docente->departamento->facultad->nombre }}</td>
                                   <td>{{ $horario->sala->nombre}}</td>
                               </tr>
                             @endif
@@ -127,7 +127,7 @@
                                   <th> Periodo</th>
                                   <th> Hora Inicio</th>
                                   <th> Curso</th>
-                                  <th> Profesor</th>
+                                 <th> Facultad</th>
                                   <th> Sala</th>
                               </tr>
                               </thead>
@@ -140,7 +140,7 @@
                                   <td>{{ $horario->periodo->bloque}}</td>
                                   <td>{{ $horario->periodo->inicio}}</td>
                                   <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
-                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $usuario->docente->departamento->facultad->nombre }}</td>
                                   <td>{{ $horario->sala->nombre}}</td>
                               </tr>
                             @endif
@@ -164,7 +164,7 @@
                                   <th> Periodo</th>
                                   <th> Hora Inicio</th>
                                   <th> Curso</th>
-                                  <th> Profesor</th>
+                                  <th> Facultad</th>
                                   <th> Sala</th>
                               </tr>
                               </thead>
@@ -177,7 +177,7 @@
                                   <td>{{ $horario->periodo->bloque}}</td>
                                   <td>{{ $horario->periodo->inicio}}</td>
                                   <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
-                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $usuario->docente->departamento->facultad->nombre }}</td>
                                   <td>{{ $horario->sala->nombre}}</td>
                               </tr>
                             @endif
@@ -201,7 +201,7 @@
                                   <th> Periodo</th>
                                   <th> Hora Inicio</th>
                                   <th> Curso</th>
-                                  <th> Profesor</th>
+                                  <th> Facultad</th>
                                   <th> Sala</th>
                               </tr>
                               </thead>
@@ -214,7 +214,7 @@
                                   <td>{{ $horario->periodo->bloque}}</td>
                                   <td>{{ $horario->periodo->inicio}}</td>
                                   <td>{{ $horario->curso->asignatura->nombre }} (Sección {{$horario->curso->seccion}})</td>
-                                  <td>{{ $curso->docente->nombres }} {{ $curso->docente->apellidos }}</td>
+                                  <td>{{ $usuario->docente->departamento->facultad->nombre }}</td>
                                   <td>{{ $horario->sala->nombre}}</td>
                               </tr>
                             @endif

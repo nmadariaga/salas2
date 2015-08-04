@@ -74,7 +74,7 @@
                             <hr>
                             {!! Form::open(['route' => 'horarios.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
                           <div class="form-group">
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha para buscar el horario..']) !!}
+                            {!! Form::text('name', null, ['id' => 'fecha1', 'class' => 'form-control', 'placeholder' => 'Ingrese la fecha para buscar el horario..']) !!}
                           </div>
                           <button type="submit" class="btn btn-default">Buscar</button>
                           {!! Form::close() !!}

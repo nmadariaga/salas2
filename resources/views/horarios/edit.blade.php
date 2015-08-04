@@ -84,7 +84,7 @@
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Fecha: </label>
                               <div class="col-sm-10">
-                                 {!! Form::text('fecha', null, ['class' => 'form-control', 'placeholder'=>'Fecha del horario']) !!}
+                                 {!! Form::text('fecha', null, ['id' => 'fecha1', 'class' => 'form-control', 'placeholder'=>'Fecha del horario']) !!}
                               </div>
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">Sala: </label>

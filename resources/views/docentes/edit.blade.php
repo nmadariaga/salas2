@@ -94,7 +94,7 @@
                       <form class="form-horizontal style-form" method="get">
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Departamento: </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! Form::select('nombre', $departamento) !!}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! Form::select('departamento_id', $departamento) !!}
                               <br><br><br>
                               <label class="col-sm-2 col-sm-2 control-label">RUT: </label>
                               <div class="col-sm-10">
