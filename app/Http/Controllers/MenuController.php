@@ -83,6 +83,49 @@ class MenuController extends Controller {
                                ->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'));
   }
 
+
+
+  public function inicioDocente()
+  {
+
+    date_default_timezone_set("America/Santiago" );
+    ///echo "la fecha actual es " . date("d") . " del " . date("m") . " de " . date("Y")
+    $year = date("Y");
+    $month = date("m");
+    $day = date("d");
+
+    # Obtenemos el numero de la semana
+    $semana = date("W",mktime(0,0,0,$month,$day,$year));
+
+    # Obtenemos el día de la semana de la fecha dada
+    $diaSemana = date("w",mktime(0,0,0,$month,$day,$year));
+
+    # el 0 equivale al domingo...
+    if($diaSemana == 0)
+        $diaSemana = 7;
+
+    # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
+    $lunes = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+1,$year));
+    $martes = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+2,$year));
+    $miercoles = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+3,$year));
+    $jueves = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+4,$year));
+    $viernes = date("Y-m-d",mktime(0,0,0,$month,$day-$diaSemana+5,$year));
+    $semana = [$lunes, $martes, $miercoles, $jueves, $viernes];
+
+    $usuario = Auth::user();
+		$nombres = $usuario->docente->nombres;
+		$apellidos = $usuario->docente->apellidos;
+		$nombreCompleto = $nombres.' '.$apellidos;
+		$periodos = new \App\Periodo;
+    $cursos = $usuario->docente->cursos;
+		return view("alumno.index")->with('cursos',$cursos)
+                              ->with('semana',$semana)
+                               ->with('nombreCompleto',$nombreCompleto)
+                               ->with('usuario',$usuario)
+                               ->with('periodos', \App\Periodo::paginate(10)->setPath('periodo'));
+  }
+
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

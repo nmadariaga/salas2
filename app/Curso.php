@@ -15,7 +15,7 @@ class Curso extends Model {
 
     public function docente()
     {
-        return $this->hasOne('App\Docente');
+        return $this->belongsTo('App\Docente');
     }
 
     public function horarios()
