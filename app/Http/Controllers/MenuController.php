@@ -118,7 +118,7 @@ class MenuController extends Controller {
 		$nombreCompleto = $nombres.' '.$apellidos;
 		$periodos = new \App\Periodo;
     $cursos = $usuario->docente->cursos;
-		return view("alumno.index")->with('cursos',$cursos)
+		return view("docente.index")->with('cursos',$cursos)
                               ->with('semana',$semana)
                                ->with('nombreCompleto',$nombreCompleto)
                                ->with('usuario',$usuario)

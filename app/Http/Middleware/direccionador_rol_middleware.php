@@ -31,10 +31,10 @@ class direccionador_rol_middleware {
 			return redirect('encargado/menu');
 		}
 
-		/*if(!$rol_aca->usuarios()->find($user->rut))
+		if(!$rol_aca->usuarios()->find($user->rut))
 		{
-			return redirect('admin/inicio');
-		}*/
+			return redirect('/academico');
+		}
 		if($rol_est->usuarios()->find($user->rut))
 		{
 			return redirect('/alumno');

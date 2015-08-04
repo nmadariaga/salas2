@@ -107,9 +107,9 @@
                                   <button type="button" class="btn btn-default">Encargado</button>
                               </a>
                               @endif
-                              @if($rol->nombre == 'Docente')
+                              @if($rol->nombre == 'Academico')
                               <a href="#" >
-                                  <button type="button" class="btn btn-default">Docente</button>
+                                  <button type="button" class="btn btn-default">Academico</button>
                               </a>
                               @endif
                               @if($rol->nombre == 'Estudiante')
@@ -119,11 +119,21 @@
                               @endif
                             @endforeach</h3></center>
             </div>
-                </ul>
+
+
                 <!--  notification end -->
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
+                @foreach($usuario->roles as $rol)
+                   @if($rol->nombre == 'Administrador')
+                   <li>
+                   <a class="logout" style="background-color: green" href="/rolesusuarios" >
+                       Asignar Roles
+                   </a>
+                 </li>
+                   @endif
+                @endforeach
                     <li><a class="logout" href="{{ action('Auth\AuthController@getLogout') }}">Cerrar Sesión</a></li>
               </ul>
             </div>
