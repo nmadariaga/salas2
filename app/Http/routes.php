@@ -98,3 +98,4 @@ Route::post('hola','CampusController@leerFichero');
     Route::get('/admin/inicio', ['middleware' => ['auth','roladmin'],'as'=>'admin.index','uses'=> 'MenuController@inicioAdministrador']);
     Route::get('/encargado/menu' ,['middleware' => ['auth', 'rolencargado'],'as'=>'encargado.index','uses'=> 'MenuController@menuEncargado']);
     Route::get('/alumno' ,['middleware' => ['auth', 'rolalumno'],'as'=>'alumno.index','uses'=> 'MenuController@inicioAlumno']);
+    Route::get('/academico' ,['middleware' => ['auth', 'rolacademico'],'as'=>'academico.index','uses'=> 'MenuController@inicioDocente']);

@@ -14,7 +14,7 @@ class RolDocenteMiddleware {
 	public function handle($request, Closure $next)
 	{
 		$user = \Auth::user();
-		$rol_aca = \App\Role::whereNombre('Docente')->first();
+		$rol_aca = \App\Role::whereNombre('Academico')->first();
 
 		if(!$rol_aca->usuarios()->find($user->rut))
 		{

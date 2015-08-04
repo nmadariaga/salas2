@@ -31,7 +31,7 @@ class direccionador_rol_middleware {
 			return redirect('encargado/menu');
 		}
 
-		if(!$rol_aca->usuarios()->find($user->rut))
+		if($rol_aca->usuarios()->find($user->rut))
 		{
 			return redirect('/academico');
 		}

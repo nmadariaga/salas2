@@ -31,6 +31,7 @@ class Kernel extends HttpKernel {
 	  'rolencargado' => 'App\Http\Middleware\RolEncargadoMiddleware',
 	  'direccionador_rol_middleware' => 'App\Http\Middleware\direccionador_rol_middleware',
 		'rolalumno' => 'App\Http\Middleware\RolEstudianteMiddleware',
+		'rolacademico' => 'App\Http\Middleware\RolDocenteMiddleware',
 	];
 
 }
