@@ -84,25 +84,19 @@
                         <center><h1>Bienvenido {{Auth::user("")->nombres}}</h1></center>
                         @endif
                       </div>--><!-- /row mt -->
-                        <center><h1>Bienvenido {{$nombreCompleto}}</h1></center>
+                        <center><h1> {{$nombreCompleto}}</h1></center>
 
 
                         <div class="row mt">
-                <center><p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p></center>
+                <center><h3>Bienvenido al sistema de gestion de personal</h3></center>
 
-                        <center><p>An abbreviation of the word attribute is attr.</p></center>
+                        
                         </div><!-- /row -->
 
 
-                        <div class="row">
-                          <center><p>This line of text is meant to be treated as fine print.</p></center>
+                        
 
-                          <center><p>The following snippet of  text is rendered as bold text.</p></center>
-                        </div><!-- /row -->
-
-                        <div class="row mt">
-                          <center><p>The following snippet of text is rendered as italicized text.</p></center>
-                        </div><!-- /row -->
+                        
 
               </div>
         </section>
