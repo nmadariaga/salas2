@@ -108,7 +108,7 @@ body{
 <body>
 	<div class="wrap">
 	   <div class="logo">
-	   		<p>Proyecto Ingenieria de Software</p>
+	   		<p>Proyecto Ingeniería de Software</p>
 	   </div>
 	   <div class="title">
 	  		 <h1>UPS!</h1>
