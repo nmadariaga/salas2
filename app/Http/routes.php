@@ -34,6 +34,8 @@ Route::get('home', 'HomeController@index');
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);*/
+Route::resource('roles','RolesController');
+Route::get('descargarRoles','RolesController@exportarRoles');
 
 Route::controller('auth', 'Auth\AuthController', [
     'getLogin'  => 'auth.login',
@@ -59,9 +61,6 @@ Route::post('hola','CampusController@leerFichero');
     Route::post('ficheroFuncionarios','FuncionariosController@leerFichero');
     Route::resource('funcionarios','FuncionariosController');
 
-
-    Route::resource('roles','RolesController');
-    Route::get('descargarRoles','RolesController@exportarRoles');
 
     Route::resource('campus','CampusController');
 
